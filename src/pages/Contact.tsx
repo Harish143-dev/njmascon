@@ -102,7 +102,7 @@ const Contact = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <span className="text-[10px] sm:text-sm uppercase tracking-[0.25em] sm:tracking-[0.5em] text-primary mb-4 block">
+              <span className="text-sm uppercase tracking-[0.25em] sm:tracking-[0.5em] text-primary mb-4 block">
                 Contact
               </span>
               <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light mb-4">
@@ -124,10 +124,10 @@ const Contact = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <span className="text-[10px] sm:text-sm uppercase tracking-[0.25em] sm:tracking-[0.5em] text-primary mb-4 block">
+              <span className="text-sm uppercase tracking-[0.25em] sm:tracking-[0.5em] text-primary mb-4 block">
                 Contact
               </span>
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light mb-5 sm:mb-8">
+              <h1 className="font-serif text-4xl md:text-5xl font-light mb-5 sm:mb-8">
                 Contact & <span className="italic">Reach Us</span>
               </h1>
               <p className="text-sm sm:text-base text-muted-foreground font-light mb-6 sm:mb-8">
@@ -135,22 +135,22 @@ const Contact = () => {
               </p>
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-primary text-sm mb-2">Address</h4>
-                  <p className="text-sm font-light text-muted-foreground">
+                  <h4 className="text-primary text-base md:text-lg mb-2">Address</h4>
+                  <p className="text-sm md:text-base font-light text-muted-foreground">
                     Door No:43 Navarathna Garden 2nd Cross street, Defence Colony, Ekkaduthangal, Chennai 600032.
                   </p>
                 </div>
                 <div>
-                  <h4 className="text-primary text-sm mb-2">Phone / Mobile</h4>
-                  <p className="text-sm font-light">044 43570713 / +91 739 59 11123</p>
+                  <h4 className="text-primary text-base md:text-lg mb-2">Phone / Mobile</h4>
+                  <p className="text-sm md:text-base font-light">044 43570713 / +91 739 59 11123</p>
                 </div>
                 <div>
-                  <h4 className="text-primary text-sm mb-2">Email</h4>
-                  <p className="text-sm font-light break-all">writetous@njmacson.com</p>
+                  <h4 className="text-primary text-base md:text-lg mb-2">Email</h4>
+                  <p className="text-sm md:text-base font-light break-all">writetous@njmacson.com</p>
                 </div>
                 <div>
-                  <h4 className="text-primary text-sm mb-2">Working Hours</h4>
-                  <p className="text-sm font-light text-muted-foreground">
+                  <h4 className="text-primary text-base md:text-lg mb-2">Working Hours</h4>
+                  <p className="text-sm md:text-base font-light text-muted-foreground">
                     Mon - Fri: 9am - 6pm
                     <br />
                     Saturday: By Appointment

@@ -110,7 +110,7 @@ const About = () => {
                 transition={{ duration: 1}}
               >
                 <motion.span
-                  className="inline-block text-primary text-sm uppercase tracking-[0.3em] sm:tracking-[0.5em] border border-primary/30 px-3 sm:px-4 py-2 mb-6 sm:mb-8"
+                  className="inline-block text-primary text-sm uppercase tracking-[0.3em] sm:tracking-[0.5em] px-3 sm:px-4 py-2 mb-6 sm:mb-8"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.8}}

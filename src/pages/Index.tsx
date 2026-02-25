@@ -13,7 +13,7 @@ import TestimonialsSection from "@/components/home/TestimonialsSection";
 
 const Index = () => {
   return (
-    <div className="min-h-screen overflow-x-hidden">
+    <div className="overflow-x-hidden">
       <CustomCursor />
       <Header />
       <main className="">

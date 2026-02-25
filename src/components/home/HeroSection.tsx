@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-screen flex items-baseline overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video

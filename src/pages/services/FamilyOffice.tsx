@@ -48,7 +48,7 @@ const FamilyOffice = () => {
               transition={{ duration: 0.8 }}
               className="max-w-3xl"
             >
-              <span className="text-[10px] sm:text-sm uppercase tracking-[0.25em] sm:tracking-[0.5em] text-primary mb-4 block">
+              <span className="text-sm uppercase tracking-[0.25em] sm:tracking-[0.5em] text-primary mb-4 block">
                 Our Services
               </span>
               <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light leading-[0.95] tracking-tight mb-6 sm:mb-8">
