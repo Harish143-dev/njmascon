@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { cardItem, fadeUpSoft, inViewOnce, staggerContainer } from "@/lib/motion";
 
 const services = [
   {
@@ -47,10 +48,10 @@ const ServicesSection = () => {
         {/* Section Header */}
         <motion.div
           className="grid grid-cols-12 gap-6 sm:gap-8 mb-10 sm:mb-14 lg:mb-20"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          variants={fadeUpSoft}
+          initial="hidden"
+          whileInView="show"
+          viewport={inViewOnce}
         >
           <div className="col-span-12 lg:col-span-5">
             <span className="text-sm uppercase tracking-[0.2em] sm:tracking-[0.4em] text-primary mb-4 sm:mb-6 block">
@@ -71,15 +72,18 @@ const ServicesSection = () => {
         </motion.div>
 
         {/* Services Grid - Alternating Layout */}
-        <div className="space-y-1">
+        <motion.div
+          className="space-y-1"
+          variants={staggerContainer(0.14, 0.05)}
+          initial="hidden"
+          whileInView="show"
+          viewport={inViewOnce}
+        >
           {services.map((service, index) => (
             <motion.div
               key={service.title}
               className="group"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              variants={cardItem}
             >
               <Link
                 to={service.link}
@@ -145,7 +149,7 @@ const ServicesSection = () => {
               </Link>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

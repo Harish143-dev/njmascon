@@ -1,4 +1,12 @@
 import { motion } from "framer-motion";
+import {
+  cardItem,
+  fadeInSoft,
+  fadeUpSoft,
+  inViewOnce,
+  staggerContainer,
+  statNumberReveal,
+} from "@/lib/motion";
 
 const stats = [
   {
@@ -43,17 +51,14 @@ const StatsSection = () => {
         {/* Header */}
         <motion.div
           className="text-center mb-10 sm:mb-14 lg:mb-20"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          variants={fadeUpSoft}
+          initial="hidden"
+          whileInView="show"
+          viewport={inViewOnce}
         >
           <motion.span
             className="inline-block text-primary text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-4 sm:mb-6"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            variants={fadeInSoft}
           >
             Our Global Reach
           </motion.span>
@@ -69,15 +74,18 @@ const StatsSection = () => {
         </motion.div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0"
+          variants={staggerContainer(0.15)}
+          initial="hidden"
+          whileInView="show"
+          viewport={inViewOnce}
+        >
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
               className="relative group"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              variants={cardItem}
             >
               {/* Divider line between stats */}
               {index !== stats.length - 1 && (
@@ -89,10 +97,7 @@ const StatsSection = () => {
                 <div className="relative mb-4">
                   <motion.span
                     className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-primary tracking-tight"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
+                    variants={statNumberReveal}
                   >
                     {stat.value}
                   </motion.span>
@@ -116,7 +121,7 @@ const StatsSection = () => {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -80,7 +80,7 @@ const About = () => {
 
       <main>
         {/* Hero Section with Video */}
-        <section className="relative min-h-[85vh] sm:min-h-screen flex items-center overflow-hidden">
+        <section className="relative min-h-screen flex items-center overflow-hidden">
           {/* Video Background */}
           <div className="absolute inset-0 z-0">
             <video

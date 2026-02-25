@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
+import { cardItem, fadeUpSoft, inViewOnce, staggerContainer } from "@/lib/motion";
 
 const highlights = [
   "Integrated solutions for UHNI families to grow, protect, and manage wealth.",
@@ -70,10 +71,10 @@ const FamilyOffice = () => {
             <div className="flex flex-col gap-5">
               <motion.div
                 className=""
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
+                variants={fadeUpSoft}
+                initial="hidden"
+                whileInView="show"
+                viewport={inViewOnce}
               >
                 <h2 className="font-serif text-3xl sm:text-4xl font-light mb-4 sm:mb-6">A Modern Family Office</h2>
                 <p className="text-sm sm:text-base text-muted-foreground font-light leading-relaxed mb-6 sm:mb-8">
@@ -87,23 +88,26 @@ const FamilyOffice = () => {
 
               <motion.div
                 className=""
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
+                variants={fadeUpSoft}
+                initial="hidden"
+                whileInView="show"
+                viewport={inViewOnce}
               >
                 <p className="font-serif text-lg sm:text-xl font-light leading-relaxed text-muted-foreground mb-6 sm:mb-8">
                   As the needs of families evolve, NJ Macson Family Office delivers customized wealth solutions through a dedicated team of financial advisors, family counselors, and wealth managers—supporting both business and personal goals.
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {highlights.map((highlight, index) => (
+                <motion.div
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                  variants={staggerContainer(0.1, 0.06)}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={inViewOnce}
+                >
+                  {highlights.map((highlight) => (
                     <motion.div
-                      key={index}
+                      key={highlight}
                       className="flex gap-3 p-4 bg-background rounded-lg"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4 }}
+                      variants={cardItem}
                     >
                       <svg className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <polyline points="20 6 9 17 4 12" />
@@ -111,7 +115,7 @@ const FamilyOffice = () => {
                       <span className="text-sm font-light">{highlight}</span>
                     </motion.div>
                   ))}
-                </div>
+                </motion.div>
               </motion.div>
             </div>
           </div>

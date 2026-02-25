@@ -1,18 +1,22 @@
 import { motion } from "framer-motion";
+import { fadeUpSoft, inViewOnce, mediaReveal, staggerContainer } from "@/lib/motion";
 
 const VideoSection = () => {
   return (
     <section className="py-16 sm:py-20 lg:py-24 bg-stone/20 overflow-x-clip">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10">
         <div className="flex flex-col lg:flex-row lg:items-center gap-8 sm:gap-12 lg:gap-16">
-          <motion.div 
+          <motion.div
             className="w-full lg:w-7/12"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            variants={staggerContainer(0.16)}
+            initial="hidden"
+            whileInView="show"
+            viewport={inViewOnce}
           >
-            <div className="relative aspect-video bg-foreground rounded-lg overflow-hidden group cursor-pointer">
+            <motion.div
+              className="relative aspect-video bg-foreground rounded-lg overflow-hidden group cursor-pointer"
+              variants={mediaReveal}
+            >
               <div 
                 className="absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url("https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&auto=format&fit=crop")` }}
@@ -29,15 +33,15 @@ const VideoSection = () => {
                   </svg>
                 </motion.div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
           
           <motion.div 
             className="w-full lg:w-5/12"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8}}
+            variants={fadeUpSoft}
+            initial="hidden"
+            whileInView="show"
+            viewport={inViewOnce}
           >
             <span className="text-sm uppercase tracking-[0.3em] sm:tracking-[0.5em] text-primary mb-4 block">Insights</span>
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-light mb-4 sm:mb-6 leading-tight">

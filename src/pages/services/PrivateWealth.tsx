@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
+import { cardItem, fadeUpSoft, inViewOnce, staggerContainer } from "@/lib/motion";
 
 const services = [
   "Investment and portfolio advisory",
@@ -68,13 +69,16 @@ const PrivateWealth = () => {
         {/* Designed For */}
         <section className="py-16 sm:py-20 lg:py-24 bg-stone/20 overflow-x-clip">
           <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12"
+              variants={staggerContainer(0.14)}
+              initial="hidden"
+              whileInView="show"
+              viewport={inViewOnce}
+            >
               <motion.div
                 className="w-full"
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
+                variants={fadeUpSoft}
               >
                 <span className="text-sm uppercase tracking-[0.25em] sm:tracking-[0.5em] text-primary mb-4 block">
                   Designed For
@@ -87,10 +91,7 @@ const PrivateWealth = () => {
 
               <motion.div
                 className="w-full"
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
+                variants={fadeUpSoft}
               >
                 <p className="text-sm sm:text-base text-muted-foreground font-light leading-relaxed mb-6 sm:mb-8">
                   Our experienced advisors assess each client's assets and
@@ -103,7 +104,7 @@ const PrivateWealth = () => {
                   investment execution.
                 </p>
               </motion.div>
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -112,25 +113,28 @@ const PrivateWealth = () => {
           <div className="max-w-[1440px] mx-auto px-6 md:px-10">
             <motion.div
               className="mb-16"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              variants={fadeUpSoft}
+              initial="hidden"
+              whileInView="show"
+              viewport={inViewOnce}
             >
               <h2 className="font-serif text-4xl font-light mb-6">
                 Our Services Include
               </h2>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+              variants={staggerContainer(0.1, 0.06)}
+              initial="hidden"
+              whileInView="show"
+              viewport={inViewOnce}
+            >
               {services.map((service, index) => (
                 <motion.div
                   key={service}
                   className="p-8 border border-stone rounded-lg hover:border-primary transition-colors"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  variants={cardItem}
                 >
                   <div className="flex items-center gap-4">
                     <span className="text-primary font-light italic text-lg">
@@ -140,14 +144,14 @@ const PrivateWealth = () => {
                   </div>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
 
             <motion.p
               className="mt-12 text-center font-serif text-xl font-light text-muted-foreground"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              variants={fadeUpSoft}
+              initial="hidden"
+              whileInView="show"
+              viewport={inViewOnce}
             >
               Built on trust and long-term partnerships, we simplify finance to
               help you invest with clarity and confidence.

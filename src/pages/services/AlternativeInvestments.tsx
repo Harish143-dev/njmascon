@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
+import { cardItem, fadeUpSoft, inViewOnce, staggerContainer } from "@/lib/motion";
 
 const investments = [
   "Real estate in India and Dubai",
@@ -83,12 +84,15 @@ const AlternativeInvestments = () => {
         {/* Traditional vs Alternative */}
         <section className="py-16 sm:py-20 lg:py-24 bg-stone/20 overflow-x-clip">
           <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12"
+              variants={staggerContainer(0.14)}
+              initial="hidden"
+              whileInView="show"
+              viewport={inViewOnce}
+            >
               <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
+                variants={fadeUpSoft}
               >
                 <h2 className="font-serif text-2xl sm:text-3xl font-light mb-4 sm:mb-6">
                   Beyond the Basics: Traditional vs. Alternative
@@ -101,10 +105,7 @@ const AlternativeInvestments = () => {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
+                variants={fadeUpSoft}
               >
                 <h2 className="font-serif text-2xl sm:text-3xl font-light mb-4 sm:mb-6">
                  The Alternative Landscape
@@ -113,7 +114,7 @@ const AlternativeInvestments = () => {
                 We provide access to private equity, venture capital, and hedge funds, alongside tangible assets like real estate and commodities.
                 </p>
               </motion.div>
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -122,10 +123,10 @@ const AlternativeInvestments = () => {
           <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10">
             <motion.div
               className="mb-16"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              variants={fadeUpSoft}
+              initial="hidden"
+              whileInView="show"
+              viewport={inViewOnce}
             >
               <h2 className="font-serif text-3xl sm:text-4xl font-light mb-4 sm:mb-6">
                 Our Investment Options
@@ -136,20 +137,23 @@ const AlternativeInvestments = () => {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
-              {investments.map((investment, index) => (
+            <motion.div
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6"
+              variants={staggerContainer(0.1, 0.06)}
+              initial="hidden"
+              whileInView="show"
+              viewport={inViewOnce}
+            >
+              {investments.map((investment) => (
                 <motion.div
                   key={investment}
                   className="p-4 sm:p-6 bg-stone/20 rounded-lg text-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5 }}
+                  variants={cardItem}
                 >
                   <span className="text-sm font-light">{investment}</span>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -158,10 +162,10 @@ const AlternativeInvestments = () => {
           <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10">
             <motion.div
               className="mb-16"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              variants={fadeUpSoft}
+              initial="hidden"
+              whileInView="show"
+              viewport={inViewOnce}
             >
               <span className="text-sm uppercase tracking-[0.25em] sm:tracking-[0.5em] text-primary mb-4 block">
                 Benefits
@@ -175,22 +179,25 @@ const AlternativeInvestments = () => {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-8">
-              {benefits.map((benefit, index) => (
+            <motion.div
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-8"
+              variants={staggerContainer(0.1, 0.06)}
+              initial="hidden"
+              whileInView="show"
+              viewport={inViewOnce}
+            >
+              {benefits.map((benefit) => (
                 <motion.div
-                  key={index}
+                  key={benefit}
                   className="p-3 border border-background/20 rounded-lg"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5 }}
+                  variants={cardItem}
                 >
                   <h3 className="text-base font-light text-primary">
                     {benefit}
                   </h3>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
 
             <motion.div
               className="mt-16 text-center"

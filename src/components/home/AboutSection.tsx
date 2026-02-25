@@ -1,5 +1,12 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import {
+  cardItem,
+  fadeInSoft,
+  fadeUpSoft,
+  inViewOnce,
+  staggerContainer,
+} from "@/lib/motion";
 
 const features = [
   { number: "01", title: "Experienced Advisors", description: "Decades of expertise guiding complex portfolios" },
@@ -16,10 +23,10 @@ const AboutSection = () => {
           {/* Left Column - Main Content */}
           <motion.div 
             className="col-span-12 lg:col-span-5"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            variants={fadeUpSoft}
+            initial="hidden"
+            whileInView="show"
+            viewport={inViewOnce}
           >
             <span className="text-sm uppercase tracking-[0.2em] sm:tracking-[0.4em] text-primary mb-4 sm:mb-6 block">
               About NJ Macson
@@ -38,10 +45,10 @@ const AboutSection = () => {
             </div>
             <motion.div 
               className="mt-8 sm:mt-10"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6}}
+              variants={fadeInSoft}
+              initial="hidden"
+              whileInView="show"
+              viewport={inViewOnce}
             >
               <Link 
                 to="/about"
@@ -58,20 +65,23 @@ const AboutSection = () => {
           {/* Right Column - Features Grid */}
           <motion.div 
             className="col-span-12 lg:col-span-6 lg:col-start-7"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8}}
+            variants={fadeUpSoft}
+            initial="hidden"
+            whileInView="show"
+            viewport={inViewOnce}
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-stone/50">
-              {features.map((feature, index) => (
+            <motion.div
+              className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-stone/50"
+              variants={staggerContainer(0.12)}
+              initial="hidden"
+              whileInView="show"
+              viewport={inViewOnce}
+            >
+              {features.map((feature) => (
                 <motion.div 
                   key={feature.title}
                   className="bg-background p-5 sm:p-8 group hover:bg-stone/30 transition-colors duration-500"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5}}
+                  variants={cardItem}
                 >
                   <span className="text-primary text-2xl sm:text-3xl md:text-4xl font-serif font-light italic block mb-3 sm:mb-4 group-hover:translate-x-1 transition-transform duration-300">
                     {feature.number}
@@ -82,7 +92,7 @@ const AboutSection = () => {
                   </p>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
@@ -91,4 +101,3 @@ const AboutSection = () => {
 };
 
 export default AboutSection;
-
