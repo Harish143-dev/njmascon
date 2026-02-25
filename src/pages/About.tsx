@@ -466,7 +466,7 @@ const About = () => {
               >
                 <div className="overflow-hidden rounded-sm">
                   <img
-                    src={awardImg}
+                    src={awardImg1}
                     alt={"awards"}
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                   />
@@ -512,7 +512,7 @@ const About = () => {
               >
                 <div className="overflow-hidden rounded-sm">
                   <img
-                    src={awardImg1}
+                    src={awardImg}
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                     alt=""
                   />

@@ -7,7 +7,7 @@ const services = [
     title: "Family Office",
     description:
       "Get a personal Chief Financial Manager who meets the needs of Ultra High Net-worth Investors. Family Office Services function as private wealth management advisory outfits.",
-    link: "/services/family-office",
+    link: "/services/our-family-office",
     image:
       "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&auto=format&fit=crop",
   },
@@ -16,7 +16,7 @@ const services = [
     title: "Private Wealth Management",
     description:
       "This is an all-encompassing service, providing comprehensive research-based advisory along with personalized investment execution.",
-    link: "/services/private-wealth",
+    link: "/services/private-wealth-management",
     image:
       "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=800&auto=format&fit=crop",
   },

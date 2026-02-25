@@ -16,8 +16,8 @@ const Footer = () => {
           <div>
             <h5 className="text-sm uppercase tracking-[0.4em] text-primary mb-6">Services</h5>
             <ul className="space-y-3 text-sm font-light">
-              <li><Link to="/services/family-office" className="hover:text-primary transition-colors">Family Office</Link></li>
-              <li><Link to="/services/private-wealth" className="hover:text-primary transition-colors">Private Wealth Management</Link></li>
+              <li><Link to="/services/our-family-office" className="hover:text-primary transition-colors">Family Office</Link></li>
+              <li><Link to="/services/private-wealth-management" className="hover:text-primary transition-colors">Private Wealth Management</Link></li>
               <li><Link to="/services/alternative-investments" className="hover:text-primary transition-colors">Alternative Investments</Link></li>
               <li><Link to="/services/auditing-legal" className="hover:text-primary transition-colors">Auditing and Legal</Link></li>
             </ul>

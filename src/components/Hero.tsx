@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
-    <section className="max-w-[1440px] mx-auto px-6 md:px-10 min-h-screen flex flex-col justify-end">
+    <section className="max-w-[1440px] mx-auto px-6 md:px-10 min-h-screen flex flex-col justify-center">
       <div className="grid grid-cols-12 gap-8">
         <div className="col-span-12 lg:col-span-5 order-2 lg:order-1">
           <motion.div
