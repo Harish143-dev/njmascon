@@ -13,7 +13,7 @@ const services = [
 
 const PrivateWealth = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       <CustomCursor />
       <Header />
       
@@ -43,11 +43,11 @@ const PrivateWealth = () => {
               transition={{ duration: 0.8 }}
               className="max-w-3xl"
             >
-              <span className="text-[10px] uppercase tracking-[0.5em] text-primary mb-4 block">Our Services</span>
+              <span className="text-sm uppercase tracking-[0.5em] text-primary mb-4 block">Our Services</span>
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-light leading-[0.95] tracking-tight mb-8">
                 Private <span className="italic">Wealth</span> Management
               </h1>
-              <p className="text-xl font-light leading-relaxed text-muted-foreground mb-6">
+              <p className="text-lg font-light leading-relaxed text-muted-foreground mb-6">
                 NJ Macson delivers personalized wealth management solutions designed to build, preserve, and grow wealth over the long term.
               </p>
               <p className="text-muted-foreground font-light leading-relaxed">
@@ -58,33 +58,33 @@ const PrivateWealth = () => {
         </section>
 
         {/* Designed For */}
-        <section className="py-24 bg-stone/20">
-          <div className="max-w-[1440px] mx-auto px-6 md:px-10">
-            <div className="grid grid-cols-12 gap-12">
+        <section className="py-16 sm:py-20 lg:py-24 bg-stone/20 overflow-x-clip">
+          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
               <motion.div 
-                className="col-span-12 lg:col-span-5"
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                className="w-full"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <span className="text-[10px] uppercase tracking-[0.5em] text-primary mb-4 block">Designed For</span>
-                <p className="font-serif text-2xl font-light leading-relaxed text-muted-foreground">
+                <span className="text-[10px] sm:text-sm uppercase tracking-[0.25em] sm:tracking-[0.5em] text-primary mb-4 block">Designed For</span>
+                <p className="font-serif text-xl sm:text-2xl font-light leading-relaxed text-muted-foreground">
                   Wealth management services are ideal for high-net-worth individuals with diverse and complex financial needs.
                 </p>
               </motion.div>
               
               <motion.div 
-                className="col-span-12 lg:col-span-6 lg:col-start-7"
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                className="w-full"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                transition={{ duration: 0.8 }}
               >
-                <p className="text-muted-foreground font-light leading-relaxed mb-8">
+                <p className="text-sm sm:text-base text-muted-foreground font-light leading-relaxed mb-6 sm:mb-8">
                   Our experienced advisors assess each client's assets and objectives to create customized financial strategies tailored to their unique requirements.
                 </p>
-                <p className="text-muted-foreground font-light leading-relaxed">
+                <p className="text-sm sm:text-base text-muted-foreground font-light leading-relaxed">
                   NJ Macson offers a holistic, research-driven wealth management approach combining expert advisory with personalized investment execution.
                 </p>
               </motion.div>
@@ -161,3 +161,4 @@ const PrivateWealth = () => {
 };
 
 export default PrivateWealth;
+

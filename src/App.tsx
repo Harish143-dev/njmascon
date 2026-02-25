@@ -14,7 +14,9 @@ import FamilyOffice from "./pages/services/FamilyOffice";
 import PrivateWealth from "./pages/services/PrivateWealth";
 import AlternativeInvestments from "./pages/services/AlternativeInvestments";
 import AuditingLegal from "./pages/services/AuditingLegal";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +26,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
@@ -32,10 +35,20 @@ const App = () => (
           <Route path="/careers" element={<Careers />} />
           <Route path="/careers/:jobId" element={<JobDetail />} />
           <Route path="/careers/:jobId/apply" element={<JobApplication />} />
-          <Route path="/services/family-office" element={<FamilyOffice />} />
-          <Route path="/services/private-wealth" element={<PrivateWealth />} />
-          <Route path="/services/alternative-investments" element={<AlternativeInvestments />} />
+          <Route
+            path="/services/our-family-office"
+            element={<FamilyOffice />}
+          />
+          <Route
+            path="/services/private-wealth-management"
+            element={<PrivateWealth />}
+          />
+          <Route
+            path="/services/alternative-investments"
+            element={<AlternativeInvestments />}
+          />
           <Route path="/services/auditing-legal" element={<AuditingLegal />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

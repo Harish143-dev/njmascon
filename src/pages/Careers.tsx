@@ -31,7 +31,7 @@ const positions = [
 
 const Careers = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       <CustomCursor />
       <Header />
       
@@ -61,12 +61,12 @@ const Careers = () => {
               transition={{ duration: 0.8 }}
               className="max-w-2xl"
             >
-              <span className="text-[10px] uppercase tracking-[0.5em] text-primary mb-4 block">Careers</span>
+              <span className="text-sm uppercase tracking-[0.5em] text-primary mb-4 block">Careers</span>
               <h1 className="font-serif text-6xl md:text-7xl lg:text-8xl font-light leading-[0.95] tracking-tight mb-8">
                 Join the <br />
                 <span className="italic">Legacy.</span>
               </h1>
-              <p className="text-xl font-light leading-relaxed text-muted-foreground">
+              <p className="text-lg font-light leading-relaxed text-muted-foreground">
                 We seek the architects of tomorrow's traditions. At NJ Macson, we don't just manage wealth; we curate the environments where generational history is written.
               </p>
             </motion.div>
@@ -84,7 +84,7 @@ const Careers = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <span className="text-[10px] uppercase tracking-[0.5em] text-primary mb-4 block">The Setting</span>
+                <span className="text-sm uppercase tracking-[0.5em] text-primary mb-4 block">The Setting</span>
                 <h2 className="font-serif text-4xl md:text-5xl font-light mb-6">Our Environment</h2>
               </motion.div>
               
@@ -113,7 +113,7 @@ const Careers = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <span className="text-[10px] uppercase tracking-[0.5em] text-primary mb-4 block">The Ethos</span>
+              <span className="text-sm uppercase tracking-[0.5em] text-primary mb-4 block">The Ethos</span>
               <h2 className="font-serif text-4xl md:text-5xl font-light mb-6">The NJ Macson Standard</h2>
               <blockquote className="font-serif text-xl italic text-muted-foreground max-w-xl">
                 "Excellence is not an act, but a habit cultivated in the silence of discretion."
@@ -149,7 +149,7 @@ const Careers = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <span className="text-[10px] uppercase tracking-[0.5em] text-primary mb-4 block">Opportunities</span>
+              <span className="text-sm uppercase tracking-[0.5em] text-primary mb-4 block">Opportunities</span>
               <h2 className="font-serif text-4xl md:text-5xl font-light mb-4">Open Positions</h2>
               <p className="text-muted-foreground font-light">
                 Selective recruitment for individuals of exceptional pedigree and character.
@@ -161,8 +161,8 @@ const Careers = () => {
                 <Link to={`/careers/${position.id}`} key={position.id}>
                   <motion.div 
                     className="flex flex-col md:flex-row md:items-center justify-between py-8 border-t border-stone group cursor-pointer"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
@@ -215,3 +215,4 @@ const Careers = () => {
 };
 
 export default Careers;
+

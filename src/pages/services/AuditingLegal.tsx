@@ -68,10 +68,10 @@ const legalRegistration = [
 
 const AuditingLegal = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       <CustomCursor />
       <Header />
-      
+
       <main>
         {/* Hero */}
         <section className="relative min-h-[60vh] flex items-center overflow-hidden">
@@ -84,13 +84,16 @@ const AuditingLegal = () => {
             preload="auto"
             className="absolute inset-0 w-full h-full object-cover"
           >
-            <source src="https://videos.pexels.com/video-files/3255275/3255275-uhd_2560_1440_25fps.mp4" type="video/mp4" />
+            <source
+              src="https://videos.pexels.com/video-files/3255275/3255275-uhd_2560_1440_25fps.mp4"
+              type="video/mp4"
+            />
           </video>
-          
+
           {/* Gradient Overlays */}
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-          
+
           <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 py-32">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -98,12 +101,16 @@ const AuditingLegal = () => {
               transition={{ duration: 0.8 }}
               className="max-w-3xl"
             >
-              <span className="text-[10px] uppercase tracking-[0.5em] text-primary mb-4 block">Our Services</span>
+              <span className="text-sm uppercase tracking-[0.5em] text-primary mb-4 block">
+                Our Services
+              </span>
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-light leading-[0.95] tracking-tight mb-8">
                 Auditing & <span className="italic">Legal</span>
               </h1>
-              <p className="text-xl font-light leading-relaxed text-muted-foreground">
-                Comprehensive auditing solutions and expert legal advisory to ensure compliance, governance, and strategic protection for your assets.
+              <p className="text-lg font-light leading-relaxed text-muted-foreground">
+                Comprehensive auditing solutions and expert legal advisory to
+                ensure compliance, governance, and strategic protection for your
+                assets.
               </p>
             </motion.div>
           </div>
@@ -112,7 +119,7 @@ const AuditingLegal = () => {
         {/* Auditing Section */}
         <section className="py-16 bg-stone/20">
           <div className="max-w-[1440px] mx-auto px-6 md:px-10">
-            <motion.div 
+            <motion.div
               className="mb-12"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -121,23 +128,33 @@ const AuditingLegal = () => {
             >
               <h2 className="font-serif text-4xl font-light mb-6">Auditing</h2>
               <p className="text-lg font-light leading-relaxed text-muted-foreground max-w-3xl">
-                NJ Macson provides comprehensive auditing solutions that go beyond compliance to strengthen financial governance and operational efficiency. Our experienced auditors deliver statutory and internal audits, compliance reviews, and risk assessments—ensuring accuracy, transparency, and confidence in financial reporting.
+                NJ Macson provides comprehensive auditing solutions that go
+                beyond compliance to strengthen financial governance and
+                operational efficiency. Our experienced auditors deliver
+                statutory and internal audits, compliance reviews, and risk
+                assessments—ensuring accuracy, transparency, and confidence in
+                financial reporting.
               </p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Tax and Compliance */}
-              <motion.div 
+              <motion.div
                 className="bg-background p-8 rounded-lg"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <h3 className="text-xl font-light mb-6 text-primary">Tax and Compliance Services</h3>
+                <h3 className="text-xl font-light mb-6 text-primary">
+                  Tax and Compliance Services
+                </h3>
                 <ul className="space-y-3">
                   {taxServices.map((service) => (
-                    <li key={service} className="text-sm font-light text-muted-foreground flex gap-2">
+                    <li
+                      key={service}
+                      className="text-sm font-light text-muted-foreground flex gap-2"
+                    >
                       <span className="text-primary">•</span>
                       {service}
                     </li>
@@ -146,26 +163,36 @@ const AuditingLegal = () => {
               </motion.div>
 
               {/* Certifications */}
-              <motion.div 
+              <motion.div
                 className="bg-background p-8 rounded-lg"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
-                <h3 className="text-xl font-light mb-6 text-primary">Certifications & Registrations</h3>
+                <h3 className="text-xl font-light mb-6 text-primary">
+                  Certifications & Registrations
+                </h3>
                 <ul className="space-y-3 mb-6">
                   {certifications.map((cert) => (
-                    <li key={cert} className="text-sm font-light text-muted-foreground flex gap-2">
+                    <li
+                      key={cert}
+                      className="text-sm font-light text-muted-foreground flex gap-2"
+                    >
                       <span className="text-primary">•</span>
                       {cert}
                     </li>
                   ))}
                 </ul>
-                <h4 className="text-lg font-light mb-4">Registration Services</h4>
+                <h4 className="text-lg font-light mb-4">
+                  Registration Services
+                </h4>
                 <ul className="space-y-3">
                   {registrations.map((reg) => (
-                    <li key={reg} className="text-sm font-light text-muted-foreground flex gap-2">
+                    <li
+                      key={reg}
+                      className="text-sm font-light text-muted-foreground flex gap-2"
+                    >
                       <span className="text-primary">•</span>
                       {reg}
                     </li>
@@ -174,17 +201,22 @@ const AuditingLegal = () => {
               </motion.div>
 
               {/* GST & Auditing */}
-              <motion.div 
+              <motion.div
                 className="bg-background p-8 rounded-lg"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <h3 className="text-xl font-light mb-6 text-primary">GST Services</h3>
+                <h3 className="text-xl font-light mb-6 text-primary">
+                  GST Services
+                </h3>
                 <ul className="space-y-3 mb-6">
                   {gstServices.map((service) => (
-                    <li key={service} className="text-sm font-light text-muted-foreground flex gap-2">
+                    <li
+                      key={service}
+                      className="text-sm font-light text-muted-foreground flex gap-2"
+                    >
                       <span className="text-primary">•</span>
                       {service}
                     </li>
@@ -193,7 +225,10 @@ const AuditingLegal = () => {
                 <h4 className="text-lg font-light mb-4">Auditing Services</h4>
                 <ul className="space-y-3">
                   {auditingServices.map((service) => (
-                    <li key={service} className="text-sm font-light text-muted-foreground flex gap-2">
+                    <li
+                      key={service}
+                      className="text-sm font-light text-muted-foreground flex gap-2"
+                    >
                       <span className="text-primary">•</span>
                       {service}
                     </li>
@@ -207,7 +242,7 @@ const AuditingLegal = () => {
         {/* Legal Section */}
         <section className="py-24">
           <div className="max-w-[1440px] mx-auto px-6 md:px-10">
-            <motion.div 
+            <motion.div
               className="mb-12"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -216,47 +251,67 @@ const AuditingLegal = () => {
             >
               <h2 className="font-serif text-4xl font-light mb-6">Legal</h2>
               <p className="text-lg font-light leading-relaxed text-muted-foreground max-w-3xl">
-                NJ Macson delivers expert legal advisory for the media and entertainment sector. Our services span intellectual property protection, contract negotiation, production, corporate, and real estate matters—providing strategic, client-focused guidance to navigate complex legal challenges with confidence.
+                NJ Macson delivers expert legal advisory for the media and
+                entertainment sector. Our services span intellectual property
+                protection, contract negotiation, production, corporate, and
+                real estate matters—providing strategic, client-focused guidance
+                to navigate complex legal challenges with confidence.
               </p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Drafting */}
-              <motion.div 
+              <motion.div
                 className="p-8 border border-stone rounded-lg"
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <h3 className="text-xl font-light mb-6 text-primary">Drafting</h3>
+                <h3 className="text-xl font-light mb-6 text-primary">
+                  Drafting
+                </h3>
                 <div className="grid grid-cols-2 gap-3">
                   {legalDrafting.map((item) => (
-                    <span key={item} className="text-sm font-light text-muted-foreground">• {item}</span>
+                    <span
+                      key={item}
+                      className="text-sm font-light text-muted-foreground"
+                    >
+                      • {item}
+                    </span>
                   ))}
                 </div>
               </motion.div>
 
               {/* Registration */}
-              <motion.div 
+              <motion.div
                 className="p-8 border border-stone rounded-lg"
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <h3 className="text-xl font-light mb-6 text-primary">Registration</h3>
+                <h3 className="text-xl font-light mb-6 text-primary">
+                  Registration
+                </h3>
                 <ul className="space-y-3">
                   {legalRegistration.map((item) => (
-                    <li key={item} className="text-sm font-light text-muted-foreground flex gap-2">
+                    <li
+                      key={item}
+                      className="text-sm font-light text-muted-foreground flex gap-2"
+                    >
                       <span className="text-primary">•</span>
                       {item}
                     </li>
                   ))}
                 </ul>
                 <div className="mt-8 pt-6 border-t border-stone">
-                  <h4 className="text-lg font-light mb-2">Legal Opinion & Advice</h4>
-                  <p className="text-sm text-muted-foreground font-light">Expert consultation on all legal matters</p>
+                  <h4 className="text-lg font-light mb-2">
+                    Legal Opinion & Advice
+                  </h4>
+                  <p className="text-sm text-muted-foreground font-light">
+                    Expert consultation on all legal matters
+                  </p>
                 </div>
               </motion.div>
             </div>
@@ -265,15 +320,17 @@ const AuditingLegal = () => {
 
         {/* CTA */}
         <section className="py-24 bg-foreground text-background">
-          <motion.div 
+          <motion.div
             className="max-w-[1440px] mx-auto px-6 md:px-10 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="font-serif text-4xl md:text-5xl font-light mb-8">Need Professional Assistance?</h2>
-            <Link 
+            <h2 className="font-serif text-4xl md:text-5xl font-light mb-8">
+              Need Professional Assistance?
+            </h2>
+            <Link
               to="/contact"
               className="inline-block bg-primary text-primary-foreground px-10 py-5 text-[11px] uppercase tracking-[0.3em] rounded-sm hover:bg-primary/90 transition-all"
             >
@@ -289,3 +346,4 @@ const AuditingLegal = () => {
 };
 
 export default AuditingLegal;
+

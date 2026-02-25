@@ -13,10 +13,10 @@ import TestimonialsSection from "@/components/home/TestimonialsSection";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       <CustomCursor />
       <Header />
-      <main className="pt-24">
+      <main className="">
         <HeroSection />
         <AboutSection />
         <ServicesSection />

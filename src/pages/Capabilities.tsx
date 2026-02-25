@@ -33,7 +33,7 @@ const capabilities = [
 
 const Capabilities = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       <CustomCursor />
       <Header />
       
@@ -61,7 +61,7 @@ const Capabilities = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <span className="text-[10px] uppercase tracking-[0.5em] text-primary mb-4 block">Expertise</span>
+              <span className="text-sm uppercase tracking-[0.5em] text-primary mb-4 block">Expertise</span>
               <h1 className="font-serif text-6xl md:text-7xl lg:text-8xl font-light leading-[0.9] tracking-tight mb-8">
                 Core <br />
                 <span className="italic">Capabilities.</span>
@@ -146,3 +146,4 @@ const Capabilities = () => {
 };
 
 export default Capabilities;
+

@@ -45,7 +45,7 @@ const Services = () => {
     <section id="services" className="py-32 overflow-hidden">
       <div className="px-6 md:px-10 mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 max-w-[1440px] mx-auto">
         <div>
-          <h3 className="text-[10px] uppercase tracking-[0.5em] text-primary mb-2">Our Capabilities</h3>
+          <h3 className="text-sm uppercase tracking-[0.5em] text-primary mb-2">Our Capabilities</h3>
           <h2 className="text-4xl md:text-5xl font-extralight tracking-tighter">Quiet Luxury Services</h2>
         </div>
         <div className="flex gap-4">

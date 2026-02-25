@@ -14,7 +14,7 @@ const JobDetail = () => {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       <CustomCursor />
       <Header />
 
@@ -51,9 +51,9 @@ const JobDetail = () => {
                 Back to Careers
               </Link>
               <div className="flex flex-wrap gap-4 mb-4">
-                <span className="text-[10px] uppercase tracking-[0.5em] text-primary">{job.department}</span>
-                <span className="text-[10px] uppercase tracking-[0.5em] text-muted-foreground">{job.location}</span>
-                <span className="text-[10px] uppercase tracking-[0.5em] text-muted-foreground">{job.type}</span>
+                <span className="text-sm uppercase tracking-[0.5em] text-primary">{job.department}</span>
+                <span className="text-sm uppercase tracking-[0.5em] text-muted-foreground">{job.location}</span>
+                <span className="text-sm uppercase tracking-[0.5em] text-muted-foreground">{job.type}</span>
               </div>
               <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light mb-6">
                 {job.title}
@@ -85,8 +85,8 @@ const JobDetail = () => {
                       <motion.li
                         key={index}
                         className="flex gap-4 text-muted-foreground font-light"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                       >
@@ -111,8 +111,8 @@ const JobDetail = () => {
                       <motion.li
                         key={index}
                         className="flex gap-4 text-muted-foreground font-light"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                       >
@@ -136,8 +136,8 @@ const JobDetail = () => {
                       <motion.li
                         key={index}
                         className="flex gap-4 text-muted-foreground font-light"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                       >
@@ -153,8 +153,8 @@ const JobDetail = () => {
               <div className="col-span-12 lg:col-span-4">
                 <motion.div
                   className="sticky top-32 p-8 bg-stone/20 rounded-lg"
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
                 >
@@ -198,3 +198,4 @@ const JobDetail = () => {
 };
 
 export default JobDetail;
+

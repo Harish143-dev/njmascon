@@ -15,7 +15,7 @@ const team = [
 
 const Team = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       <CustomCursor />
       <Header />
       <main>
@@ -39,9 +39,9 @@ const Team = () => {
           
           <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 py-32">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              <span className="text-[10px] uppercase tracking-[0.5em] text-primary mb-4 block">Our Team</span>
+              <span className="text-sm uppercase tracking-[0.5em] text-primary mb-4 block">Our Team</span>
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-light mb-8">Our Core <span className="italic">Team</span></h1>
-              <p className="max-w-2xl text-xl font-light text-muted-foreground">Our team at NJ Macson is composed of experienced investment advisors, financial strategists, and forward-thinking analysts.</p>
+              <p className="max-w-2xl text-lg font-light text-muted-foreground">Our team at NJ Macson is composed of experienced investment advisors, financial strategists, and forward-thinking analysts.</p>
             </motion.div>
           </div>
         </section>
@@ -67,3 +67,4 @@ const Team = () => {
 };
 
 export default Team;
+

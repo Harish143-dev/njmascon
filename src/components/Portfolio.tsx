@@ -6,8 +6,8 @@ const Portfolio = () => {
       <div className="grid grid-cols-12 gap-10">
         <motion.div 
           className="col-span-12 md:col-span-4 self-center"
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
@@ -21,7 +21,7 @@ const Portfolio = () => {
             className="flex items-center gap-4 group"
             whileHover={{ x: 5 }}
           >
-            <span className="text-[10px] uppercase tracking-[0.3em] font-medium">View Collections</span>
+            <span className="text-sm uppercase tracking-[0.3em] font-medium">View Collections</span>
             <span className="size-8 rounded-full bg-stone flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all">
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M5 12h14M12 5l7 7-7 7" />
@@ -66,3 +66,4 @@ const Portfolio = () => {
 };
 
 export default Portfolio;
+

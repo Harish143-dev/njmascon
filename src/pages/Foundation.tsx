@@ -17,7 +17,7 @@ const offices = [
 
 const Foundation = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       <CustomCursor />
       <Header />
       
@@ -31,7 +31,7 @@ const Foundation = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <span className="text-[10px] uppercase tracking-[0.5em] text-primary mb-4 block">Who We Are</span>
+              <span className="text-sm uppercase tracking-[0.5em] text-primary mb-4 block">Who We Are</span>
               <h1 className="font-serif text-6xl md:text-7xl lg:text-8xl font-light leading-[0.95] tracking-tight">
                 The <br />
                 <span className="italic">Foundation.</span>
@@ -47,7 +47,7 @@ const Foundation = () => {
               <p className="text-xl font-light leading-relaxed text-muted-foreground mb-8">
                 NJ Macson is a multi-generational family office dedicated to the preservation of wealth through the lens of architectural longevity and cultural stewardship.
               </p>
-              <span className="text-[10px] uppercase tracking-[0.4em] text-primary">Established MCMXCVIII</span>
+              <span className="text-sm uppercase tracking-[0.4em] text-primary">Established MCMXCVIII</span>
             </motion.div>
           </div>
         </section>
@@ -58,18 +58,18 @@ const Foundation = () => {
             <div className="grid grid-cols-12 gap-8">
               <motion.div 
                 className="col-span-12 lg:col-span-4"
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <span className="text-[10px] uppercase tracking-[0.5em] text-primary mb-4 block">Our Philosophy</span>
+                <span className="text-sm uppercase tracking-[0.5em] text-primary mb-4 block">Our Philosophy</span>
               </motion.div>
               
               <motion.div 
                 className="col-span-12 lg:col-span-7 lg:col-start-6"
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
@@ -94,7 +94,7 @@ const Foundation = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <span className="text-[10px] uppercase tracking-[0.5em] text-primary mb-4 block">Milestones</span>
+              <span className="text-sm uppercase tracking-[0.5em] text-primary mb-4 block">Milestones</span>
               <h2 className="font-serif text-5xl md:text-6xl font-light">Legacy & Longevity</h2>
             </motion.div>
             
@@ -156,8 +156,8 @@ const Foundation = () => {
                     <motion.div 
                       key={office.city}
                       className="flex items-center justify-between py-6 border-b border-background/20 group cursor-pointer"
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                     >
@@ -192,7 +192,7 @@ const Foundation = () => {
             <blockquote className="font-serif text-2xl md:text-3xl font-light italic leading-relaxed text-muted-foreground mb-8">
               "We do not inherit the earth from our ancestors; we borrow it from our children."
             </blockquote>
-            <span className="text-[10px] uppercase tracking-[0.4em] text-primary">The Path Forward</span>
+            <span className="text-sm uppercase tracking-[0.4em] text-primary">The Path Forward</span>
           </motion.div>
         </section>
       </main>
@@ -203,3 +203,4 @@ const Foundation = () => {
 };
 
 export default Foundation;
+

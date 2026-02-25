@@ -27,20 +27,20 @@ const TestimonialsSection = () => {
   }, []);
 
   return (
-    <section className="py-24">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10">
+    <section className="py-16 sm:py-20 lg:py-24">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <span className="text-[10px] uppercase tracking-[0.5em] text-primary mb-4 block">Testimonials</span>
-          <h2 className="font-serif text-4xl md:text-5xl font-light mb-6">
+          <span className="text-sm uppercase tracking-[0.3em] sm:tracking-[0.5em] text-primary mb-4 block">Testimonials</span>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light mb-4 sm:mb-6">
             What Our <span className="italic">Clients</span> Say
           </h2>
-          <p className="max-w-2xl mx-auto text-muted-foreground font-light leading-relaxed">
+          <p className="max-w-2xl mx-auto text-sm sm:text-base text-muted-foreground font-light leading-relaxed">
             Our happy clients share how our guidance, from essential finance to comprehensive family office services, has made a meaningful impact on securing their family's future.
           </p>
         </motion.div>
@@ -55,11 +55,11 @@ const TestimonialsSection = () => {
             transition={{ duration: 0.5 }}
           >
             <div className="mb-8">
-              <svg className="w-12 h-12 mx-auto text-primary/30" viewBox="0 0 24 24" fill="currentColor">
+              <svg className="w-10 h-10 sm:w-12 sm:h-12 mx-auto text-primary/30" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
               </svg>
             </div>
-            <blockquote className="font-serif text-2xl md:text-3xl font-light italic leading-relaxed mb-8 text-foreground/80">
+            <blockquote className="font-serif text-xl sm:text-2xl md:text-3xl font-light italic leading-relaxed mb-6 sm:mb-8 text-foreground/80 break-words">
               "{testimonials[currentIndex].quote}"
             </blockquote>
             <div className="text-primary font-medium">
