@@ -31,8 +31,6 @@ type ApplicationData = z.infer<typeof applicationSchema>;
 const JobApplication = () => {
   const { jobId } = useParams<{ jobId: string }>();
   const job = jobId ? getJobById(jobId) : undefined;
-  const applicationEndpoint = import.meta.env
-    .VITE_JOB_APPLICATION_WEBHOOK_URL as string | undefined;
 
   const [formData, setFormData] = useState<ApplicationData>({
     firstName: "",
@@ -156,16 +154,20 @@ const JobApplication = () => {
           const ct = response.headers.get("content-type") || "";
           if (ct.includes("application/json")) {
             const errJson = await response.json();
-            if (errJson?.message) msg = errJson.message;
+            if (
+              typeof errJson === "object" &&
+              errJson !== null &&
+              "message" in errJson &&
+              typeof errJson.message === "string"
+            ) {
+              msg = errJson.message;
+            }
           }
-        } catch {}
+        } catch (jsonParseError) {
+          void jsonParseError;
+        }
         throw new Error(msg);
       }
-
-      try {
-        const ct = response.headers.get("content-type") || "";
-        if (ct.includes("application/json")) await response.json();
-      } catch {}
 
       toast.success(
         "Application submitted successfully! We will review your application and contact you shortly.",
@@ -557,4 +559,3 @@ const JobApplication = () => {
 };
 
 export default JobApplication;
-

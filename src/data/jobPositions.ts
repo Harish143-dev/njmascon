@@ -14,10 +14,11 @@ export const jobPositions: JobPosition[] = [
   {
     id: "head-private-estates",
     title: "Head of Private Estates",
-    location: "London / Geneva",
+    location: "India / Chennai",
     type: "Full-time",
     department: "Family Office",
-    overview: "Lead the strategic management of ultra-high-net-worth family estates across Europe. You will oversee comprehensive wealth preservation, property management, and lifestyle services for our most distinguished clientele.",
+    overview:
+      "Lead the strategic management of ultra-high-net-worth family estates across Europe. You will oversee comprehensive wealth preservation, property management, and lifestyle services for our most distinguished clientele.",
     responsibilities: [
       "Direct oversight of multi-generational family estate portfolios",
       "Coordinate with legal, tax, and investment teams across jurisdictions",
@@ -45,10 +46,11 @@ export const jobPositions: JobPosition[] = [
   {
     id: "legacy-wealth-architect",
     title: "Legacy Wealth Architect",
-    location: "New York",
+    location: "India / Chennai",
     type: "Full-time",
     department: "Private Wealth",
-    overview: "Design and implement sophisticated wealth transfer and preservation strategies for multi-generational families. This role combines financial engineering with deep family advisory to create lasting legacies.",
+    overview:
+      "Design and implement sophisticated wealth transfer and preservation strategies for multi-generational families. This role combines financial engineering with deep family advisory to create lasting legacies.",
     responsibilities: [
       "Develop comprehensive wealth transfer strategies across generations",
       "Structure complex investment vehicles and family holding structures",
@@ -76,10 +78,11 @@ export const jobPositions: JobPosition[] = [
   {
     id: "senior-concierge-lead",
     title: "Senior Concierge Lead",
-    location: "Singapore",
+    location: "India / Chennai",
     type: "Full-time",
     department: "Lifestyle Services",
-    overview: "Lead our Asia-Pacific lifestyle services team, delivering white-glove concierge experiences for ultra-high-net-worth clients. From exclusive travel arrangements to private events, you ensure every detail exceeds expectations.",
+    overview:
+      "Lead our Asia-Pacific lifestyle services team, delivering white-glove concierge experiences for ultra-high-net-worth clients. From exclusive travel arrangements to private events, you ensure every detail exceeds expectations.",
     responsibilities: [
       "Manage and mentor a team of lifestyle coordinators",
       "Curate exclusive experiences for UHNW clients across Asia-Pacific",
@@ -107,10 +110,11 @@ export const jobPositions: JobPosition[] = [
   {
     id: "bespoke-philanthropy-advisor",
     title: "Bespoke Philanthropy Advisor",
-    location: "Remote / Global",
+    location: "India / Chennai",
     type: "Full-time",
     department: "Foundation",
-    overview: "Guide families in creating meaningful philanthropic legacies. You will help design giving strategies, establish foundations, and measure impact to ensure charitable goals align with family values and create lasting positive change.",
+    overview:
+      "Guide families in creating meaningful philanthropic legacies. You will help design giving strategies, establish foundations, and measure impact to ensure charitable goals align with family values and create lasting positive change.",
     responsibilities: [
       "Develop customized philanthropic strategies aligned with family values",
       "Research and evaluate charitable organizations and initiatives",

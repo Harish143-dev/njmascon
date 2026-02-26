@@ -127,7 +127,7 @@ const AuditingLegal = () => {
               transition={{ duration: 0.8 }}
             >
               <h2 className="font-serif text-4xl font-light mb-6">Auditing</h2>
-              <p className="text-lg font-light leading-relaxed text-muted-foreground max-w-3xl">
+              <p className="text-base md:text-lg font-light leading-relaxed text-muted-foreground max-w-3xl">
                 NJ Macson provides comprehensive auditing solutions that go
                 beyond compliance to strengthen financial governance and
                 operational efficiency. Our experienced auditors deliver
@@ -250,7 +250,7 @@ const AuditingLegal = () => {
               transition={{ duration: 0.8 }}
             >
               <h2 className="font-serif text-4xl font-light mb-6">Legal</h2>
-              <p className="text-lg font-light leading-relaxed text-muted-foreground max-w-3xl">
+              <p className="text-base md:text-lg font-light leading-relaxed text-muted-foreground max-w-3xl">
                 NJ Macson delivers expert legal advisory for the media and
                 entertainment sector. Our services span intellectual property
                 protection, contract negotiation, production, corporate, and

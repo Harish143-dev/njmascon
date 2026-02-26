@@ -53,11 +53,11 @@ const PrivateWealth = () => {
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-light leading-[0.95] tracking-tight mb-8">
                 Private <span className="italic">Wealth</span> Management
               </h1>
-              <p className="text-lg font-light leading-relaxed text-muted-foreground mb-6">
+              <p className="md:text-lg font-light leading-relaxed text-muted-foreground mb-6">
                 NJ Macson delivers personalized wealth management solutions
                 designed to build, preserve, and grow wealth over the long term.
               </p>
-              <p className="text-muted-foreground font-light leading-relaxed">
+              <p className="md:text-lg text-muted-foreground font-light leading-relaxed">
                 Our strategies focus on portfolio diversification, risk
                 management, and tax-efficient investing—aligned with each
                 client's financial goals and personal priorities.

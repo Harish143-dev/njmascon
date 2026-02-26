@@ -12,14 +12,14 @@ const TeamPreview = () => {
     <section className="py-16 sm:py-20 lg:py-24">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10">
         <motion.div
-          className="grid grid-cols-12 gap-8 sm:gap-12 items-center"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center"
           variants={staggerContainer(0.18)}
           initial="hidden"
           whileInView="show"
           viewport={inViewOnce}
         >
           <motion.div
-            className="col-span-12 lg:col-span-5"
+            className="min-w-0 lg:col-span-5"
             variants={fadeUpSoft}
           >
             <span className="text-sm uppercase tracking-[0.3em] sm:tracking-[0.5em] text-primary mb-4 block">
@@ -52,17 +52,17 @@ const TeamPreview = () => {
           </motion.div>
 
           <motion.div
-            className="col-span-12 lg:col-span-6 lg:col-start-7"
+            className="min-w-0 lg:col-span-6 lg:col-start-7"
             variants={fadeUpSoft}
           >
             <motion.div
-              className="grid grid-cols-2 gap-4 sm:gap-5"
+              className="mx-auto w-full max-w-[36rem] grid grid-cols-2 gap-4 sm:gap-5"
               variants={staggerContainer(0.12, 0.08)}
             >
               {teamImages.map((image) => (
                 <motion.div
                   key={image}
-                  className="aspect-[3/4] bg-stone rounded-lg overflow-hidden"
+                  className="w-full aspect-[3/4] bg-stone rounded-lg overflow-hidden"
                   variants={mediaReveal}
                 >
                   <div
@@ -80,5 +80,4 @@ const TeamPreview = () => {
 };
 
 export default TeamPreview;
-
 

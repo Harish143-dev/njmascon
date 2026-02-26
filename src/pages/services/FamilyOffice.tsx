@@ -93,7 +93,7 @@ const FamilyOffice = () => {
                 whileInView="show"
                 viewport={inViewOnce}
               >
-                <p className="font-serif text-lg sm:text-xl font-light leading-relaxed text-muted-foreground mb-6 sm:mb-8">
+                <p className="text-base font-light leading-relaxed text-muted-foreground mb-6 sm:mb-8">
                   As the needs of families evolve, NJ Macson Family Office delivers customized wealth solutions through a dedicated team of financial advisors, family counselors, and wealth managers—supporting both business and personal goals.
                 </p>
                 <motion.div
