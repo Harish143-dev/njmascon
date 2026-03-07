@@ -177,7 +177,7 @@ const Contact = () => {
                     placeholder="Your Name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full bg-transparent border-b border-foreground/10 py-3 sm:py-4 text-base sm:text-lg font-light focus:ring-0 focus:border-primary transition-colors placeholder:text-muted-foreground/50"
+                    className="w-full bg-transparent px-2 border-b border-foreground/10 py-3 sm:py-4 text-base sm:text-lg font-light focus:ring-0 focus:border-primary transition-colors placeholder:text-muted-foreground/50"
                   />
                   {errors.name && <p className="text-destructive text-sm mt-2">{errors.name}</p>}
                 </div>
@@ -187,7 +187,7 @@ const Contact = () => {
                     placeholder="Your Email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-transparent border-b border-foreground/10 py-3 sm:py-4 text-base sm:text-lg font-light focus:ring-0 focus:border-primary transition-colors placeholder:text-muted-foreground/50"
+                    className="w-full bg-transparent px-2 border-b border-foreground/10 py-3 sm:py-4 text-base sm:text-lg font-light focus:ring-0 focus:border-primary transition-colors placeholder:text-muted-foreground/50"
                   />
                   {errors.email && <p className="text-destructive text-sm mt-2">{errors.email}</p>}
                 </div>
@@ -197,13 +197,13 @@ const Contact = () => {
                     rows={4}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full bg-transparent border-b border-foreground/10 py-3 sm:py-4 text-base sm:text-lg font-light focus:ring-0 focus:border-primary transition-colors placeholder:text-muted-foreground/50 resize-none"
+                    className="w-full bg-transparent px-2 border-b border-foreground/10 py-3 sm:py-4 text-base sm:text-lg font-light focus:ring-0 focus:border-primary transition-colors placeholder:text-muted-foreground/50 resize-none"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full sm:w-auto bg-primary text-primary-foreground px-6 sm:px-10 py-3 sm:py-4 text-[10px] sm:text-xs uppercase tracking-[0.16em] sm:tracking-widest rounded-sm hover:bg-primary/90 transition-colors disabled:opacity-50"
+                  className="w-full sm:w-auto bg-primary  text-primary-foreground px-6 sm:px-10 py-3 sm:py-4 text-[10px] sm:text-xs uppercase tracking-[0.16em] sm:tracking-widest rounded-sm hover:bg-primary/90 transition-colors disabled:opacity-50"
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </button>

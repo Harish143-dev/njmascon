@@ -8,43 +8,31 @@ const team = [
     name: "Mr. Mohammad Jameel",
     role: "CEO and Founder",
     description:
-      "A seasoned investment banking and wealth management professional, he brings deep expertise in alternate investments and family office solutions for high-net-worth individuals. Under his leadership, NJ Macson has evolved into a trusted platform delivering strategic, end-to-end financial solutions for an elite clientele.",
+      "Managing Director of NJ Macson with extensive experience in investment banking, wealth management, and alternate investments",
   },
   {
     name: "Mr. Sheik Ismail",
     role: "Operations Head",
     description:
-      "With 10+ years of experience in the banking sector, including 4+ years in management roles and 2+ years at NJ Macson, he brings proven expertise in financial operations and client management. His experience-driven approach has consistently contributed to client success and organizational growth",
+      "10+ years of experience in the banking sector, including 4+ years in management and 4+ years with NJ Macson, with strong expertise in financial operations and client management.",
   },
   {
     name: "Mr. S Anandh",
     role: "Banking and Compliance - AVP",
     description:
-      "With 15+ years of cross-industry experience spanning telecom, automotive, and financial services, including leadership roles at Nokia India Pvt. Ltd. and KTM India, he brings strong expertise in operations, sales, banking, and compliance. Since 2017, his contributions at NJ Macson have strengthened business performance through a results-driven and execution-focused approach.",
+      "15+ years of cross-industry experience across telecom, automotive, and financial services, with leadership roles at Nokia India Pvt. Ltd. and KTM India, and key contributions at NJ Macson since 2017.",
   },
   {
     name: "Mr. Abdul Rafi",
     role: "Accounts - AVP",
     description:
-      "With 20+ years of experience in accounting and auditing since 2004, including handling Income Tax, GST, and Tribunal matters alongside leading auditors in Chennai, M. Rafi has been a key part of NJ Macson since 2018. His expertise in financial compliance and regulatory processes strengthens the firm’s accounting and governance framework.",
+      "20+ years of experience in accounting and auditing since 2004, with expertise in Income Tax, GST, and Tribunal matters, and a key member of NJ Macson since 2018.",
   },
   {
     name: "Mr. Sulthan",
     role: "Business Head (VP)",
     description:
       "Leads the business development initiatives and drives growth strategies.",
-  },
-  {
-    name: "Mr. Satish",
-    role: "Chartered Accountant",
-    description:
-      "Provides expert financial advice and ensures compliance with accounting standards.",
-  },
-  {
-    name: "Bidhya A",
-    role: "Head Global Investments",
-    description:
-      "Manages the company's global investment portfolio and identifies new investment opportunities.",
   },
 ];
 
