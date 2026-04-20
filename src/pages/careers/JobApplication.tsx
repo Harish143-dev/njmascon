@@ -2,11 +2,14 @@ import { useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { z } from "zod";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import CustomCursor from "@/components/CustomCursor";
-import { getJobById } from "@/data/jobPositions";
 import { toast } from "sonner";
+
+import CustomCursor from "@/components/CustomCursor";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import { FormField, SelectInput, TextArea, TextInput } from "@/components/marketing/forms";
+import { PageContainer, SectionHeading, sectionSpacing } from "@/components/marketing/primitives";
+import { getJobById } from "@/data/jobPositions";
 
 const applicationSchema = z.object({
   firstName: z.string().trim().min(1, "First name is required").max(50),
@@ -15,12 +18,7 @@ const applicationSchema = z.object({
   phone: z.string().trim().min(1, "Phone number is required").max(20),
   currentCompany: z.string().trim().max(100).optional(),
   currentTitle: z.string().trim().max(100).optional(),
-  linkedIn: z
-    .string()
-    .trim()
-    .url("Invalid LinkedIn URL")
-    .optional()
-    .or(z.literal("")),
+  linkedIn: z.string().trim().url("Invalid LinkedIn URL").optional().or(z.literal("")),
   yearsExperience: z.string().min(1, "Please select years of experience"),
   noticePeriod: z.string().min(1, "Please select notice period"),
   coverLetter: z.string().trim().max(3000).optional(),
@@ -28,23 +26,24 @@ const applicationSchema = z.object({
 
 type ApplicationData = z.infer<typeof applicationSchema>;
 
+const initialFormData: ApplicationData = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: "",
+  currentCompany: "",
+  currentTitle: "",
+  linkedIn: "",
+  yearsExperience: "",
+  noticePeriod: "",
+  coverLetter: "",
+};
+
 const JobApplication = () => {
   const { jobId } = useParams<{ jobId: string }>();
   const job = jobId ? getJobById(jobId) : undefined;
 
-  const [formData, setFormData] = useState<ApplicationData>({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    currentCompany: "",
-    currentTitle: "",
-    linkedIn: "",
-    yearsExperience: "",
-    noticePeriod: "",
-    coverLetter: "",
-  });
-
+  const [formData, setFormData] = useState<ApplicationData>(initialFormData);
   const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -55,44 +54,51 @@ const JobApplication = () => {
 
   const handleInputChange = (field: keyof ApplicationData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
-    if (errors[field]) {
-      setErrors((prev) => {
-        const newErrors = { ...prev };
-        delete newErrors[field];
-        return newErrors;
-      });
-    }
+    setErrors((prev) => {
+      if (!prev[field]) {
+        return prev;
+      }
+
+      const next = { ...prev };
+      delete next[field];
+      return next;
+    });
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      if (file.size > 5 * 1024 * 1024) {
-        setErrors((prev) => ({
-          ...prev,
-          resume: "File size must be less than 5MB",
-        }));
-        return;
-      }
-      const allowedTypes = [
-        "application/pdf",
-        "application/msword",
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-      ];
-      if (!allowedTypes.includes(file.type)) {
-        setErrors((prev) => ({
-          ...prev,
-          resume: "Please upload a PDF or Word document",
-        }));
-        return;
-      }
-      setResumeFile(file);
-      setErrors((prev) => {
-        const newErrors = { ...prev };
-        delete newErrors.resume;
-        return newErrors;
-      });
+    if (!file) {
+      return;
     }
+
+    if (file.size > 5 * 1024 * 1024) {
+      setErrors((prev) => ({
+        ...prev,
+        resume: "File size must be less than 5MB",
+      }));
+      return;
+    }
+
+    const allowedTypes = [
+      "application/pdf",
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    ];
+
+    if (!allowedTypes.includes(file.type)) {
+      setErrors((prev) => ({
+        ...prev,
+        resume: "Please upload a PDF or Word document",
+      }));
+      return;
+    }
+
+    setResumeFile(file);
+    setErrors((prev) => {
+      const next = { ...prev };
+      delete next.resume;
+      return next;
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -102,7 +108,9 @@ const JobApplication = () => {
     if (!result.success) {
       const fieldErrors: Record<string, string> = {};
       result.error.errors.forEach((err) => {
-        if (err.path[0]) fieldErrors[err.path[0] as string] = err.message;
+        if (err.path[0]) {
+          fieldErrors[err.path[0] as string] = err.message;
+        }
       });
       setErrors(fieldErrors);
       return;
@@ -116,9 +124,6 @@ const JobApplication = () => {
     setIsSubmitting(true);
 
     try {
-      const webhookUrl =
-        "https://automate.eyelevelstudio.in/webhook/njmascon-job-apply";
-
       const payload = new FormData();
 
       payload.append(
@@ -143,7 +148,7 @@ const JobApplication = () => {
 
       payload.append("resume", resumeFile, resumeFile.name);
 
-      const response = await fetch(webhookUrl, {
+      const response = await fetch("https://automate.eyelevelstudio.in/webhook/njmascon-job-apply", {
         method: "POST",
         body: payload,
       });
@@ -173,25 +178,11 @@ const JobApplication = () => {
         "Application submitted successfully! We will review your application and contact you shortly.",
       );
 
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        currentCompany: "",
-        currentTitle: "",
-        linkedIn: "",
-        yearsExperience: "",
-        noticePeriod: "",
-        coverLetter: "",
-      });
+      setFormData(initialFormData);
       setResumeFile(null);
       setErrors({});
     } catch (error) {
-      const message =
-        error instanceof Error
-          ? error.message
-          : "Failed to submit application.";
+      const message = error instanceof Error ? error.message : "Failed to submit application.";
       toast.error(message);
     } finally {
       setIsSubmitting(false);
@@ -204,9 +195,8 @@ const JobApplication = () => {
       <Header />
 
       <main>
-        {/* Hero Section */}
-        <section className="relative py-32 overflow-hidden bg-stone/20">
-          <div className="max-w-[1440px] mx-auto px-6 md:px-10">
+        <section className="bg-stone/20 py-24 sm:py-28 lg:py-32">
+          <PageContainer>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -214,184 +204,117 @@ const JobApplication = () => {
             >
               <Link
                 to={`/careers/${job.id}`}
-                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8"
+                className="mb-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
-                <svg
-                  className="w-4 h-4"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                >
+                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M19 12H5M12 19l-7-7 7-7" />
                 </svg>
                 Back to Job Details
               </Link>
-              <span className="text-sm uppercase tracking-[0.5em] text-primary mb-4 block">
-                Apply for Position
-              </span>
-              <h1 className="font-serif text-4xl md:text-5xl font-light mb-4">
-                {job.title}
-              </h1>
-              <p className="text-lg font-light text-muted-foreground">
+              <span className="mb-4 block text-sm uppercase tracking-[0.45em] text-primary">Apply for Position</span>
+              <h1 className="font-serif text-4xl font-light sm:text-5xl">{job.title}</h1>
+              <p className="mt-4 text-base font-light text-muted-foreground sm:text-lg">
                 {job.location} • {job.type}
               </p>
             </motion.div>
-          </div>
+          </PageContainer>
         </section>
 
-        {/* Application Form */}
-        <section className="py-24">
-          <div className="max-w-[960px] mx-auto px-6 md:px-10">
+        <section className={sectionSpacing}>
+          <PageContainer className="max-w-[960px]">
             <motion.form
               onSubmit={handleSubmit}
+              noValidate
               className="space-y-12"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              {/* Personal Information */}
               <div>
-                <h2 className="font-serif text-2xl font-light mb-8">
-                  Personal Information
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm text-muted-foreground mb-2">
-                      First Name *
-                    </label>
-                    <input
-                      type="text"
+                <SectionHeading title="Personal Information" className="mb-8" />
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                  <FormField id="firstName" label="First Name" required error={errors.firstName}>
+                    <TextInput
+                      id="firstName"
+                      name="firstName"
+                      autoComplete="given-name"
                       value={formData.firstName}
-                      onChange={(e) =>
-                        handleInputChange("firstName", e.target.value)
-                      }
-                      className="w-full bg-transparent border border-stone rounded-sm px-4 py-3 text-base font-light focus:ring-1 focus:ring-primary focus:border-primary transition-colors"
+                      onChange={(e) => handleInputChange("firstName", e.target.value)}
+                      error={errors.firstName}
                     />
-                    {errors.firstName && (
-                      <p className="text-destructive text-sm mt-2">
-                        {errors.firstName}
-                      </p>
-                    )}
-                  </div>
-                  <div>
-                    <label className="block text-sm text-muted-foreground mb-2">
-                      Last Name *
-                    </label>
-                    <input
-                      type="text"
+                  </FormField>
+                  <FormField id="lastName" label="Last Name" required error={errors.lastName}>
+                    <TextInput
+                      id="lastName"
+                      name="lastName"
+                      autoComplete="family-name"
                       value={formData.lastName}
-                      onChange={(e) =>
-                        handleInputChange("lastName", e.target.value)
-                      }
-                      className="w-full bg-transparent border border-stone rounded-sm px-4 py-3 text-base font-light focus:ring-1 focus:ring-primary focus:border-primary transition-colors"
+                      onChange={(e) => handleInputChange("lastName", e.target.value)}
+                      error={errors.lastName}
                     />
-                    {errors.lastName && (
-                      <p className="text-destructive text-sm mt-2">
-                        {errors.lastName}
-                      </p>
-                    )}
-                  </div>
-                  <div>
-                    <label className="block text-sm text-muted-foreground mb-2">
-                      Email *
-                    </label>
-                    <input
+                  </FormField>
+                  <FormField id="email" label="Email" required error={errors.email}>
+                    <TextInput
+                      id="email"
                       type="email"
+                      name="email"
+                      autoComplete="email"
                       value={formData.email}
-                      onChange={(e) =>
-                        handleInputChange("email", e.target.value)
-                      }
-                      className="w-full bg-transparent border border-stone rounded-sm px-4 py-3 text-base font-light focus:ring-1 focus:ring-primary focus:border-primary transition-colors"
+                      onChange={(e) => handleInputChange("email", e.target.value)}
+                      error={errors.email}
                     />
-                    {errors.email && (
-                      <p className="text-destructive text-sm mt-2">
-                        {errors.email}
-                      </p>
-                    )}
-                  </div>
-                  <div>
-                    <label className="block text-sm text-muted-foreground mb-2">
-                      Phone *
-                    </label>
-                    <input
+                  </FormField>
+                  <FormField id="phone" label="Phone" required error={errors.phone}>
+                    <TextInput
+                      id="phone"
                       type="tel"
+                      name="phone"
+                      autoComplete="tel"
                       value={formData.phone}
-                      onChange={(e) =>
-                        handleInputChange("phone", e.target.value)
-                      }
-                      className="w-full bg-transparent border border-stone rounded-sm px-4 py-3 text-base font-light focus:ring-1 focus:ring-primary focus:border-primary transition-colors"
+                      onChange={(e) => handleInputChange("phone", e.target.value)}
+                      error={errors.phone}
                     />
-                    {errors.phone && (
-                      <p className="text-destructive text-sm mt-2">
-                        {errors.phone}
-                      </p>
-                    )}
-                  </div>
+                  </FormField>
                 </div>
               </div>
 
-              {/* Professional Information */}
               <div>
-                <h2 className="font-serif text-2xl font-light mb-8">
-                  Professional Information
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm text-muted-foreground mb-2">
-                      Current Company
-                    </label>
-                    <input
-                      type="text"
+                <SectionHeading title="Professional Information" className="mb-8" />
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                  <FormField id="currentCompany" label="Current Company">
+                    <TextInput
+                      id="currentCompany"
+                      name="organization"
+                      autoComplete="organization"
                       value={formData.currentCompany}
-                      onChange={(e) =>
-                        handleInputChange("currentCompany", e.target.value)
-                      }
-                      className="w-full bg-transparent border border-stone rounded-sm px-4 py-3 text-base font-light focus:ring-1 focus:ring-primary focus:border-primary transition-colors"
+                      onChange={(e) => handleInputChange("currentCompany", e.target.value)}
                     />
-                  </div>
-                  <div>
-                    <label className="block text-sm text-muted-foreground mb-2">
-                      Current Title
-                    </label>
-                    <input
-                      type="text"
+                  </FormField>
+                  <FormField id="currentTitle" label="Current Title">
+                    <TextInput
+                      id="currentTitle"
                       value={formData.currentTitle}
-                      onChange={(e) =>
-                        handleInputChange("currentTitle", e.target.value)
-                      }
-                      className="w-full bg-transparent border border-stone rounded-sm px-4 py-3 text-base font-light focus:ring-1 focus:ring-primary focus:border-primary transition-colors"
+                      onChange={(e) => handleInputChange("currentTitle", e.target.value)}
                     />
-                  </div>
-                  <div>
-                    <label className="block text-sm text-muted-foreground mb-2">
-                      LinkedIn Profile
-                    </label>
-                    <input
+                  </FormField>
+                  <FormField id="linkedIn" label="LinkedIn Profile" error={errors.linkedIn}>
+                    <TextInput
+                      id="linkedIn"
                       type="url"
-                      value={formData.linkedIn}
-                      onChange={(e) =>
-                        handleInputChange("linkedIn", e.target.value)
-                      }
+                      name="url"
                       placeholder="https://linkedin.com/in/..."
-                      className="w-full bg-transparent border border-stone rounded-sm px-4 py-3 text-base font-light focus:ring-1 focus:ring-primary focus:border-primary transition-colors placeholder:text-muted-foreground/50"
+                      value={formData.linkedIn}
+                      onChange={(e) => handleInputChange("linkedIn", e.target.value)}
+                      error={errors.linkedIn}
                     />
-                    {errors.linkedIn && (
-                      <p className="text-destructive text-sm mt-2">
-                        {errors.linkedIn}
-                      </p>
-                    )}
-                  </div>
-                  <div>
-                    <label className="block text-sm text-muted-foreground mb-2">
-                      Years of Experience *
-                    </label>
-                    <select
+                  </FormField>
+                  <FormField id="yearsExperience" label="Years of Experience" required error={errors.yearsExperience}>
+                    <SelectInput
+                      id="yearsExperience"
+                      name="yearsExperience"
                       value={formData.yearsExperience}
-                      onChange={(e) =>
-                        handleInputChange("yearsExperience", e.target.value)
-                      }
-                      className="w-full bg-transparent border border-stone rounded-sm px-4 py-3 text-base font-light focus:ring-1 focus:ring-primary focus:border-primary transition-colors"
+                      onChange={(e) => handleInputChange("yearsExperience", e.target.value)}
+                      error={errors.yearsExperience}
                     >
                       <option value="">Select...</option>
                       <option value="0-2">0-2 years</option>
@@ -399,23 +322,21 @@ const JobApplication = () => {
                       <option value="6-10">6-10 years</option>
                       <option value="10-15">10-15 years</option>
                       <option value="15+">15+ years</option>
-                    </select>
-                    {errors.yearsExperience && (
-                      <p className="text-destructive text-sm mt-2">
-                        {errors.yearsExperience}
-                      </p>
-                    )}
-                  </div>
-                  <div className="md:col-span-2">
-                    <label className="block text-sm text-muted-foreground mb-2">
-                      Notice Period *
-                    </label>
-                    <select
+                    </SelectInput>
+                  </FormField>
+                  <FormField
+                    id="noticePeriod"
+                    label="Notice Period"
+                    required
+                    error={errors.noticePeriod}
+                    className="md:col-span-2"
+                  >
+                    <SelectInput
+                      id="noticePeriod"
+                      name="noticePeriod"
                       value={formData.noticePeriod}
-                      onChange={(e) =>
-                        handleInputChange("noticePeriod", e.target.value)
-                      }
-                      className="w-full bg-transparent border border-stone rounded-sm px-4 py-3 text-base font-light focus:ring-1 focus:ring-primary focus:border-primary transition-colors"
+                      onChange={(e) => handleInputChange("noticePeriod", e.target.value)}
+                      error={errors.noticePeriod}
                     >
                       <option value="">Select...</option>
                       <option value="immediate">Immediate</option>
@@ -423,34 +344,27 @@ const JobApplication = () => {
                       <option value="1-month">1 month</option>
                       <option value="2-months">2 months</option>
                       <option value="3-months">3 months</option>
-                    </select>
-                    {errors.noticePeriod && (
-                      <p className="text-destructive text-sm mt-2">
-                        {errors.noticePeriod}
-                      </p>
-                    )}
-                  </div>
+                    </SelectInput>
+                  </FormField>
                 </div>
               </div>
 
-              {/* Resume Upload */}
               <div>
-                <h2 className="font-serif text-2xl font-light mb-8">
-                  Resume / CV *
-                </h2>
-                <div className="border-2 border-dashed border-stone rounded-lg p-8 text-center">
+                <SectionHeading title="Resume / CV *" className="mb-8" />
+                <div className="rounded-2xl border-2 border-dashed border-stone p-8 text-center">
                   <input
                     type="file"
                     id="resume"
                     accept=".pdf,.doc,.docx"
                     onChange={handleFileChange}
-                    className="hidden"
+                    className="sr-only"
+                    aria-describedby={errors.resume ? "resume-error" : undefined}
                   />
-                  <label htmlFor="resume" className="cursor-pointer block">
+                  <label htmlFor="resume" className="block cursor-pointer">
                     {resumeFile ? (
-                      <div className="flex items-center justify-center gap-4">
+                      <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                         <svg
-                          className="w-8 h-8 text-primary"
+                          className="h-8 w-8 text-primary"
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
@@ -461,11 +375,9 @@ const JobApplication = () => {
                           <polyline points="9 15 12 12 15 15" />
                           <line x1="12" y1="12" x2="12" y2="18" />
                         </svg>
-                        <div className="text-left">
+                        <div className="text-center sm:text-left">
                           <p className="font-light">{resumeFile.name}</p>
-                          <p className="text-sm text-muted-foreground">
-                            {(resumeFile.size / 1024 / 1024).toFixed(2)} MB
-                          </p>
+                          <p className="text-sm text-muted-foreground">{(resumeFile.size / 1024 / 1024).toFixed(2)} MB</p>
                         </div>
                         <button
                           type="button"
@@ -473,24 +385,15 @@ const JobApplication = () => {
                             e.preventDefault();
                             setResumeFile(null);
                           }}
-                          className="ml-4 text-muted-foreground hover:text-destructive transition-colors"
+                          className="text-muted-foreground transition-colors hover:text-destructive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                         >
-                          <svg
-                            className="w-5 h-5"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="1.5"
-                          >
-                            <line x1="18" y1="6" x2="6" y2="18" />
-                            <line x1="6" y1="6" x2="18" y2="18" />
-                          </svg>
+                          Remove file
                         </button>
                       </div>
                     ) : (
                       <>
                         <svg
-                          className="w-12 h-12 mx-auto text-muted-foreground mb-4"
+                          className="mx-auto mb-4 h-12 w-12 text-muted-foreground"
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
@@ -500,56 +403,48 @@ const JobApplication = () => {
                           <polyline points="17 8 12 3 7 8" />
                           <line x1="12" y1="3" x2="12" y2="15" />
                         </svg>
-                        <p className="font-light mb-2">
-                          Click to upload your resume
-                        </p>
-                        <p className="text-sm text-muted-foreground">
-                          PDF or Word document, max 5MB
-                        </p>
+                        <p className="mb-2 font-light">Click to upload your resume</p>
+                        <p className="text-sm text-muted-foreground">PDF or Word document, max 5MB</p>
                       </>
                     )}
                   </label>
                 </div>
-                {errors.resume && (
-                  <p className="text-destructive text-sm mt-2">
+                {errors.resume ? (
+                  <p id="resume-error" className="mt-2 text-sm text-destructive">
                     {errors.resume}
                   </p>
-                )}
+                ) : null}
               </div>
 
-              {/* Cover Letter */}
               <div>
-                <h2 className="font-serif text-2xl font-light mb-8">
-                  Cover Letter (Optional)
-                </h2>
-                <textarea
-                  value={formData.coverLetter}
-                  onChange={(e) =>
-                    handleInputChange("coverLetter", e.target.value)
-                  }
-                  rows={6}
-                  placeholder="Tell us why you're interested in this position and what makes you a great fit..."
-                  className="w-full bg-transparent border border-stone rounded-sm px-4 py-3 text-base font-light focus:ring-1 focus:ring-primary focus:border-primary transition-colors resize-none placeholder:text-muted-foreground/50"
-                />
+                <SectionHeading title="Cover Letter (Optional)" className="mb-8" />
+                <FormField id="coverLetter" label="Why are you a strong fit?" error={errors.coverLetter}>
+                  <TextArea
+                    id="coverLetter"
+                    rows={6}
+                    placeholder="Tell us why you're interested in this position and what makes you a great fit..."
+                    value={formData.coverLetter}
+                    onChange={(e) => handleInputChange("coverLetter", e.target.value)}
+                    error={errors.coverLetter}
+                  />
+                </FormField>
               </div>
 
-              {/* Submit */}
-              <div className="pt-8 border-t border-stone">
+              <div className="border-t border-stone pt-8">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full md:w-auto bg-primary text-primary-foreground px-12 py-5 text-[11px] uppercase tracking-[0.3em] rounded-sm hover:bg-primary/90 transition-all disabled:opacity-50"
+                  className="inline-flex h-auto w-full items-center justify-center rounded-sm bg-primary px-8 py-4 text-[11px] uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 md:w-auto md:px-12 md:py-5 md:tracking-[0.3em]"
                 >
                   {isSubmitting ? "Submitting..." : "Submit Application"}
                 </button>
-                <p className="mt-6 text-sm text-muted-foreground font-light">
-                  By submitting this application, you confirm that the
-                  information provided is accurate and consent to our processing
-                  of your personal data for recruitment purposes.
+                <p className="mt-6 text-sm font-light text-muted-foreground">
+                  By submitting this application, you confirm that the information provided is accurate and consent to
+                  our processing of your personal data for recruitment purposes.
                 </p>
               </div>
             </motion.form>
-          </div>
+          </PageContainer>
         </section>
       </main>
 

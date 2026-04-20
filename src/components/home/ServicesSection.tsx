@@ -1,6 +1,16 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { cardItem, fadeUpSoft, inViewOnce, staggerContainer } from "@/lib/motion";
+import {
+  cardItem,
+  fadeUpSoft,
+  inViewOnce,
+  staggerContainer,
+} from "@/lib/motion";
+import service1 from "@/assets/services/family_office.png";
+import service2 from "@/assets/services/private_wealth.png";
+import service3 from "@/assets/services/alternative_invesment.png";
+import service4 from "@/assets/services/auditing_legal.png";
+import service5 from "@/assets/services/media-audit.png";
 
 const services = [
   {
@@ -9,8 +19,7 @@ const services = [
     description:
       "Get a personal Chief Financial Manager who meets the needs of Ultra High Net-worth Investors. Family Office Services function as private wealth management advisory outfits.",
     link: "/services/our-family-office",
-    image:
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&auto=format&fit=crop",
+    image: service1,
   },
   {
     number: "02",
@@ -18,8 +27,7 @@ const services = [
     description:
       "This is an all-encompassing service, providing comprehensive research-based advisory along with personalized investment execution.",
     link: "/services/private-wealth-management",
-    image:
-      "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=800&auto=format&fit=crop",
+    image: service2,
   },
   {
     number: "03",
@@ -27,8 +35,7 @@ const services = [
     description:
       "Private equity or venture capital, coal and petroleum projects, marine projects, customized business projects, hedge funds, real estate, commodities, and more.",
     link: "/services/alternative-investments",
-    image:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&auto=format&fit=crop",
+    image: service3,
   },
   {
     number: "04",
@@ -36,8 +43,15 @@ const services = [
     description:
       "Leave the complexities to us. Our specialists provide bespoke financial strategies tailored to the unique scale of your requirements.",
     link: "/services/auditing-legal",
-    image:
-      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&auto=format&fit=crop",
+    image: service4,
+  },
+  {
+    number: "05",
+    title: "Media Auditing",
+    description:
+      "Bring transparency, control, and measurable performance to every media rupee through pre-production, production, post-production, and after-release audits.",
+    link: "/services/media-auditing",
+    image: service5,
   },
 ];
 

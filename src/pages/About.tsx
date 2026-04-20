@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Globe, Briefcase, TrendingUp, Target } from "lucide-react";
 import awardImg from "@/assets/awards and certificate/award-1.jpeg";
 import awardImg1 from "@/assets/awards and certificate/award-2.png";
+import aboutHero from "@/assets/videos/about-herosection.mp4"
 
 const highlights = [
   {
@@ -92,32 +93,23 @@ const About = () => {
               className="w-full h-full object-cover"
             >
               <source
-                src="https://videos.pexels.com/video-files/3255275/3255275-uhd_2560_1440_25fps.mp4"
+                src={aboutHero}
                 type="video/mp4"
               />
             </video>
             {/* Multi-layer gradient overlays for depth */}
-            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/30" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50" />
-            <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background" />
+            <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/90 to-background/20" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/86 via-background/25 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background/86" />
           </div>
 
           <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 pt-28 sm:pt-32 pb-20 sm:pb-24 w-full">
-            <div className="max-w-3xl">
+            <div className="max-w-3xl mx-auto">
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1}}
               >
-                <motion.span
-                  className="inline-block text-primary text-sm uppercase tracking-[0.3em] sm:tracking-[0.5em] px-3 sm:px-4 py-2 mb-6 sm:mb-8"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.8}}
-                >
-                  About Us
-                </motion.span>
-
                 <div className="space-y-2 mb-8">
                   <motion.h1
                     className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-light leading-[0.95] tracking-tight"
@@ -128,7 +120,7 @@ const About = () => {
                     Our Story of
                   </motion.h1>
                   <motion.h1
-                    className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-light leading-[0.95] tracking-tight italic text-primary pl-3 sm:pl-4 md:pl-8"
+                    className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-light leading-[0.95] tracking-tight italic text-primary"
                     initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8}}
@@ -467,7 +459,7 @@ const About = () => {
                 <div className="overflow-hidden rounded-sm">
                   <img
                     src={awardImg1}
-                    alt={"awards"}
+                    alt="Silicon India industry recognition award"
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                   />
                 </div>
@@ -514,7 +506,7 @@ const About = () => {
                   <img
                     src={awardImg}
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                    alt=""
+                    alt="India Finance Outlook company of the year award"
                   />
                 </div>
                 <div className="absolute -left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-primary/50 to-transparent rounded-full" />

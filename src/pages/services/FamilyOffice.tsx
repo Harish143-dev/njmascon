@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+
 import CustomCursor from "@/components/CustomCursor";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import { PageContainer, PageCta, PageHero, SectionHeading, sectionSpacing } from "@/components/marketing/primitives";
 import { cardItem, fadeUpSoft, inViewOnce, staggerContainer } from "@/lib/motion";
+import heroVideo from "@/assets/videos/our-family-office.mp4";
 
 const highlights = [
   "Integrated solutions for UHNI families to grow, protect, and manage wealth.",
@@ -21,83 +23,54 @@ const FamilyOffice = () => {
       <Header />
 
       <main>
-        {/* Hero */}
-        <section className="relative min-h-[70vh] sm:min-h-[80vh] flex items-center overflow-hidden">
-          {/* Video Background */}
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            className="absolute inset-0 w-full h-full object-cover"
-          >
-            <source
-              src="https://videos.pexels.com/video-files/7578549/7578549-uhd_2560_1440_30fps.mp4"
-              type="video/mp4"
-            />
-          </video>
+        <PageHero
+          videoSrc={heroVideo}
+          eyebrow="Our Services"
+          title={
+            <>
+              Our <span className="italic">Family</span> Office
+            </>
+          }
+          description="Managing wealth. Preserving legacies."
+          secondaryDescription="NJ Macson's Family Office offers integrated solutions for ultra-high-net-worth individuals and families to manage, protect, and grow wealth across generations."
+        />
 
-          {/* Gradient Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-
-          <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 pt-28 sm:pt-32 pb-20 sm:pb-24">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="max-w-3xl"
-            >
-              <span className="text-sm uppercase tracking-[0.25em] sm:tracking-[0.5em] text-primary mb-4 block">
-                Our Services
-              </span>
-              <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light leading-[0.95] tracking-tight mb-6 sm:mb-8">
-                Our <span className="italic">Family</span> Office
-              </h1>
-              <p className="text-base sm:text-xl font-light text-muted-foreground mb-4 sm:mb-6">
-                Managing Wealth. Preserving Legacies.
-              </p>
-              <p className="text-sm sm:text-base md:text-lg font-light leading-relaxed text-muted-foreground">
-                NJ Macson's Family Office offers integrated solutions for ultra-high-net-worth individuals and families to manage, protect, and grow wealth across generations.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Modern Family Office */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-stone/20 overflow-x-clip">
-          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10">
-            <div className="flex flex-col gap-5">
+        <section className={sectionSpacing + " bg-stone/20"}>
+          <PageContainer>
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
               <motion.div
-                className=""
+                className="lg:col-span-5"
                 variants={fadeUpSoft}
                 initial="hidden"
                 whileInView="show"
                 viewport={inViewOnce}
               >
-                <h2 className="font-serif text-3xl sm:text-4xl font-light mb-4 sm:mb-6">A Modern Family Office</h2>
-                <p className="text-sm sm:text-base text-muted-foreground font-light leading-relaxed mb-6 sm:mb-8">
-                  A family office serves as the central hub for a family's financial, legal, and strategic needs—going beyond traditional wealth management to offer holistic oversight and continuity.
-                </p>
-                <h3 className="text-lg sm:text-xl font-light mb-3 sm:mb-4">Lifestyle Services</h3>
-                <p className="text-sm sm:text-base text-muted-foreground font-light leading-relaxed">
-                  We support the lifestyle needs of high-net-worth families, including travel, personal assistance, and lifestyle management—allowing clients to focus on what matters most.
+                <SectionHeading
+                  title="A Modern Family Office"
+                  description="A family office serves as the central hub for a family's financial, legal, and strategic needs—going beyond traditional wealth management to offer holistic oversight and continuity."
+                  className="mb-6"
+                />
+                <h3 className="mb-3 text-lg font-light sm:text-xl">Lifestyle Services</h3>
+                <p className="text-sm font-light leading-relaxed text-muted-foreground sm:text-base">
+                  We support the lifestyle needs of high-net-worth families, including travel, personal assistance,
+                  and lifestyle management—allowing clients to focus on what matters most.
                 </p>
               </motion.div>
 
               <motion.div
-                className=""
+                className="lg:col-span-6 lg:col-start-7"
                 variants={fadeUpSoft}
                 initial="hidden"
                 whileInView="show"
                 viewport={inViewOnce}
               >
-                <p className="text-base font-light leading-relaxed text-muted-foreground mb-6 sm:mb-8">
-                  As the needs of families evolve, NJ Macson Family Office delivers customized wealth solutions through a dedicated team of financial advisors, family counselors, and wealth managers—supporting both business and personal goals.
+                <p className="mb-6 text-sm font-light leading-relaxed text-muted-foreground sm:mb-8 sm:text-base">
+                  As the needs of families evolve, NJ Macson Family Office delivers customized wealth solutions through
+                  a dedicated team of financial advisors, family counselors, and wealth managers—supporting both
+                  business and personal goals.
                 </p>
                 <motion.div
-                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                  className="grid grid-cols-1 gap-4 md:grid-cols-2"
                   variants={staggerContainer(0.1, 0.06)}
                   initial="hidden"
                   whileInView="show"
@@ -106,39 +79,22 @@ const FamilyOffice = () => {
                   {highlights.map((highlight) => (
                     <motion.div
                       key={highlight}
-                      className="flex gap-3 p-4 bg-background rounded-lg"
+                      className="flex gap-3 rounded-2xl border border-stone/40 bg-background p-4"
                       variants={cardItem}
                     >
-                      <svg className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <svg className="mt-0.5 h-5 w-5 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      <span className="text-sm font-light">{highlight}</span>
+                      <span className="text-sm font-light leading-relaxed">{highlight}</span>
                     </motion.div>
                   ))}
                 </motion.div>
               </motion.div>
             </div>
-          </div>
+          </PageContainer>
         </section>
 
-        {/* CTA */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-foreground text-background">
-          <motion.div
-            className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light mb-6 sm:mb-8">Managing Wealth. Preserving Legacies.</h2>
-            <Link
-              to="/contact"
-              className="inline-block bg-primary text-primary-foreground px-6 sm:px-10 py-4 sm:py-5 text-[10px] sm:text-[11px] uppercase tracking-[0.14em] sm:tracking-[0.3em] rounded-sm hover:bg-primary/90 transition-all"
-            >
-              Request Consultation
-            </Link>
-          </motion.div>
-        </section>
+        <PageCta title="Managing Wealth. Preserving Legacies." actionLabel="Request Consultation" actionTo="/contact" />
       </main>
 
       <Footer />

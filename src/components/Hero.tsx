@@ -11,7 +11,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <span className="text-primary text-md uppercase tracking-[0.4em] block mb-4">
+            <span className="mb-4 block text-base uppercase tracking-[0.4em] text-primary">
               Est. MCMLXXXV
             </span>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-extralight leading-[1.1] tracking-tight">

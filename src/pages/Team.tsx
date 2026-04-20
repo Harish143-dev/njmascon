@@ -1,38 +1,55 @@
 import { motion } from "framer-motion";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import CustomCursor from "@/components/CustomCursor";
 
-const team = [
+import CustomCursor from "@/components/CustomCursor";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import { PageContainer, PageHero, SectionHeading, sectionSpacing } from "@/components/marketing/primitives";
+import jameelImg from "@/assets/team/jameel.jpg";
+import anandhImg from "@/assets/team/anandh.jpg";
+import abdulRafiImg from "@/assets/team/abdul_rafi.jpg";
+import ismailImg from "@/assets/team/ismail.png";
+import teamHero from "@/assets/videos/team.mp4";
+
+interface TeamMember {
+  name: string;
+  role: string;
+  img?: string;
+  description: string;
+}
+
+const team: TeamMember[] = [
   {
     name: "Mr. Mohammad Jameel",
     role: "CEO and Founder",
+    img: jameelImg,
     description:
-      "Managing Director of NJ Macson with extensive experience in investment banking, wealth management, and alternate investments",
+      "Managing Director of NJ Macson with extensive experience in investment banking, wealth management, and alternate investments.",
   },
   {
     name: "Mr. Sheik Ismail",
     role: "Operations Head",
+    img: ismailImg,
     description:
       "10+ years of experience in the banking sector, including 4+ years in management and 4+ years with NJ Macson, with strong expertise in financial operations and client management.",
   },
   {
     name: "Mr. S Anandh",
     role: "Banking and Compliance - AVP",
+    img: anandhImg,
     description:
       "15+ years of cross-industry experience across telecom, automotive, and financial services, with leadership roles at Nokia India Pvt. Ltd. and KTM India, and key contributions at NJ Macson since 2017.",
   },
   {
     name: "Mr. Abdul Rafi",
     role: "Accounts - AVP",
+    img: abdulRafiImg,
     description:
       "20+ years of experience in accounting and auditing since 2004, with expertise in Income Tax, GST, and Tribunal matters, and a key member of NJ Macson since 2018.",
   },
   {
     name: "Mr. Sulthan",
     role: "Business Head (VP)",
-    description:
-      "Leads the business development initiatives and drives growth strategies.",
+    description: "Leads the business development initiatives and drives growth strategies.",
   },
 ];
 
@@ -41,79 +58,54 @@ const Team = () => {
     <div className="min-h-screen overflow-x-hidden">
       <CustomCursor />
       <Header />
+
       <main>
-        {/* Hero Section */}
-        <section className="relative min-h-[60vh] flex items-center overflow-hidden">
-          {/* Video Background */}
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            className="absolute inset-0 w-full h-full object-cover"
-          >
-            <source
-              src="https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4"
-              type="video/mp4"
+        <PageHero
+          videoSrc={teamHero}
+          eyebrow="Our Team"
+          minHeightClassName="min-h-[60vh]"
+          title={
+            <>
+              Our Core <span className="italic text-primary">Team</span>
+            </>
+          }
+          description="Our team at NJ Macson is composed of experienced investment advisors, financial strategists, and forward-thinking analysts."
+        />
+
+        <section className={sectionSpacing}>
+          <PageContainer>
+            <SectionHeading
+              eyebrow="Leadership"
+              title="People Behind the Advisory"
+              description="A multidisciplinary team shaping private wealth, family office, compliance, and operational excellence."
             />
-          </video>
-
-          {/* Gradient Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-
-          <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 py-32">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <span className="text-sm uppercase tracking-[0.5em] text-primary mb-4 block">
-                Our Team
-              </span>
-              <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-light mb-8">
-                Our Core <span className="italic">Team</span>
-              </h1>
-              <p className="max-w-2xl text-lg font-light text-muted-foreground">
-                Our team at NJ Macson is composed of experienced investment
-                advisors, financial strategists, and forward-thinking analysts.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-        <section className="py-16">
-          <div className="max-w-[1440px] mx-auto px-6 md:px-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
               {team.map((member, index) => (
-                <motion.div
+                <motion.article
                   key={member.name}
-                  className="p-8 bg-stone/20 rounded-lg text-center"
+                  className="rounded-2xl border border-stone/40 bg-stone/20 p-8 text-center"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
                 >
-                  <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-primary/20 flex items-center justify-center">
-                    <span className="text-3xl text-primary">
-                      {member.name.charAt(0)}
-                    </span>
+                  <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center overflow-hidden rounded-full bg-primary/20">
+                    {member.img ? (
+                      <img src={member.img} alt={member.name} className="h-full w-full object-cover" />
+                    ) : (
+                      <span className="text-3xl text-primary">{member.name.charAt(0)}</span>
+                    )}
                   </div>
-                  <h3 className="font-serif text-xl font-light mb-2">
-                    {member.name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground mb-2">
-                    {member.role}
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    {member.description}
-                  </p>
-                </motion.div>
+                  <h3 className="mb-2 font-serif text-xl font-light">{member.name}</h3>
+                  <p className="mb-3 text-sm text-muted-foreground">{member.role}</p>
+                  <p className="text-sm font-light leading-relaxed text-muted-foreground">{member.description}</p>
+                </motion.article>
               ))}
             </div>
-          </div>
+          </PageContainer>
         </section>
       </main>
+
       <Footer />
     </div>
   );

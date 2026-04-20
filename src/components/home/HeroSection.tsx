@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import heroVideo from "@/assets/videos/home_herovideo.mp4";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-baseline overflow-hidden">
+    <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video
@@ -11,36 +12,25 @@ const HeroSection = () => {
           loop
           muted
           playsInline
+          preload="auto"
           className="w-full h-full object-cover"
         >
-          <source
-            src="https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4"
-            type="video/mp4"
-          />
+          <source src={heroVideo} type="video/mp4" />
         </video>
         {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/82 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/86 via-transparent to-transparent" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 pt-28 sm:pt-32 pb-20 sm:pb-24 w-full">
-        <div className="max-w-2xl">
+        <div className="max-w-3xl mx-auto">
           <motion.div
             className="space-y-5 sm:space-y-6"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            <motion.span
-              className="inline-block text-primary text-xs md:text-sm uppercase tracking-[0.3em] sm:tracking-[0.5em] border border-primary/30 px-3 sm:px-4 py-2"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8 }}
-            >
-              Est. MMXVI
-            </motion.span>
-
             <div className="space-y-2">
               <motion.h1
                 className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-[6rem] font-light leading-[0.9] tracking-tight text-foreground"
@@ -51,7 +41,7 @@ const HeroSection = () => {
                 Legacy
               </motion.h1>
               <motion.h1
-                className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-[6rem] font-light leading-[0.9] tracking-tight italic text-primary pl-4 sm:pl-6 md:pl-12"
+                className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-[6rem] font-light leading-[0.9] tracking-tight italic text-primary"
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
@@ -68,7 +58,7 @@ const HeroSection = () => {
             />
 
             <motion.p
-              className="max-w-md text-base md:text-lg font-light leading-relaxed text-foreground/80"
+              className="max-w-2xl text-base md:text-lg font-light leading-relaxed text-foreground/80"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8 }}
@@ -134,7 +124,7 @@ const HeroSection = () => {
 
         {/* Scroll indicator */}
         <motion.div
-          className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}

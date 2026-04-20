@@ -20,6 +20,7 @@ const Footer = () => {
               <li><Link to="/services/private-wealth-management" className="hover:text-primary transition-colors">Private Wealth Management</Link></li>
               <li><Link to="/services/alternative-investments" className="hover:text-primary transition-colors">Alternative Investments</Link></li>
               <li><Link to="/services/auditing-legal" className="hover:text-primary transition-colors">Auditing and Legal</Link></li>
+              <li><Link to="/services/media-auditing" className="hover:text-primary transition-colors">Media Auditing</Link></li>
             </ul>
           </div>
           <div>

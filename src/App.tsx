@@ -14,6 +14,7 @@ import FamilyOffice from "./pages/services/FamilyOffice";
 import PrivateWealth from "./pages/services/PrivateWealth";
 import AlternativeInvestments from "./pages/services/AlternativeInvestments";
 import AuditingLegal from "./pages/services/AuditingLegal";
+import MediaAuditing from "./pages/services/MediaAuditing";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
@@ -48,6 +49,7 @@ const App = () => (
             element={<AlternativeInvestments />}
           />
           <Route path="/services/auditing-legal" element={<AuditingLegal />} />
+          <Route path="/services/media-auditing" element={<MediaAuditing />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

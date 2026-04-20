@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+
 import CustomCursor from "@/components/CustomCursor";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import { PageContainer, PageCta, PageHero, SectionHeading, marketingCardClassName, sectionSpacing } from "@/components/marketing/primitives";
+import heroVideo from "@/assets/videos/audit-legal.mp4";
 
 const taxServices = [
   "Comprehensive Income Tax Returns Filing",
@@ -27,10 +29,7 @@ const registrations = [
   "Comprehensive Financial Due Diligence",
 ];
 
-const gstServices = [
-  "GST Registration and Compliance Consulting",
-  "End-to-End GST Filing Solutions",
-];
+const gstServices = ["GST Registration and Compliance Consulting", "End-to-End GST Filing Solutions"];
 
 const auditingServices = [
   "Bank Audits",
@@ -66,6 +65,8 @@ const legalRegistration = [
   "Trademark registration",
 ];
 
+const listItemClassName = "flex gap-3 text-sm font-light text-muted-foreground";
+
 const AuditingLegal = () => {
   return (
     <div className="min-h-screen overflow-x-hidden">
@@ -73,271 +74,151 @@ const AuditingLegal = () => {
       <Header />
 
       <main>
-        {/* Hero */}
-        <section className="relative min-h-[60vh] flex items-center overflow-hidden">
-          {/* Video Background */}
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            className="absolute inset-0 w-full h-full object-cover"
-          >
-            <source
-              src="https://videos.pexels.com/video-files/3255275/3255275-uhd_2560_1440_25fps.mp4"
-              type="video/mp4"
+        <PageHero
+          videoSrc={heroVideo}
+          eyebrow="Our Services"
+          title={
+            <>
+              Auditing & <span className="italic">Legal</span>
+            </>
+          }
+          description="Comprehensive auditing solutions and expert legal advisory to ensure compliance, governance, and strategic protection for your assets."
+        />
+
+        <section className={sectionSpacing + " bg-stone/20"}>
+          <PageContainer>
+            <SectionHeading
+              title="Auditing"
+              description="NJ Macson provides comprehensive auditing solutions that go beyond compliance to strengthen financial governance and operational efficiency. Our experienced auditors deliver statutory and internal audits, compliance reviews, and risk assessments—ensuring accuracy, transparency, and confidence in financial reporting."
             />
-          </video>
 
-          {/* Gradient Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-
-          <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 py-32">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="max-w-3xl"
-            >
-              <span className="text-sm uppercase tracking-[0.5em] text-primary mb-4 block">
-                Our Services
-              </span>
-              <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-light leading-[0.95] tracking-tight mb-8">
-                Auditing & <span className="italic">Legal</span>
-              </h1>
-              <p className="text-lg font-light leading-relaxed text-muted-foreground">
-                Comprehensive auditing solutions and expert legal advisory to
-                ensure compliance, governance, and strategic protection for your
-                assets.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Auditing Section */}
-        <section className="py-16 bg-stone/20">
-          <div className="max-w-[1440px] mx-auto px-6 md:px-10">
-            <motion.div
-              className="mb-12"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="font-serif text-4xl font-light mb-6">Auditing</h2>
-              <p className="text-base md:text-lg font-light leading-relaxed text-muted-foreground max-w-3xl">
-                NJ Macson provides comprehensive auditing solutions that go
-                beyond compliance to strengthen financial governance and
-                operational efficiency. Our experienced auditors deliver
-                statutory and internal audits, compliance reviews, and risk
-                assessments—ensuring accuracy, transparency, and confidence in
-                financial reporting.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Tax and Compliance */}
-              <motion.div
-                className="bg-background p-8 rounded-lg"
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+              <motion.article
+                className={marketingCardClassName}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <h3 className="text-xl font-light mb-6 text-primary">
-                  Tax and Compliance Services
-                </h3>
+                <h3 className="mb-6 text-xl font-light text-primary">Tax and Compliance Services</h3>
                 <ul className="space-y-3">
                   {taxServices.map((service) => (
-                    <li
-                      key={service}
-                      className="text-sm font-light text-muted-foreground flex gap-2"
-                    >
+                    <li key={service} className={listItemClassName}>
                       <span className="text-primary">•</span>
-                      {service}
+                      <span>{service}</span>
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </motion.article>
 
-              {/* Certifications */}
-              <motion.div
-                className="bg-background p-8 rounded-lg"
+              <motion.article
+                className={marketingCardClassName}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
-                <h3 className="text-xl font-light mb-6 text-primary">
-                  Certifications & Registrations
-                </h3>
-                <ul className="space-y-3 mb-6">
+                <h3 className="mb-6 text-xl font-light text-primary">Certifications & Registrations</h3>
+                <ul className="mb-6 space-y-3">
                   {certifications.map((cert) => (
-                    <li
-                      key={cert}
-                      className="text-sm font-light text-muted-foreground flex gap-2"
-                    >
+                    <li key={cert} className={listItemClassName}>
                       <span className="text-primary">•</span>
-                      {cert}
+                      <span>{cert}</span>
                     </li>
                   ))}
                 </ul>
-                <h4 className="text-lg font-light mb-4">
-                  Registration Services
-                </h4>
+                <h4 className="mb-4 text-lg font-light">Registration Services</h4>
                 <ul className="space-y-3">
                   {registrations.map((reg) => (
-                    <li
-                      key={reg}
-                      className="text-sm font-light text-muted-foreground flex gap-2"
-                    >
+                    <li key={reg} className={listItemClassName}>
                       <span className="text-primary">•</span>
-                      {reg}
+                      <span>{reg}</span>
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </motion.article>
 
-              {/* GST & Auditing */}
-              <motion.div
-                className="bg-background p-8 rounded-lg"
+              <motion.article
+                className={marketingCardClassName}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <h3 className="text-xl font-light mb-6 text-primary">
-                  GST Services
-                </h3>
-                <ul className="space-y-3 mb-6">
+                <h3 className="mb-6 text-xl font-light text-primary">GST Services</h3>
+                <ul className="mb-6 space-y-3">
                   {gstServices.map((service) => (
-                    <li
-                      key={service}
-                      className="text-sm font-light text-muted-foreground flex gap-2"
-                    >
+                    <li key={service} className={listItemClassName}>
                       <span className="text-primary">•</span>
-                      {service}
+                      <span>{service}</span>
                     </li>
                   ))}
                 </ul>
-                <h4 className="text-lg font-light mb-4">Auditing Services</h4>
+                <h4 className="mb-4 text-lg font-light">Auditing Services</h4>
                 <ul className="space-y-3">
                   {auditingServices.map((service) => (
-                    <li
-                      key={service}
-                      className="text-sm font-light text-muted-foreground flex gap-2"
-                    >
+                    <li key={service} className={listItemClassName}>
                       <span className="text-primary">•</span>
-                      {service}
+                      <span>{service}</span>
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </motion.article>
             </div>
-          </div>
+          </PageContainer>
         </section>
 
-        {/* Legal Section */}
-        <section className="py-24">
-          <div className="max-w-[1440px] mx-auto px-6 md:px-10">
-            <motion.div
-              className="mb-12"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="font-serif text-4xl font-light mb-6">Legal</h2>
-              <p className="text-base md:text-lg font-light leading-relaxed text-muted-foreground max-w-3xl">
-                NJ Macson delivers expert legal advisory for the media and
-                entertainment sector. Our services span intellectual property
-                protection, contract negotiation, production, corporate, and
-                real estate matters—providing strategic, client-focused guidance
-                to navigate complex legal challenges with confidence.
-              </p>
-            </motion.div>
+        <section className={sectionSpacing}>
+          <PageContainer>
+            <SectionHeading
+              title="Legal"
+              description="NJ Macson delivers expert legal advisory for the media and entertainment sector. Our services span intellectual property protection, contract negotiation, production, corporate, and real estate matters—providing strategic, client-focused guidance to navigate complex legal challenges with confidence."
+            />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Drafting */}
-              <motion.div
-                className="p-8 border border-stone rounded-lg"
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+              <motion.article
+                className="rounded-2xl border border-stone p-8"
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <h3 className="text-xl font-light mb-6 text-primary">
-                  Drafting
-                </h3>
-                <div className="grid grid-cols-2 gap-3">
+                <h3 className="mb-6 text-xl font-light text-primary">Drafting</h3>
+                <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   {legalDrafting.map((item) => (
-                    <span
-                      key={item}
-                      className="text-sm font-light text-muted-foreground"
-                    >
+                    <li key={item} className="text-sm font-light text-muted-foreground">
                       • {item}
-                    </span>
+                    </li>
                   ))}
-                </div>
-              </motion.div>
+                </ul>
+              </motion.article>
 
-              {/* Registration */}
-              <motion.div
-                className="p-8 border border-stone rounded-lg"
+              <motion.article
+                className="rounded-2xl border border-stone p-8"
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <h3 className="text-xl font-light mb-6 text-primary">
-                  Registration
-                </h3>
+                <h3 className="mb-6 text-xl font-light text-primary">Registration</h3>
                 <ul className="space-y-3">
                   {legalRegistration.map((item) => (
-                    <li
-                      key={item}
-                      className="text-sm font-light text-muted-foreground flex gap-2"
-                    >
+                    <li key={item} className={listItemClassName}>
                       <span className="text-primary">•</span>
-                      {item}
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>
-                <div className="mt-8 pt-6 border-t border-stone">
-                  <h4 className="text-lg font-light mb-2">
-                    Legal Opinion & Advice
-                  </h4>
-                  <p className="text-sm text-muted-foreground font-light">
-                    Expert consultation on all legal matters
-                  </p>
+                <div className="mt-8 border-t border-stone pt-6">
+                  <h4 className="mb-2 text-lg font-light">Legal Opinion & Advice</h4>
+                  <p className="text-sm font-light text-muted-foreground">Expert consultation on all legal matters</p>
                 </div>
-              </motion.div>
+              </motion.article>
             </div>
-          </div>
+          </PageContainer>
         </section>
 
-        {/* CTA */}
-        <section className="py-24 bg-foreground text-background">
-          <motion.div
-            className="max-w-[1440px] mx-auto px-6 md:px-10 text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="font-serif text-4xl md:text-5xl font-light mb-8">
-              Need Professional Assistance?
-            </h2>
-            <Link
-              to="/contact"
-              className="inline-block bg-primary text-primary-foreground px-10 py-5 text-[11px] uppercase tracking-[0.3em] rounded-sm hover:bg-primary/90 transition-all"
-            >
-              Get in Touch
-            </Link>
-          </motion.div>
-        </section>
+        <PageCta title="Need Professional Assistance?" actionLabel="Get in Touch" actionTo="/contact" />
       </main>
 
       <Footer />
@@ -346,4 +227,3 @@ const AuditingLegal = () => {
 };
 
 export default AuditingLegal;
-

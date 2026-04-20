@@ -1,10 +1,19 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { z } from "zod";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import CustomCursor from "@/components/CustomCursor";
 import { toast } from "sonner";
+
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import CustomCursor from "@/components/CustomCursor";
+import { FormField, TextArea, TextInput } from "@/components/marketing/forms";
+import {
+  InlineTextLink,
+  PageContainer,
+  PageHero,
+  SectionHeading,
+  sectionSpacing,
+} from "@/components/marketing/primitives";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -12,14 +21,31 @@ const contactSchema = z.object({
   message: z.string().trim().max(2000).optional(),
 });
 
+type ContactFormData = z.infer<typeof contactSchema>;
+
+const initialFormData: ContactFormData = {
+  name: "",
+  email: "",
+  message: "",
+};
+
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState<ContactFormData>(initialFormData);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleFieldChange = (field: keyof ContactFormData, value: string) => {
+    setFormData((current) => ({ ...current, [field]: value }));
+    setErrors((current) => {
+      if (!current[field]) {
+        return current;
+      }
+
+      const next = { ...current };
+      delete next[field];
+      return next;
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,7 +87,7 @@ const Contact = () => {
       }
 
       toast.success("Your message has been sent. We will respond shortly.");
-      setFormData({ name: "", email: "", message: "" });
+      setFormData(initialFormData);
       setErrors({});
     } catch (error: unknown) {
       console.error("API Error:", error);
@@ -77,139 +103,130 @@ const Contact = () => {
       <CustomCursor />
       <Header />
       <main>
-        {/* Hero Section with Video */}
-        <section className="relative min-h-[55vh] sm:min-h-[60vh] flex items-center overflow-hidden">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            className="absolute inset-0 w-full h-full object-cover"
-          >
-            <source
-              src="https://videos.pexels.com/video-files/3255275/3255275-uhd_2560_1440_25fps.mp4"
-              type="video/mp4"
-            />
-          </video>
+        <PageHero
+          videoSrc="https://videos.pexels.com/video-files/3255275/3255275-uhd_2560_1440_25fps.mp4"
+          eyebrow="Contact"
+          title={
+            <>
+              Begin a <span className="italic">Conversation</span>
+            </>
+          }
+          description="We'd love to hear from you. Reach out to start your journey with NJ Macson."
+          minHeightClassName="min-h-[55vh] sm:min-h-[60vh]"
+        />
 
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+        <section className={sectionSpacing}>
+          <PageContainer>
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
+              <motion.div
+                className="lg:col-span-5"
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <SectionHeading
+                  eyebrow="Contact"
+                  title={
+                    <>
+                      Contact & <span className="italic">Reach Us</span>
+                    </>
+                  }
+                  description="Let's connect in person. We're inspired by clients who are driven to achieve true financial freedom."
+                  className="mb-8"
+                />
 
-          <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 pt-28 sm:pt-32 pb-16 sm:pb-20 w-full">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <span className="text-sm uppercase tracking-[0.25em] sm:tracking-[0.5em] text-primary mb-4 block">
-                Contact
-              </span>
-              <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light mb-4">
-                Begin a <span className="italic">Conversation</span>
-              </h1>
-              <p className="text-base sm:text-lg font-light text-muted-foreground max-w-xl">
-                We'd love to hear from you. Reach out to start your journey with NJ Macson.
-              </p>
-            </motion.div>
-          </div>
-        </section>
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="mb-2 text-base text-primary md:text-lg">Address</h3>
+                    <p className="text-sm font-light text-muted-foreground md:text-base">
+                      Door No:43 Navarathna Garden 2nd Cross street, Defence Colony,
+                      Ekkaduthangal, Chennai 600032.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="mb-2 text-base text-primary md:text-lg">Phone / Mobile</h3>
+                    <p className="text-sm font-light md:text-base">044 43570713 / +91 739 59 11123</p>
+                  </div>
+                  <div>
+                    <h3 className="mb-2 text-base text-primary md:text-lg">Email</h3>
+                    <a
+                      href="mailto:writetous@njmacson.com"
+                      className="break-all text-sm font-light transition-colors hover:text-primary md:text-base"
+                    >
+                      writetous@njmacson.com
+                    </a>
+                  </div>
+                  <div>
+                    <h3 className="mb-2 text-base text-primary md:text-lg">Working Hours</h3>
+                    <p className="text-sm font-light text-muted-foreground md:text-base">
+                      Mon - Fri: 9am - 6pm
+                      <br />
+                      Saturday: By Appointment
+                      <br />
+                      Sunday: Closed
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
 
-        {/* Contact Form Section */}
-        <section className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 py-14 sm:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
-            <motion.div
-              className="lg:col-span-5"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <span className="text-sm uppercase tracking-[0.25em] sm:tracking-[0.5em] text-primary mb-4 block">
-                Contact
-              </span>
-              <h1 className="font-serif text-4xl md:text-5xl font-light mb-5 sm:mb-8">
-                Contact & <span className="italic">Reach Us</span>
-              </h1>
-              <p className="text-sm sm:text-base text-muted-foreground font-light mb-6 sm:mb-8">
-                Let's connect in person. We're inspired by clients who are driven to achieve true financial freedom.
-              </p>
-              <div className="space-y-6">
-                <div>
-                  <h4 className="text-primary text-base md:text-lg mb-2">Address</h4>
-                  <p className="text-sm md:text-base font-light text-muted-foreground">
-                    Door No:43 Navarathna Garden 2nd Cross street, Defence Colony, Ekkaduthangal, Chennai 600032.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="text-primary text-base md:text-lg mb-2">Phone / Mobile</h4>
-                  <p className="text-sm md:text-base font-light">044 43570713 / +91 739 59 11123</p>
-                </div>
-                <div>
-                  <h4 className="text-primary text-base md:text-lg mb-2">Email</h4>
-                  <p className="text-sm md:text-base font-light break-all">writetous@njmacson.com</p>
-                </div>
-                <div>
-                  <h4 className="text-primary text-base md:text-lg mb-2">Working Hours</h4>
-                  <p className="text-sm md:text-base font-light text-muted-foreground">
-                    Mon - Fri: 9am - 6pm
-                    <br />
-                    Saturday: By Appointment
-                    <br />
-                    Sunday: Closed
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+              <motion.div
+                className="lg:col-span-6 lg:col-start-7"
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <p className="mb-6 font-serif text-xl font-light italic text-muted-foreground sm:mb-8 sm:text-2xl">
+                  "With NJ Macson, turn your dreams into reality."
+                </p>
+                <form onSubmit={handleSubmit} noValidate className="space-y-6">
+                  <FormField id="contact-name" label="Your Name" required error={errors.name}>
+                    <TextInput
+                      id="contact-name"
+                      name="name"
+                      autoComplete="name"
+                      value={formData.name}
+                      onChange={(e) => handleFieldChange("name", e.target.value)}
+                      error={errors.name}
+                    />
+                  </FormField>
 
-            <motion.div
-              className="lg:col-span-6 lg:col-start-7"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <p className="font-serif text-xl sm:text-2xl font-light italic text-muted-foreground mb-6 sm:mb-8">
-                "With NJ Macson, Turn your dreams into Reality"
-              </p>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full bg-transparent px-2 border-b border-foreground/10 py-3 sm:py-4 text-base sm:text-lg font-light focus:ring-0 focus:border-primary transition-colors placeholder:text-muted-foreground/50"
-                  />
-                  {errors.name && <p className="text-destructive text-sm mt-2">{errors.name}</p>}
-                </div>
-                <div>
-                  <input
-                    type="email"
-                    placeholder="Your Email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-transparent px-2 border-b border-foreground/10 py-3 sm:py-4 text-base sm:text-lg font-light focus:ring-0 focus:border-primary transition-colors placeholder:text-muted-foreground/50"
-                  />
-                  {errors.email && <p className="text-destructive text-sm mt-2">{errors.email}</p>}
-                </div>
-                <div>
-                  <textarea
-                    placeholder="Your Message"
-                    rows={4}
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full bg-transparent px-2 border-b border-foreground/10 py-3 sm:py-4 text-base sm:text-lg font-light focus:ring-0 focus:border-primary transition-colors placeholder:text-muted-foreground/50 resize-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full sm:w-auto bg-primary  text-primary-foreground px-6 sm:px-10 py-3 sm:py-4 text-[10px] sm:text-xs uppercase tracking-[0.16em] sm:tracking-widest rounded-sm hover:bg-primary/90 transition-colors disabled:opacity-50"
-                >
-                  {isSubmitting ? "Sending..." : "Send Message"}
-                </button>
-              </form>
-            </motion.div>
-          </div>
+                  <FormField id="contact-email" label="Your Email" required error={errors.email}>
+                    <TextInput
+                      id="contact-email"
+                      type="email"
+                      name="email"
+                      autoComplete="email"
+                      value={formData.email}
+                      onChange={(e) => handleFieldChange("email", e.target.value)}
+                      error={errors.email}
+                    />
+                  </FormField>
+
+                  <FormField id="contact-message" label="Your Message" error={errors.message}>
+                    <TextArea
+                      id="contact-message"
+                      name="message"
+                      rows={5}
+                      value={formData.message}
+                      onChange={(e) => handleFieldChange("message", e.target.value)}
+                      error={errors.message}
+                    />
+                  </FormField>
+
+                  <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="inline-flex h-auto items-center justify-center rounded-sm bg-primary px-6 py-4 text-[11px] uppercase tracking-[0.16em] text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 sm:px-10 sm:tracking-[0.24em]"
+                    >
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                    </button>
+                    <InlineTextLink to="/about">Learn more about NJ Macson</InlineTextLink>
+                  </div>
+                </form>
+              </motion.div>
+            </div>
+          </PageContainer>
         </section>
       </main>
       <Footer />

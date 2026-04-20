@@ -1,25 +1,55 @@
-import { useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
+import { cn } from "@/lib/utils";
 import logo from "/nj_macsonlogo.png";
+
+const services = [
+  { href: "/services/our-family-office", label: "Our Family Office" },
+  {
+    href: "/services/private-wealth-management",
+    label: "Private Wealth Management",
+  },
+  {
+    href: "/services/alternative-investments",
+    label: "Alternative Investments",
+  },
+  { href: "/services/auditing-legal", label: "Auditing & Legal" },
+  { href: "/services/media-auditing", label: "Media Auditing" },
+] as const;
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const location = useLocation();
+  const servicesMenuId = useId();
+  const mobileMenuId = useId();
 
-  const services = [
-    { href: "/services/our-family-office", label: "Our Family Office" },
-    {
-      href: "/services/private-wealth-management",
-      label: "Private Wealth Management",
-    },
-    {
-      href: "/services/alternative-investments",
-      label: "Alternative Investments",
-    },
-    { href: "/services/auditing-legal", label: "Auditing & Legal" },
-  ];
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setServicesOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setServicesOpen(false);
+        setMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, []);
+
+  const isServiceRoute = location.pathname.startsWith("/services/");
+
+  const navLinkClassName = (isActive: boolean) =>
+    cn(
+      "text-[11px] font-bold uppercase tracking-[0.2em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+      isActive ? "text-primary" : "hover:text-primary",
+    );
 
   return (
     <header className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-foreground/5">
@@ -32,15 +62,13 @@ const Header = () => {
           />
         </Link>
         <nav className="hidden lg:flex items-center gap-8">
-          <Link
-            to="/"
-            className={`text-[11px] uppercase tracking-widest font-bold transition-colors ${location.pathname === "/" ? "text-primary" : "hover:text-primary"}`}
-          >
+          <Link to="/" className={navLinkClassName(location.pathname === "/")} aria-current={location.pathname === "/" ? "page" : undefined}>
             Home
           </Link>
           <Link
             to="/about"
-            className={`text-[11px] uppercase tracking-widest font-bold transition-colors ${location.pathname === "/about" ? "text-primary" : "hover:text-primary"}`}
+            className={navLinkClassName(location.pathname === "/about")}
+            aria-current={location.pathname === "/about" ? "page" : undefined}
           >
             About
           </Link>
@@ -48,11 +76,28 @@ const Header = () => {
             className="relative"
             onMouseEnter={() => setServicesOpen(true)}
             onMouseLeave={() => setServicesOpen(false)}
+            onFocusCapture={() => setServicesOpen(true)}
+            onBlurCapture={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                setServicesOpen(false);
+              }
+            }}
           >
-            <button className="text-[11px] font-semibold uppercase tracking-widest hover:text-primary transition-colors flex items-center gap-1">
+            <button
+              type="button"
+              className={cn(
+                "flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                isServiceRoute || servicesOpen ? "text-primary" : "hover:text-primary",
+              )}
+              aria-expanded={servicesOpen}
+              aria-haspopup="menu"
+              aria-controls={servicesMenuId}
+              aria-current={isServiceRoute ? "page" : undefined}
+              onClick={() => setServicesOpen((open) => !open)}
+            >
               Services
               <svg
-                className="w-3 h-3"
+                className={cn("w-3 h-3 transition-transform", servicesOpen ? "rotate-180" : "")}
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -64,16 +109,24 @@ const Header = () => {
             <AnimatePresence>
               {servicesOpen && (
                 <motion.div
+                  id={servicesMenuId}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
-                  className="absolute top-full left-0 mt-2 w-56 bg-background border border-stone rounded-lg shadow-lg py-2"
+                  role="menu"
+                  className="absolute top-full left-0 mt-2 w-56 rounded-lg border border-stone bg-background py-2 shadow-lg"
                 >
                   {services.map((s) => (
                     <Link
                       key={s.href}
                       to={s.href}
-                      className="block px-4 py-2 text-sm hover:bg-stone/50 hover:text-primary transition-colors"
+                      role="menuitem"
+                      className={cn(
+                        "block px-4 py-2 text-sm transition-colors focus-visible:outline-none focus-visible:bg-stone/50 focus-visible:text-primary hover:bg-stone/50 hover:text-primary",
+                        location.pathname === s.href ? "text-primary" : "",
+                      )}
+                      aria-current={location.pathname === s.href ? "page" : undefined}
+                      onClick={() => setServicesOpen(false)}
                     >
                       {s.label}
                     </Link>
@@ -84,26 +137,33 @@ const Header = () => {
           </div>
           <Link
             to="/team"
-            className={`text-[11px] uppercase tracking-widest font-bold transition-colors ${location.pathname === "/team" ? "text-primary" : "hover:text-primary"}`}
+            className={navLinkClassName(location.pathname === "/team")}
+            aria-current={location.pathname === "/team" ? "page" : undefined}
           >
             Team
           </Link>
           <Link
             to="/careers"
-            className={`text-[11px] uppercase tracking-widest font-bold transition-colors ${location.pathname === "/careers" ? "text-primary" : "hover:text-primary"}`}
+            className={navLinkClassName(location.pathname.startsWith("/careers"))}
+            aria-current={location.pathname.startsWith("/careers") ? "page" : undefined}
           >
             Careers
           </Link>
           <Link
             to="/contact"
-            className="border border-primary/40 px-5 py-2 font-bold text-xs uppercase tracking-[0.15em] hover:bg-primary hover:text-primary-foreground transition-all rounded-sm"
+            className="rounded-sm border border-primary/40 px-5 py-2 text-xs font-bold uppercase tracking-[0.15em] transition-all hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            aria-current={location.pathname === "/contact" ? "page" : undefined}
           >
             Contact
           </Link>
         </nav>
         <button
-          className="lg:hidden p-1"
+          type="button"
+          className="rounded-sm p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background lg:hidden"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-expanded={mobileMenuOpen}
+          aria-controls={mobileMenuId}
+          aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
         >
           <svg
             className="w-6 h-6"
@@ -127,54 +187,56 @@ const Header = () => {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.nav
+            id={mobileMenuId}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden bg-background border-t border-foreground/5 px-4 sm:px-6 py-6 space-y-4"
+            aria-label="Mobile navigation"
           >
             <Link
               to="/"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-sm "
+              className="block text-sm"
+              aria-current={location.pathname === "/" ? "page" : undefined}
             >
               Home
             </Link>
             <Link
               to="/about"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-sm "
+              className="block text-sm"
+              aria-current={location.pathname === "/about" ? "page" : undefined}
             >
               About
             </Link>
-            <p className="block text-sm">Services</p>
+            <p className="block text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">Services</p>
             {services.map((s) => (
               <Link
                 key={s.href}
                 to={s.href}
-                onClick={() => setMobileMenuOpen(false)}
                 className="block text-sm pl-4"
+                aria-current={location.pathname === s.href ? "page" : undefined}
               >
                 {s.label}
               </Link>
             ))}
             <Link
               to="/team"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-sm "
+              className="block text-sm"
+              aria-current={location.pathname === "/team" ? "page" : undefined}
             >
               Team
             </Link>
             <Link
               to="/careers"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-sm "
+              className="block text-sm"
+              aria-current={location.pathname.startsWith("/careers") ? "page" : undefined}
             >
               Careers
             </Link>
             <Link
               to="/contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-sm text-primary "
+              className="block text-sm text-primary"
+              aria-current={location.pathname === "/contact" ? "page" : undefined}
             >
               Contact
             </Link>

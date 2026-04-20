@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+
 import CustomCursor from "@/components/CustomCursor";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import { PageContainer, PageCta, PageHero, SectionHeading, sectionSpacing } from "@/components/marketing/primitives";
 import { cardItem, fadeUpSoft, inViewOnce, staggerContainer } from "@/lib/motion";
+import heroVideo from "@/assets/videos/private-wealth.mp4";
 
 const services = [
   "Investment and portfolio advisory",
@@ -19,112 +21,56 @@ const PrivateWealth = () => {
       <Header />
 
       <main>
-        {/* Hero */}
-        <section className="relative min-h-[70vh] flex items-center overflow-hidden">
-          {/* Video Background */}
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            className="absolute inset-0 w-full h-full object-cover"
-          >
-            <source
-              src="https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4"
-              type="video/mp4"
-            />
-          </video>
+        <PageHero
+          videoSrc={heroVideo}
+          eyebrow="Our Services"
+          title={
+            <>
+              Private <span className="italic">Wealth</span> Management
+            </>
+          }
+          description="NJ Macson delivers personalized wealth management solutions designed to build, preserve, and grow wealth over the long term."
+          secondaryDescription="Our strategies focus on portfolio diversification, risk management, and tax-efficient investing—aligned with each client's financial goals and personal priorities."
+        />
 
-          {/* Gradient Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-
-          <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 py-32">
+        <section className={sectionSpacing + " bg-stone/20"}>
+          <PageContainer>
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="max-w-3xl"
-            >
-              <span className="text-sm uppercase tracking-[0.5em] text-primary mb-4 block">
-                Our Services
-              </span>
-              <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-light leading-[0.95] tracking-tight mb-8">
-                Private <span className="italic">Wealth</span> Management
-              </h1>
-              <p className="md:text-lg font-light leading-relaxed text-muted-foreground mb-6">
-                NJ Macson delivers personalized wealth management solutions
-                designed to build, preserve, and grow wealth over the long term.
-              </p>
-              <p className="md:text-lg text-muted-foreground font-light leading-relaxed">
-                Our strategies focus on portfolio diversification, risk
-                management, and tax-efficient investing—aligned with each
-                client's financial goals and personal priorities.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Designed For */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-stone/20 overflow-x-clip">
-          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10">
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12"
+              className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12"
               variants={staggerContainer(0.14)}
               initial="hidden"
               whileInView="show"
               viewport={inViewOnce}
             >
-              <motion.div
-                className="w-full"
-                variants={fadeUpSoft}
-              >
-                <span className="text-sm uppercase tracking-[0.25em] sm:tracking-[0.5em] text-primary mb-4 block">
-                  Designed For
-                </span>
-                <p className="font-serif text-xl sm:text-2xl font-light leading-relaxed text-muted-foreground">
-                  Wealth management services are ideal for high-net-worth
-                  individuals with diverse and complex financial needs.
-                </p>
+              <motion.div className="w-full" variants={fadeUpSoft}>
+                <SectionHeading
+                  eyebrow="Designed For"
+                  title="Tailored for Complex Wealth Journeys"
+                  description="Wealth management services are ideal for high-net-worth individuals with diverse and complex financial needs."
+                  className="mb-0"
+                />
               </motion.div>
 
-              <motion.div
-                className="w-full"
-                variants={fadeUpSoft}
-              >
-                <p className="text-sm sm:text-base text-muted-foreground font-light leading-relaxed mb-6 sm:mb-8">
-                  Our experienced advisors assess each client's assets and
-                  objectives to create customized financial strategies tailored
-                  to their unique requirements.
+              <motion.div className="w-full" variants={fadeUpSoft}>
+                <p className="mb-6 text-sm font-light leading-relaxed text-muted-foreground sm:mb-8 sm:text-base">
+                  Our experienced advisors assess each client's assets and objectives to create customized financial
+                  strategies tailored to their unique requirements.
                 </p>
-                <p className="text-sm sm:text-base text-muted-foreground font-light leading-relaxed">
-                  NJ Macson offers a holistic, research-driven wealth management
-                  approach combining expert advisory with personalized
-                  investment execution.
+                <p className="text-sm font-light leading-relaxed text-muted-foreground sm:text-base">
+                  NJ Macson offers a holistic, research-driven wealth management approach combining expert advisory
+                  with personalized investment execution.
                 </p>
               </motion.div>
             </motion.div>
-          </div>
+          </PageContainer>
         </section>
 
-        {/* Services List */}
-        <section className="py-24">
-          <div className="max-w-[1440px] mx-auto px-6 md:px-10">
-            <motion.div
-              className="mb-16"
-              variants={fadeUpSoft}
-              initial="hidden"
-              whileInView="show"
-              viewport={inViewOnce}
-            >
-              <h2 className="font-serif text-4xl font-light mb-6">
-                Our Services Include
-              </h2>
-            </motion.div>
+        <section className={sectionSpacing}>
+          <PageContainer>
+            <SectionHeading title="Our Services Include" />
 
             <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+              className="grid grid-cols-1 gap-6 md:grid-cols-2"
               variants={staggerContainer(0.1, 0.06)}
               initial="hidden"
               whileInView="show"
@@ -133,13 +79,11 @@ const PrivateWealth = () => {
               {services.map((service, index) => (
                 <motion.div
                   key={service}
-                  className="p-8 border border-stone rounded-lg hover:border-primary transition-colors"
+                  className="rounded-2xl border border-stone/40 p-8 transition-colors hover:border-primary"
                   variants={cardItem}
                 >
                   <div className="flex items-center gap-4">
-                    <span className="text-primary font-light italic text-lg">
-                      0{index + 1}.
-                    </span>
+                    <span className="text-lg font-light italic text-primary">0{index + 1}.</span>
                     <span className="text-xl font-light">{service}</span>
                   </div>
                 </motion.div>
@@ -153,32 +97,13 @@ const PrivateWealth = () => {
               whileInView="show"
               viewport={inViewOnce}
             >
-              Built on trust and long-term partnerships, we simplify finance to
-              help you invest with clarity and confidence.
+              Built on trust and long-term partnerships, we simplify finance to help you invest with clarity and
+              confidence.
             </motion.p>
-          </div>
+          </PageContainer>
         </section>
 
-        {/* CTA */}
-        <section className="py-24 bg-foreground text-background">
-          <motion.div
-            className="max-w-[1440px] mx-auto px-6 md:px-10 text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="font-serif text-4xl md:text-5xl font-light mb-8">
-              Ready to Grow Your Wealth?
-            </h2>
-            <Link
-              to="/contact"
-              className="inline-block bg-primary text-primary-foreground px-10 py-5 text-[11px] uppercase tracking-[0.3em] rounded-sm hover:bg-primary/90 transition-all"
-            >
-              Request Consultation
-            </Link>
-          </motion.div>
-        </section>
+        <PageCta title="Ready to Grow Your Wealth?" actionLabel="Request Consultation" actionTo="/contact" />
       </main>
 
       <Footer />

@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+
 import CustomCursor from "@/components/CustomCursor";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import { PageContainer, PageHero, PrimaryLinkButton, SectionHeading, sectionSpacing } from "@/components/marketing/primitives";
 import { cardItem, fadeUpSoft, inViewOnce, staggerContainer } from "@/lib/motion";
+import heroVideo from "@/assets/videos/altranative-investment.mp4";
 
 const investments = [
   "Real estate in India and Dubai",
@@ -13,7 +15,7 @@ const investments = [
   "Early-stage ventures",
 ];
 
-const benefits = [
+const sectors = [
   "Food and Beverage",
   "Shipping and logistics",
   "Coal",
@@ -33,112 +35,57 @@ const AlternativeInvestments = () => {
       <Header />
 
       <main>
-        {/* Hero */}
-        <section className="relative min-h-[70vh] sm:min-h-[80vh] flex items-center overflow-hidden">
-          {/* Video Background */}
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            className="absolute inset-0 w-full h-full object-cover"
-          >
-            <source
-              src="https://videos.pexels.com/video-files/2795397/2795397-uhd_2560_1440_25fps.mp4"
-              type="video/mp4"
-            />
-          </video>
+        <PageHero
+          videoSrc={heroVideo}
+          eyebrow="Our Services"
+          title={
+            <>
+              Alternative <span className="italic">Investments</span>
+            </>
+          }
+          description="NJ Macson offers curated alternative investment opportunities across high-growth sectors, including commercial real estate, shipping and logistics, energy, mining, transportation, and early-stage ventures."
+          secondaryDescription="Our focus is on stable income, capital protection, diversification, and long-term value creation."
+        />
 
-          {/* Gradient Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-
-          <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 pt-28 sm:pt-32 pb-20 sm:pb-24">
+        <section className={sectionSpacing + " bg-stone/20"}>
+          <PageContainer>
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="max-w-3xl"
-            >
-              <span className="text-sm uppercase tracking-[0.25em] sm:tracking-[0.5em] text-primary mb-4 block">
-                Our Services
-              </span>
-              <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light leading-[0.95] tracking-tight mb-6 sm:mb-8">
-                Alternative <span className="italic">Investments</span>
-              </h1>
-              <p className="text-sm sm:text-base md:text-lg font-light leading-relaxed text-muted-foreground mb-4 sm:mb-6">
-                NJ Macson offers curated alternative investment opportunities
-                across high-growth sectors, including commercial real estate,
-                shipping and logistics, energy, mining, transportation, and
-                early-stage ventures.
-              </p>
-              <p className="text-sm sm:text-base text-muted-foreground font-light leading-relaxed">
-                Our focus is on stable income, capital protection,
-                diversification, and long-term value creation.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Traditional vs Alternative */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-stone/20 overflow-x-clip">
-          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10">
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12"
+              className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12"
               variants={staggerContainer(0.14)}
               initial="hidden"
               whileInView="show"
               viewport={inViewOnce}
             >
-              <motion.div
-                variants={fadeUpSoft}
-              >
-                <h2 className="font-serif text-2xl sm:text-3xl font-light mb-4 sm:mb-6">
+              <motion.div variants={fadeUpSoft}>
+                <h2 className="mb-4 font-serif text-2xl font-light sm:mb-6 sm:text-3xl">
                   Beyond the Basics: Traditional vs. Alternative
                 </h2>
-                <p className="text-sm sm:text-base text-muted-foreground font-light leading-relaxed">
-                  While stocks, bonds, and cash form the foundation of most
-                  portfolios, alternative investments provide a sophisticated
-                  path to wealth creation.
+                <p className="text-sm font-light leading-relaxed text-muted-foreground sm:text-base">
+                  While stocks, bonds, and cash form the foundation of most portfolios, alternative investments provide
+                  a sophisticated path to wealth creation.
                 </p>
               </motion.div>
 
-              <motion.div
-                variants={fadeUpSoft}
-              >
-                <h2 className="font-serif text-2xl sm:text-3xl font-light mb-4 sm:mb-6">
-                 The Alternative Landscape
-                </h2>
-                <p className="text-sm sm:text-base text-muted-foreground font-light leading-relaxed">
-                We provide access to private equity, venture capital, and hedge funds, alongside tangible assets like real estate and commodities.
+              <motion.div variants={fadeUpSoft}>
+                <h2 className="mb-4 font-serif text-2xl font-light sm:mb-6 sm:text-3xl">The Alternative Landscape</h2>
+                <p className="text-sm font-light leading-relaxed text-muted-foreground sm:text-base">
+                  We provide access to private equity, venture capital, and hedge funds, alongside tangible assets like
+                  real estate and commodities.
                 </p>
               </motion.div>
             </motion.div>
-          </div>
+          </PageContainer>
         </section>
 
-        {/* Investment Options */}
-        <section className="py-16 sm:py-20 lg:py-24">
-          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10">
-            <motion.div
-              className="mb-16"
-              variants={fadeUpSoft}
-              initial="hidden"
-              whileInView="show"
-              viewport={inViewOnce}
-            >
-              <h2 className="font-serif text-3xl sm:text-4xl font-light mb-4 sm:mb-6">
-                Our Investment Options
-              </h2>
-              <p className="text-sm sm:text-base text-muted-foreground font-light max-w-2xl">
-                Every option is rigorously analyzed in-house and customized to
-                match clients' risk preferences and return goals.
-              </p>
-            </motion.div>
+        <section className={sectionSpacing}>
+          <PageContainer>
+            <SectionHeading
+              title="Our Investment Options"
+              description="Every option is rigorously analyzed in-house and customized to match clients' risk preferences and return goals."
+            />
 
             <motion.div
-              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6"
+              className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 sm:gap-6"
               variants={staggerContainer(0.1, 0.06)}
               initial="hidden"
               whileInView="show"
@@ -147,73 +94,61 @@ const AlternativeInvestments = () => {
               {investments.map((investment) => (
                 <motion.div
                   key={investment}
-                  className="p-4 sm:p-6 bg-stone/20 rounded-lg text-center"
+                  className="rounded-2xl bg-stone/20 p-4 text-center sm:p-6"
                   variants={cardItem}
                 >
                   <span className="text-sm font-light">{investment}</span>
                 </motion.div>
               ))}
             </motion.div>
-          </div>
+          </PageContainer>
         </section>
 
-        {/* Benefits */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-foreground text-background">
-          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10">
-            <motion.div
-              className="mb-16"
-              variants={fadeUpSoft}
-              initial="hidden"
-              whileInView="show"
-              viewport={inViewOnce}
-            >
-              <span className="text-sm uppercase tracking-[0.25em] sm:tracking-[0.5em] text-primary mb-4 block">
-                Benefits
-              </span>
-              <h2 className="font-serif text-3xl sm:text-4xl font-light">
-                Why Alternative Investments?
-              </h2>
-              <p className="text-sm text-background/60 mt-2">
-                Diversification, unique fee structures, and potential for higher
-                returns compared to mutual funds or ETFs.
-              </p>
-            </motion.div>
+        <section className={sectionSpacing + " bg-foreground text-background"}>
+          <PageContainer>
+            <SectionHeading
+              eyebrow="Benefits"
+              title="Why Alternative Investments?"
+              description="Diversification, unique fee structures, and potential for higher returns compared to mutual funds or ETFs."
+              className="text-background"
+            />
 
             <motion.div
-              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-8"
+              className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 sm:gap-8"
               variants={staggerContainer(0.1, 0.06)}
               initial="hidden"
               whileInView="show"
               viewport={inViewOnce}
             >
-              {benefits.map((benefit) => (
+              {sectors.map((benefit) => (
                 <motion.div
                   key={benefit}
-                  className="p-3 border border-background/20 rounded-lg"
+                  className="rounded-2xl border border-background/20 p-4"
                   variants={cardItem}
                 >
-                  <h3 className="text-base font-light text-primary">
-                    {benefit}
-                  </h3>
+                  <h3 className="text-base font-light text-primary">{benefit}</h3>
                 </motion.div>
               ))}
             </motion.div>
 
             <motion.div
-              className="mt-16 text-center"
+              className="mt-12 text-center"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <Link
-                to="/contact"
-                className="inline-block bg-primary text-primary-foreground px-6 sm:px-10 py-4 sm:py-5 text-[10px] sm:text-[11px] uppercase tracking-[0.14em] sm:tracking-[0.3em] rounded-sm hover:bg-primary/90 transition-all"
-              >
+              <h3 className="font-serif text-3xl font-light text-background sm:text-4xl">
+                Explore New Growth Pathways
+              </h3>
+              <p className="mx-auto mt-4 max-w-2xl text-sm font-light text-background/70 sm:text-base md:text-lg">
+                Alternative opportunities can be tailored to your risk appetite, portfolio goals, and horizon.
+              </p>
+              <PrimaryLinkButton to="/contact" className="mt-8 sm:mt-10">
                 Explore Opportunities
-              </Link>
+              </PrimaryLinkButton>
             </motion.div>
-          </div>
+          </PageContainer>
         </section>
       </main>
 

@@ -29,6 +29,12 @@ const capabilities = [
     description: "Rigorous structural analysis and legal framework construction. We provide the quiet confidence that your global assets are protected by ironclad compliance.",
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDY-ZQgDi7wcs16gvTE5d6PuCglis62N6I3ViAOMj_3SDo511mZDukPVNVeRq4glWXZgRFKyVrhi6slqRDfYEDHsXOOnc-TrNxteg8BotVrXtf0M9ODr4gKht5nDkpjkcunAEDjX9VrnFtdXactEG555weq8C6fHIfK7STtZL9huXpJqDE5BsrMbiWQooNnvUqyFBWF5tEdTLguGPWZIkz4su1vbgm6pO1NPz1HSCe605V_dj8ha2kYFhO7Br-QI4yORNyLJO7JtH4I"
   },
+  {
+    number: "05",
+    title: "Media Auditing",
+    description: "An end-to-end audit framework for media spends, campaign execution, compliance oversight, and performance reporting across every stage of delivery.",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDY-ZQgDi7wcs16gvTE5d6PuCglis62N6I3ViAOMj_3SDo511mZDukPVNVeRq4glWXZgRFKyVrhi6slqRDfYEDHsXOOnc-TrNxteg8BotVrXtf0M9ODr4gKht5nDkpjkcunAEDjX9VrnFtdXactEG555weq8C6fHIfK7STtZL9huXpJqDE5BsrMbiWQooNnvUqyFBWF5tEdTLguGPWZIkz4su1vbgm6pO1NPz1HSCe605V_dj8ha2kYFhO7Br-QI4yORNyLJO7JtH4I"
+  },
 ];
 
 const Capabilities = () => {
@@ -52,8 +58,8 @@ const Capabilities = () => {
           </video>
           
           {/* Gradient Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/90 to-background/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/86 via-background/25 to-transparent" />
           
           <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 py-32">
             <motion.div
