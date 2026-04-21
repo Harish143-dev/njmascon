@@ -14,25 +14,17 @@ const VideoSection = () => {
             viewport={inViewOnce}
           >
             <motion.div
-              className="relative aspect-video bg-foreground rounded-lg overflow-hidden group cursor-pointer"
+              className="relative aspect-video overflow-hidden rounded-lg bg-foreground"
               variants={mediaReveal}
             >
-              <div 
-                className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: `url("https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&auto=format&fit=crop")` }}
+              <iframe
+                className="h-full w-full"
+                src="https://www.youtube.com/embed/P8oiFVreS2U?si=ZTOvLyCwDMkmWXKw"
+                title="Navigating Your Financial Future"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
               />
-              <div className="absolute inset-0 bg-foreground/40 group-hover:bg-foreground/30 transition-colors" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <motion.div 
-                  className="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-primary flex items-center justify-center"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-primary-foreground ml-1" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </motion.div>
-              </div>
             </motion.div>
           </motion.div>
           
@@ -45,7 +37,7 @@ const VideoSection = () => {
           >
             <span className="text-sm uppercase tracking-[0.3em] sm:tracking-[0.5em] text-primary mb-4 block">Insights</span>
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-light mb-4 sm:mb-6 leading-tight">
-              Navigating Your <span className="italic">Financial</span> Future
+              Navigating Your Financial Future
             </h2>
             <p className="text-sm sm:text-base text-muted-foreground font-light leading-relaxed">
               Unlock the power of expert financial advice through our video series. Discover actionable insights from experienced investment advisors and strategists to help you navigate the complexities of wealth management and secure your financial future.

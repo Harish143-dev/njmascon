@@ -46,11 +46,6 @@ const team: TeamMember[] = [
     description:
       "20+ years of experience in accounting and auditing since 2004, with expertise in Income Tax, GST, and Tribunal matters, and a key member of NJ Macson since 2018.",
   },
-  {
-    name: "Mr. Sulthan",
-    role: "Business Head (VP)",
-    description: "Leads the business development initiatives and drives growth strategies.",
-  },
 ];
 
 const Team = () => {

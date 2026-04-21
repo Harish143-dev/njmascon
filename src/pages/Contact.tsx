@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import CustomCursor from "@/components/CustomCursor";
 import { FormField, TextArea, TextInput } from "@/components/marketing/forms";
+import contactHero from "@/assets/videos/contact.webm";
 import {
   InlineTextLink,
   PageContainer,
@@ -104,7 +105,7 @@ const Contact = () => {
       <Header />
       <main>
         <PageHero
-          videoSrc="https://videos.pexels.com/video-files/3255275/3255275-uhd_2560_1440_25fps.mp4"
+          videoSrc={contactHero}
           eyebrow="Contact"
           title={
             <>
