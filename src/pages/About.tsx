@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Globe, Briefcase, TrendingUp, Target } from "lucide-react";
 import awardImg from "@/assets/awards and certificate/award-1.jpeg";
 import awardImg1 from "@/assets/awards and certificate/award-2.png";
-import aboutHero from "@/assets/videos/about-herosection.mp4"
+import aboutHero from "@/assets/videos/about-herosection.webm";
 
 const highlights = [
   {
@@ -94,53 +94,54 @@ const About = () => {
             >
               <source
                 src={aboutHero}
-                type="video/mp4"
+                type="video/webm"
               />
             </video>
-            {/* Multi-layer gradient overlays for depth */}
-            <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/90 to-background/20" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/86 via-background/25 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background/86" />
+            <div className="absolute inset-0 bg-background/45 sm:hidden" />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/72 to-background/92 sm:hidden" />
+            <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/82 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/86 via-transparent to-transparent" />
           </div>
 
           <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 pt-28 sm:pt-32 pb-20 sm:pb-24 w-full">
-            <div className="max-w-3xl mx-auto">
+            <div className="max-w-3xl">
               <motion.div
+                className="space-y-5 sm:space-y-6"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1}}
+                transition={{ duration: 1 }}
               >
-                <div className="space-y-2 mb-8">
+                <div className="space-y-2">
                   <motion.h1
-                    className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-light leading-[0.95] tracking-tight"
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8}}
+                    className="font-serif text-3xl sm:text-5xl md:text-7xl lg:text-[6rem] font-light leading-[0.92] tracking-tight text-foreground"
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8 }}
                   >
                     Our Story of
                   </motion.h1>
                   <motion.h1
-                    className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-light leading-[0.95] tracking-tight italic text-primary"
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8}}
+                    className="font-serif text-3xl sm:text-5xl md:text-7xl lg:text-[6rem] font-light leading-[0.92] tracking-tight italic text-primary"
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8 }}
                   >
                     Excellence
                   </motion.h1>
                 </div>
 
                 <motion.div
-                  className="w-24 h-[1px] bg-gradient-to-r from-primary to-transparent my-8"
+                  className="w-20 sm:w-24 h-[1px] bg-gradient-to-r from-primary to-transparent my-6 sm:my-8"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
-                  transition={{ duration: 1}}
+                  transition={{ duration: 1 }}
                 />
 
                 <motion.p
-                  className="text-base md:text-lg font-light leading-relaxed text-foreground/80 max-w-2xl"
+                  className="max-w-2xl text-base md:text-lg font-light leading-relaxed text-foreground/80"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ duration: 0.8}}
+                  transition={{ duration: 0.8 }}
                 >
                   NJ Macson provides tailored advisory for UHNI families,
                   individuals, and businesses. With expertise in family office
@@ -149,10 +150,10 @@ const About = () => {
                 </motion.p>
 
                 <motion.div
-                  className="pt-8 sm:pt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6"
+                  className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8}}
+                  transition={{ duration: 0.8 }}
                 >
                   <motion.div
                     whileHover={{ scale: 1.02 }}
@@ -160,7 +161,7 @@ const About = () => {
                   >
                     <Link
                       to="/team"
-                      className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-6 sm:px-10 py-4 sm:py-5 text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] hover:bg-primary/90 transition-all group"
+                      className="inline-flex w-full justify-center sm:w-auto sm:justify-start items-center gap-3 bg-primary text-primary-foreground px-6 sm:px-10 py-4 sm:py-5 text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] hover:bg-primary/90 transition-all group"
                     >
                       Meet Our Team
                       <svg
@@ -206,10 +207,10 @@ const About = () => {
 
           {/* Scroll indicator */}
           <motion.div
-            className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2"
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1}}
+            transition={{ duration: 1 }}
           >
             <span className="text-xs uppercase tracking-[0.3em] text-foreground/50">
               Scroll

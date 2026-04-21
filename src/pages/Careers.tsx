@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { PageContainer, PageCta, PageHero, SectionHeading, sectionSpacing, sectionSpacingLg } from "@/components/marketing/primitives";
 import { jobPositions } from "@/data/jobPositions";
-import careerHero from "@/assets/videos/career.mp4";
+import careerHero from "@/assets/videos/career.webm";
 
 const values = [
   {
@@ -39,15 +39,14 @@ const Careers = () => {
         <PageHero
           videoSrc={careerHero}
           eyebrow="Careers"
-          minHeightClassName="min-h-[70vh]"
+          minHeightClassName="min-h-screen"
           title={
             <>
               Join the <br />
-              <span className="italic">Legacy.</span>
+              <span className="italic text-primary">Legacy.</span>
             </>
           }
           description="We seek the architects of tomorrow's traditions. At NJ Macson, we don't just manage wealth; we curate the environments where generational history is written."
-          contentClassName="max-w-2xl"
         />
 
         <section className={sectionSpacing}>

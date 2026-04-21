@@ -4,7 +4,7 @@ import CustomCursor from "@/components/CustomCursor";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { PageContainer, PageCta, PageHero, SectionHeading, marketingCardClassName, sectionSpacing } from "@/components/marketing/primitives";
-import heroVideo from "@/assets/videos/audit-legal.mp4";
+import heroVideo from "@/assets/videos/audit-legal.webm";
 
 const taxServices = [
   "Comprehensive Income Tax Returns Filing",

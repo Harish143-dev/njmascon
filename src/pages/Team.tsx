@@ -8,7 +8,7 @@ import jameelImg from "@/assets/team/jameel.jpg";
 import anandhImg from "@/assets/team/anandh.jpg";
 import abdulRafiImg from "@/assets/team/abdul_rafi.jpg";
 import ismailImg from "@/assets/team/ismail.png";
-import teamHero from "@/assets/videos/team.mp4";
+import teamHero from "@/assets/videos/team.webm";
 
 interface TeamMember {
   name: string;
@@ -62,7 +62,6 @@ const Team = () => {
       <main>
         <PageHero
           videoSrc={teamHero}
-          eyebrow="Our Team"
           minHeightClassName="min-h-[60vh]"
           title={
             <>

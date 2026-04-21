@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import heroVideo from "@/assets/videos/home_herovideo.mp4";
+import heroVideo from "@/assets/videos/home_herovideo.webm";
 
 const HeroSection = () => {
   return (
@@ -15,16 +15,18 @@ const HeroSection = () => {
           preload="auto"
           className="w-full h-full object-cover"
         >
-          <source src={heroVideo} type="video/mp4" />
+          <source src={heroVideo} type="video/webm" />
         </video>
         {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-background/45 sm:hidden" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/72 to-background/92 sm:hidden" />
         <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/82 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-background/86 via-transparent to-transparent" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 pt-28 sm:pt-32 pb-20 sm:pb-24 w-full">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl">
           <motion.div
             className="space-y-5 sm:space-y-6"
             initial={{ opacity: 0, y: 40 }}
@@ -33,7 +35,7 @@ const HeroSection = () => {
           >
             <div className="space-y-2">
               <motion.h1
-                className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-[6rem] font-light leading-[0.9] tracking-tight text-foreground"
+                className="font-serif text-3xl sm:text-5xl md:text-7xl lg:text-[6rem] font-light leading-[0.92] tracking-tight text-foreground"
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
@@ -41,7 +43,7 @@ const HeroSection = () => {
                 Legacy
               </motion.h1>
               <motion.h1
-                className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-[6rem] font-light leading-[0.9] tracking-tight italic text-primary"
+                className="font-serif text-3xl sm:text-5xl md:text-7xl lg:text-[6rem] font-light leading-[0.92] tracking-tight italic text-primary"
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
@@ -79,7 +81,7 @@ const HeroSection = () => {
               >
                 <Link
                   to="/about"
-                  className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-6 sm:px-10 py-4 sm:py-5 text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] hover:bg-primary/90 transition-all group"
+                  className="inline-flex w-full items-center justify-center gap-3 bg-primary px-6 py-4 text-xs uppercase tracking-[0.15em] text-primary-foreground transition-all group hover:bg-primary/90 sm:w-auto sm:justify-start sm:tracking-[0.2em]"
                 >
                   Discover More
                   <svg

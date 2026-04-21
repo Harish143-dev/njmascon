@@ -11,7 +11,7 @@ import {
   marketingCardClassName,
   sectionSpacing,
 } from "@/components/marketing/primitives";
-import heroVideo from "@/assets/videos/media-audit.mp4";
+import heroVideo from "@/assets/videos/media-audit.webm";
 
 const auditStages = [
   {
@@ -61,7 +61,6 @@ const MediaAuditing = () => {
           }
           description="Bringing transparency, control, and performance to your media investments."
           secondaryDescription="At NJ Macson, we extend our expertise in financial and operational auditing into the media ecosystem, ensuring that every rupee spent on marketing delivers measurable value."
-          contentClassName="mx-auto text-center"
         />
 
         <section className={sectionSpacing + " bg-stone/20 overflow-x-clip"}>

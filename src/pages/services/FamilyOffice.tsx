@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { PageContainer, PageCta, PageHero, SectionHeading, sectionSpacing } from "@/components/marketing/primitives";
 import { cardItem, fadeUpSoft, inViewOnce, staggerContainer } from "@/lib/motion";
-import heroVideo from "@/assets/videos/our-family-office.mp4";
+import heroVideo from "@/assets/videos/our-family-office.webm";
 
 const highlights = [
   "Integrated solutions for UHNI families to grow, protect, and manage wealth.",

@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { PageContainer, PageHero, PrimaryLinkButton, SectionHeading, sectionSpacing } from "@/components/marketing/primitives";
 import { cardItem, fadeUpSoft, inViewOnce, staggerContainer } from "@/lib/motion";
-import heroVideo from "@/assets/videos/altranative-investment.mp4";
+import heroVideo from "@/assets/videos/altranative-investment.webm";
 
 const investments = [
   "Real estate in India and Dubai",

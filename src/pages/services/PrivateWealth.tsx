@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { PageContainer, PageCta, PageHero, SectionHeading, sectionSpacing } from "@/components/marketing/primitives";
 import { cardItem, fadeUpSoft, inViewOnce, staggerContainer } from "@/lib/motion";
-import heroVideo from "@/assets/videos/private-wealth.mp4";
+import heroVideo from "@/assets/videos/private-wealth.webm";
 
 const services = [
   "Investment and portfolio advisory",
