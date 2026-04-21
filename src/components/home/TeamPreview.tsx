@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-import anandhImg from "@/assets/team/anandh.jpg";
-import ismailImg from "@/assets/team/ismail.png";
+import anandhImg from "@/assets/team/anandh.webp";
+import ismailImg from "@/assets/team/ismail.webp";
 import { fadeUpSoft, inViewOnce, mediaReveal, staggerContainer } from "@/lib/motion";
 
 const teamPreviewItems = [

@@ -4,10 +4,10 @@ import CustomCursor from "@/components/CustomCursor";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { PageContainer, PageHero, SectionHeading, sectionSpacing } from "@/components/marketing/primitives";
-import jameelImg from "@/assets/team/jameel.jpg";
-import anandhImg from "@/assets/team/anandh.jpg";
-import abdulRafiImg from "@/assets/team/abdul_rafi.jpg";
-import ismailImg from "@/assets/team/ismail.png";
+import jameelImg from "@/assets/team/jameel.webp";
+import anandhImg from "@/assets/team/anandh.webp";
+import abdulRafiImg from "@/assets/team/abdul_rafi.webp";
+import ismailImg from "@/assets/team/ismail.webp";
 import teamHero from "@/assets/videos/team.webm";
 
 interface TeamMember {
@@ -73,7 +73,7 @@ const Team = () => {
               title="People Behind the Advisory"
               description="A multidisciplinary team shaping private wealth, family office, compliance, and operational excellence."
             />
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+            <div className="max-w-5xl mx-auto grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
               {team.map((member, index) => (
                 <motion.article
                   key={member.name}

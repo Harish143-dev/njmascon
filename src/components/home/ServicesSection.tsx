@@ -6,11 +6,11 @@ import {
   inViewOnce,
   staggerContainer,
 } from "@/lib/motion";
-import service1 from "@/assets/services/family_office.png";
-import service2 from "@/assets/services/private_wealth.png";
-import service3 from "@/assets/services/alternative_invesment.png";
-import service4 from "@/assets/services/auditing_legal.png";
-import service5 from "@/assets/services/media-audit.png";
+import service1 from "@/assets/services/family_office.webp";
+import service2 from "@/assets/services/private_wealth.webp";
+import service3 from "@/assets/services/alternative_invesment.webp";
+import service4 from "@/assets/services/auditing_legal.webp";
+import service5 from "@/assets/services/media-audit.webp";
 
 const services = [
   {
