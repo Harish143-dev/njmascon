@@ -106,16 +106,16 @@ const Contact = () => {
       <main>
         <PageHero
           videoSrc={contactHero}
-          eyebrow="Contact"
+       
           title={
             <>
-              Begin a <span className="italic">Conversation</span>
+              Begin a <span className="italic text-primary">Conversation</span>
             </>
           }
           description="We'd love to hear from you. Reach out to start your journey with NJ Macson."
           minHeightClassName="min-h-[55vh] sm:min-h-[60vh]"
         />
-
+        
         <section className={sectionSpacing}>
           <PageContainer>
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
@@ -126,7 +126,6 @@ const Contact = () => {
                 transition={{ duration: 0.8 }}
               >
                 <SectionHeading
-                  eyebrow="Contact"
                   title={
                     <>
                       Contact & <span className="italic">Reach Us</span>

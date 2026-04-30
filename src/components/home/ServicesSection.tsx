@@ -120,19 +120,6 @@ const ServicesSection = () => {
                   </div>
                 </div>
 
-                {/* Number */}
-                <div
-                  className={`col-span-12 lg:col-span-1 ${
-                    index % 2 === 0
-                      ? "lg:order-2 lg:col-start-5"
-                      : "lg:order-1 lg:col-start-1"
-                  }`}
-                >
-                  <span className="text-primary text-3xl sm:text-4xl md:text-5xl font-serif font-light italic group-hover:translate-x-2 transition-transform duration-300 block">
-                    {service.number}
-                  </span>
-                </div>
-
                 {/* Content */}
                 <div
                   className={`col-span-12 lg:col-span-5 ${

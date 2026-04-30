@@ -22,7 +22,6 @@ const Index = () => {
         <ServicesSection />
         <StatsSection />
         <TeamPreview />
-        <VideoSection />
         <TestimonialsSection />
       </main>
       <Footer />

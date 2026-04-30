@@ -38,8 +38,7 @@ const Careers = () => {
       <main>
         <PageHero
           videoSrc={careerHero}
-          eyebrow="Careers"
-          minHeightClassName="min-h-screen"
+          minHeightClassName="min-h-[60vh]"
           title={
             <>
               Join the <br />

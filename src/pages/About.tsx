@@ -347,9 +347,7 @@ const About = () => {
                   transition={{ duration: 0.6}}
                   whileHover={{ scale: 1.02 }}
                 >
-                  <span className="absolute top-6 right-6 text-6xl font-extralight text-primary/10 group-hover:text-primary/20 transition-colors">
-                    {item.number}
-                  </span>
+                 
                   <div className="relative z-10">
                     <h3 className="text-xl font-light mb-4 group-hover:text-primary transition-colors">
                       {item.title}

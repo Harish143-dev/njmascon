@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ChartNoAxesCombined, Landmark, Layers3, WalletCards } from "lucide-react";
 
 import CustomCursor from "@/components/CustomCursor";
 import Footer from "@/components/Footer";
@@ -8,10 +9,22 @@ import { cardItem, fadeUpSoft, inViewOnce, staggerContainer } from "@/lib/motion
 import heroVideo from "@/assets/videos/private-wealth.webm";
 
 const services = [
-  "Investment and portfolio advisory",
-  "Financial and estate planning",
-  "Demat services",
-  "Alternative investments",
+  {
+    label: "Investment and portfolio advisory",
+    icon: ChartNoAxesCombined,
+  },
+  {
+    label: "Financial and estate planning",
+    icon: Landmark,
+  },
+  {
+    label: "Demat services",
+    icon: WalletCards,
+  },
+  {
+    label: "Alternative investments",
+    icon: Layers3,
+  },
 ];
 
 const PrivateWealth = () => {
@@ -76,18 +89,24 @@ const PrivateWealth = () => {
               whileInView="show"
               viewport={inViewOnce}
             >
-              {services.map((service, index) => (
+              {services.map((service) => {
+                const Icon = service.icon;
+
+                return (
                 <motion.div
-                  key={service}
+                  key={service.label}
                   className="rounded-2xl border border-stone/40 p-8 transition-colors hover:border-primary"
                   variants={cardItem}
                 >
                   <div className="flex items-center gap-4">
-                    <span className="text-lg font-light italic text-primary">0{index + 1}.</span>
-                    <span className="text-xl font-light">{service}</span>
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm border border-primary/25 bg-primary/5 text-primary">
+                      <Icon className="h-5 w-5" strokeWidth={1.75} />
+                    </span>
+                    <span className="text-xl font-light">{service.label}</span>
                   </div>
                 </motion.div>
-              ))}
+                );
+              })}
             </motion.div>
 
             <motion.p

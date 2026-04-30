@@ -8,7 +8,7 @@ import { cardItem, fadeUpSoft, inViewOnce, staggerContainer } from "@/lib/motion
 import heroVideo from "@/assets/videos/altranative-investment.webm";
 
 const investments = [
-  "Real estate in India and Dubai",
+  "Real estate in India and Abroad",
   "Shipping and logistics",
   "Energy and mining",
   "Precious metals",
@@ -85,7 +85,7 @@ const AlternativeInvestments = () => {
             />
 
             <motion.div
-              className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 sm:gap-6"
+              className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
               variants={staggerContainer(0.1, 0.06)}
               initial="hidden"
               whileInView="show"
@@ -94,7 +94,7 @@ const AlternativeInvestments = () => {
               {investments.map((investment) => (
                 <motion.div
                   key={investment}
-                  className="rounded-2xl bg-stone/20 p-4 text-center sm:p-6"
+                  className="rounded-2xl bg-stone/20 p-4 text-center"
                   variants={cardItem}
                 >
                   <span className="text-sm font-light">{investment}</span>

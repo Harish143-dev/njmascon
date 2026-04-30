@@ -21,7 +21,6 @@ const FamilyOffice = () => {
     <div className="min-h-screen overflow-x-hidden">
       <CustomCursor />
       <Header />
-
       <main>
         <PageHero
           videoSrc={heroVideo}

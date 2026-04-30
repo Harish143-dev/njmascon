@@ -83,9 +83,7 @@ const AboutSection = () => {
                   className="bg-background p-5 sm:p-8 group hover:bg-stone/30 transition-colors duration-500"
                   variants={cardItem}
                 >
-                  <span className="text-primary text-2xl sm:text-3xl md:text-4xl font-serif font-light italic block mb-3 sm:mb-4 group-hover:translate-x-1 transition-transform duration-300">
-                    {feature.number}
-                  </span>
+            
                   <h4 className="text-base sm:text-lg font-light mb-2">{feature.title}</h4>
                   <p className="text-sm text-muted-foreground font-light leading-relaxed">
                     {feature.description}

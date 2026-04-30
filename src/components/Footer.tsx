@@ -1,61 +1,103 @@
 import { Link } from "react-router-dom";
+
 import logo from "/nj_macsonlogo.png";
 
+const services = [
+  { to: "/services/our-family-office", label: "Family Office" },
+  { to: "/services/private-wealth-management", label: "Private Wealth Management" },
+  { to: "/services/alternative-investments", label: "Alternative Investments" },
+  { to: "/services/auditing-legal", label: "Auditing and Legal" },
+  { to: "/services/media-auditing", label: "Media Auditing" },
+];
+
+const company = [
+  { to: "/about", label: "About" },
+  { to: "/team", label: "Team" },
+  { to: "/careers", label: "Careers" },
+  { to: "/contact", label: "Contact" },
+];
+
 const Footer = () => {
+  const linkClassName =
+    "block py-1.5 text-sm font-light text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+
   return (
-    <footer className="mt-16 sm:mt-24 border-t border-stone pt-12 sm:pt-16 pb-8 bg-background">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-12 mb-12 sm:mb-16">
-          <div className="lg:col-span-2">
-            <Link to="/" className="inline-block mb-6">
-              <img src={logo} alt="NJ Macson" className="h-12 md:h-14 w-auto" />
+    <footer className="mt-16 border-t border-stone bg-background sm:mt-24">
+      <div className="mx-auto max-w-[1440px] px-4 py-12 sm:px-6 md:px-10">
+        <div className="flex flex-col gap-12 lg:flex-row lg:justify-between lg:gap-16 xl:gap-24">
+          <div className="lg:w-[34%]">
+            <Link
+              to="/"
+              className="inline-flex rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              aria-label="NJ Macson home"
+            >
+              <img src={logo} alt="NJ Macson" className="h-12 w-auto md:h-14" />
             </Link>
-            <p className="text-sm font-light text-muted-foreground leading-relaxed mb-4">Supporting your journey from first steps to family legacies.</p>
-            <p className="text-primary text-sm font-medium">Let's start planning your tomorrow, together.</p>
+
+            <p className="mt-7 max-w-xl font-serif text-3xl font-light leading-tight text-foreground sm:text-4xl">
+              Quiet advisory for wealth, legacy, and long-term clarity.
+            </p>
+            <p className="mt-5 max-w-md text-sm font-light leading-relaxed text-muted-foreground">
+              Supporting private clients, families, founders, and institutions with considered financial and advisory
+              services.
+            </p>
           </div>
-          <div>
-            <h5 className="text-sm uppercase tracking-[0.4em] text-primary mb-6">Services</h5>
-            <ul className="space-y-3 text-sm font-light">
-              <li><Link to="/services/our-family-office" className="hover:text-primary transition-colors">Family Office</Link></li>
-              <li><Link to="/services/private-wealth-management" className="hover:text-primary transition-colors">Private Wealth Management</Link></li>
-              <li><Link to="/services/alternative-investments" className="hover:text-primary transition-colors">Alternative Investments</Link></li>
-              <li><Link to="/services/auditing-legal" className="hover:text-primary transition-colors">Auditing and Legal</Link></li>
-              <li><Link to="/services/media-auditing" className="hover:text-primary transition-colors">Media Auditing</Link></li>
+
+          <nav className="lg:w-[20%]" aria-label="Footer services">
+            <h5 className="mb-5 text-xs font-bold uppercase tracking-[0.28em] text-primary">Services</h5>
+            <ul>
+              {services.map((service) => (
+                <li key={service.to}>
+                  <Link to={service.to} className={linkClassName}>
+                    {service.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
-          </div>
-          <div>
-            <h5 className="text-sm uppercase tracking-[0.4em] text-primary mb-6">Company</h5>
-            <ul className="space-y-3 text-sm font-light">
-              <li><Link to="/about" className="hover:text-primary transition-colors">About Us</Link></li>
-              <li><Link to="/team" className="hover:text-primary transition-colors">Our Team</Link></li>
-              <li><Link to="/careers" className="hover:text-primary transition-colors">Careers</Link></li>
-              <li><Link to="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
+          </nav>
+
+          <nav className="lg:w-[12%]" aria-label="Footer company">
+            <h5 className="mb-5 text-xs font-bold uppercase tracking-[0.28em] text-primary">Company</h5>
+            <ul>
+              {company.map((item) => (
+                <li key={item.to}>
+                  <Link to={item.to} className={linkClassName}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
-          </div>
-          <div>
-            <h5 className="text-sm uppercase tracking-[0.4em] text-primary mb-6">Contact Info</h5>
-            <address className="not-italic text-sm font-light text-muted-foreground space-y-3">
-              <p className="break-words">Door No:43 Navarathna Garden 2nd Cross street, Defence Colony, Ekkaduthangal, Chennai 600032.</p>
-              <p>044 43570713<br/>+91 739 59 11123</p>
-              <p className="break-all">writetous@njmacson.com</p>
+          </nav>
+
+          <div className="lg:w-[24%] lg:border-l lg:border-stone lg:pl-12">
+            <h5 className="mb-5 text-xs font-bold uppercase tracking-[0.28em] text-primary">Reach Us</h5>
+            <address className="space-y-4 not-italic text-sm font-light leading-relaxed text-muted-foreground">
+              <p>Door No:43 Navarathna Garden 2nd Cross Street, Defence Colony, Ekkaduthangal, Chennai 600032.</p>
+              <p>
+                044 43570713
+                <br />
+                +91 739 59 11123
+              </p>
+              <a className="block break-all transition-colors hover:text-primary" href="mailto:writetous@njmacson.com">
+                writetous@njmacson.com
+              </a>
             </address>
-            <div className="mt-4 text-sm font-light text-muted-foreground">
-              <p>Mon – Fri: 9am – 6pm</p>
-              <p>Sat: By Appointment</p>
-            </div>
           </div>
         </div>
-        <div className="pt-8 border-t border-stone flex flex-col md:flex-row justify-between items-center gap-4 text-xs uppercase tracking-widest text-muted-foreground">
-          <p>© 2026 NJ Macson. All rights reserved.</p>
-          <div className="flex flex-wrap justify-center md:justify-end items-center gap-4 md:gap-6">
-            <Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
-            <a 
-              href="https://www.theeyelevelstudio.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="hover:text-primary transition-colors normal-case tracking-normal text-xs"
+
+        <div className="mt-12 flex flex-col gap-4 border-t border-stone pt-6 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
+          <p>&copy; 2026 NJ Macson. All rights reserved.</p>
+          <div className="flex flex-wrap gap-5">
+            <Link to="/privacy-policy" className="transition-colors hover:text-primary">
+              Privacy Policy
+            </Link>
+            <a
+              href="https://www.theeyelevelstudio.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-primary"
             >
-              Website designed by <span className="text-primary">EyeLevel Growth Studio</span>
+              Website by EyeLevel Growth Studio
             </a>
           </div>
         </div>
