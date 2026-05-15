@@ -73,7 +73,8 @@ export function SectionHeading({
 }
 
 interface PageHeroProps {
-  videoSrc: string;
+  videoSrc?: string;
+  imageSrc?: string;
   eyebrow?: string;
   title: ReactNode;
   description?: ReactNode;
@@ -81,44 +82,63 @@ interface PageHeroProps {
   className?: string;
   contentClassName?: string;
   minHeightClassName?: string;
+  children?: ReactNode;
+  align?: "center" | "bottom";
 }
 
 export function PageHero({
   videoSrc,
+  imageSrc,
   eyebrow,
   title,
   description,
   secondaryDescription,
   className,
   contentClassName,
-  minHeightClassName = "min-h-screen",
+  minHeightClassName = "min-h-[60vh] md:min-h-screen",
+  children,
+  align = "center",
 }: PageHeroProps) {
-  const videoMimeType = getVideoMimeType(videoSrc);
+  const videoMimeType = videoSrc ? getVideoMimeType(videoSrc) : "";
 
   return (
     <section
       className={cn(
-        "relative flex items-center overflow-hidden",
+        "relative flex overflow-hidden",
+        align === "center" ? "items-center" : "items-end",
         minHeightClassName,
         className,
       )}
     >
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover"
-      >
-        <source src={videoSrc} type={videoMimeType} />
-      </video>
+      <div className="absolute inset-0 z-0">
+        {imageSrc ? (
+          <img
+            src={imageSrc}
+            alt=""
+            className="h-full w-full object-cover"
+            aria-hidden="true"
+          />
+        ) : videoSrc ? (
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+            className="h-full w-full object-cover"
+          >
+            <source src={videoSrc} type={videoMimeType} />
+          </video>
+        ) : (
+          <div className="h-full w-full bg-stone" />
+        )}
 
-      <div className="absolute inset-0 bg-background/45 sm:hidden" />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/72 to-background/92 sm:hidden" />
-      <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/82 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background/86 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-background/45 sm:hidden" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/72 to-background/92 sm:hidden" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/82 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/86 via-transparent to-transparent" />
+      </div>
 
       <PageContainer className="relative z-10 w-full pt-28 pb-20 sm:pt-32 sm:pb-24">
         <motion.div
@@ -130,7 +150,7 @@ export function PageHero({
           {eyebrow ? (
             <span className={marketingEyebrowClassName}>{eyebrow}</span>
           ) : null}
-          <h1 className="font-serif text-3xl font-light leading-[0.92] tracking-tight text-foreground sm:text-5xl md:text-7xl lg:text-[6rem]">
+          <h1 className="font-serif text-4xl font-light leading-[0.92] tracking-tight text-foreground sm:text-5xl md:text-7xl lg:text-[6rem]">
             {title}
           </h1>
           {description ? (
@@ -139,15 +159,11 @@ export function PageHero({
             </p>
           ) : null}
           {secondaryDescription ? (
-            <p
-              className={cn(
-                marketingBodyClassName,
-                "max-w-2xl text-sm sm:text-base",
-              )}
-            >
+            <p className={cn(marketingBodyClassName, "max-w-2xl")}>
               {secondaryDescription}
             </p>
           ) : null}
+          {children}
         </motion.div>
       </PageContainer>
     </section>

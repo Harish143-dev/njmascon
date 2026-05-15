@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
+import { PageHero } from "@/components/marketing/primitives";
 
 const capabilities = [
   {
@@ -44,40 +45,18 @@ const Capabilities = () => {
       <Header />
       
       <main>
-        {/* Hero Section */}
-        <section className="relative min-h-[70vh] flex items-center overflow-hidden">
-          {/* Video Background */}
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover"
-          >
-            <source src="https://videos.pexels.com/video-files/5668817/5668817-uhd_2560_1440_24fps.mp4" type="video/mp4" />
-          </video>
-          
-          {/* Gradient Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/90 to-background/20" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/86 via-background/25 to-transparent" />
-          
-          <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 py-32">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <span className="text-sm uppercase tracking-[0.5em] text-primary mb-4 block">Expertise</span>
-              <h1 className="font-serif text-6xl md:text-7xl lg:text-8xl font-light leading-[0.9] tracking-tight mb-8">
-                Core <br />
-                <span className="italic">Capabilities.</span>
-              </h1>
-              <p className="max-w-2xl text-xl font-light leading-relaxed text-muted-foreground">
-                A definitive collection of strategic services designed for the preservation of legacy, wealth, and quiet architectural longevity.
-              </p>
-            </motion.div>
-          </div>
-        </section>
+        <PageHero
+          imageSrc="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop"
+          eyebrow="Expertise"
+          title={
+            <>
+              Core <br />
+              <span className="italic text-primary">Capabilities.</span>
+            </>
+          }
+          description="A definitive collection of strategic services designed for the preservation of legacy, wealth, and quiet architectural longevity."
+          minHeightClassName="min-h-[70vh]"
+        />
 
         {/* Capabilities Grid */}
         <section className="py-20">
@@ -152,4 +131,3 @@ const Capabilities = () => {
 };
 
 export default Capabilities;
-

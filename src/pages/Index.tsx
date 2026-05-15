@@ -1,14 +1,13 @@
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 import HeroSection from "@/components/home/HeroSection";
 import AboutSection from "@/components/home/AboutSection";
-import ServicesSection from "@/components/home/ServicesSection";
+import DifferenceSection from "@/components/home/DifferenceSection";
+import WhoWeServeSection from "@/components/home/WhoWeServeSection";
+import WhyNJMacsonSection from "@/components/home/WhyNJMacsonSection";
 import StatsSection from "@/components/home/StatsSection";
 import TeamPreview from "@/components/home/TeamPreview";
-import VideoSection from "@/components/home/VideoSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 
 const Index = () => {
@@ -18,9 +17,11 @@ const Index = () => {
       <Header />
       <main className="">
         <HeroSection />
-        <AboutSection />
-        <ServicesSection />
         <StatsSection />
+        <AboutSection />
+        <DifferenceSection />
+        <WhoWeServeSection />
+        <WhyNJMacsonSection />
         <TeamPreview />
         <TestimonialsSection />
       </main>

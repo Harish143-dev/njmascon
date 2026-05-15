@@ -3,6 +3,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 
+import { PageHero } from "@/components/marketing/primitives";
+
 const milestones = [
   { year: "1998", title: "Inception", description: "Foundation of the NJ Macson trust in Geneva, focused on heritage estate management." },
   { year: "2009", title: "Global Reach", description: "Expansion into the New York and Singapore markets, integrating artistic asset management." },
@@ -21,36 +23,19 @@ const Foundation = () => {
       <CustomCursor />
       <Header />
       
-      <main className="pt-32">
-        {/* Hero Section */}
-        <section className="max-w-[1440px] mx-auto px-6 md:px-10 py-20">
-          <div className="grid grid-cols-12 gap-8 items-start">
-            <motion.div 
-              className="col-span-12 lg:col-span-5"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <span className="text-sm uppercase tracking-[0.5em] text-primary mb-4 block">Who We Are</span>
-              <h1 className="font-serif text-6xl md:text-7xl lg:text-8xl font-light leading-[0.95] tracking-tight">
-                The <br />
-                <span className="italic">Foundation.</span>
-              </h1>
-            </motion.div>
-            
-            <motion.div 
-              className="col-span-12 lg:col-span-6 lg:col-start-7"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <p className="text-xl font-light leading-relaxed text-muted-foreground mb-8">
-                NJ Macson is a multi-generational family office dedicated to the preservation of wealth through the lens of architectural longevity and cultural stewardship.
-              </p>
-              <span className="text-sm uppercase tracking-[0.4em] text-primary">Established MCMXCVIII</span>
-            </motion.div>
-          </div>
-        </section>
+      <main>
+        <PageHero
+          imageSrc="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+          eyebrow="Who We Are"
+          title={
+            <>
+              The <br />
+              <span className="italic text-primary">Foundation.</span>
+            </>
+          }
+          description="NJ Macson is a multi-generational family office dedicated to the preservation of wealth through the lens of architectural longevity and cultural stewardship."
+          secondaryDescription="Established MCMXCVIII"
+        />
 
         {/* Philosophy Section */}
         <section className="py-32 bg-stone/20">

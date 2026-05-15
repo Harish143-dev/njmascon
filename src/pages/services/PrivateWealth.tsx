@@ -8,7 +8,7 @@ import { ServiceInquiryForm } from "@/components/marketing/ServiceInquiryForm";
 import { PageContainer, PageHero, SectionHeading, sectionSpacing } from "@/components/marketing/primitives";
 import { serviceInquiryServices } from "@/data/services";
 import { cardItem, fadeUpSoft, inViewOnce, staggerContainer } from "@/lib/motion";
-import heroVideo from "@/assets/videos/private-wealth.webm";
+import heroImage from "@/assets/Privaye wealth mgmt.webp";
 
 const services = [
   {
@@ -37,7 +37,7 @@ const PrivateWealth = () => {
 
       <main>
         <PageHero
-          videoSrc={heroVideo}
+          imageSrc={heroImage}
           eyebrow="Our Services"
           title={
             <>
@@ -95,18 +95,18 @@ const PrivateWealth = () => {
                 const Icon = service.icon;
 
                 return (
-                <motion.div
-                  key={service.label}
-                  className="rounded-2xl border border-stone/40 p-8 transition-colors hover:border-primary"
-                  variants={cardItem}
-                >
-                  <div className="flex items-center gap-4">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm border border-primary/25 bg-primary/5 text-primary">
-                      <Icon className="h-5 w-5" strokeWidth={1.75} />
-                    </span>
-                    <span className="text-xl font-light">{service.label}</span>
-                  </div>
-                </motion.div>
+                  <motion.div
+                    key={service.label}
+                    className="rounded-2xl border border-stone/40 p-8 transition-colors hover:border-primary"
+                    variants={cardItem}
+                  >
+                    <div className="flex items-center gap-4">
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm border border-primary/25 bg-primary/5 text-primary">
+                        <Icon className="h-5 w-5" strokeWidth={1.75} />
+                      </span>
+                      <span className="text-xl font-light">{service.label}</span>
+                    </div>
+                  </motion.div>
                 );
               })}
             </motion.div>

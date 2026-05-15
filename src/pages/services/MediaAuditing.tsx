@@ -12,7 +12,7 @@ import {
   sectionSpacing,
 } from "@/components/marketing/primitives";
 import { serviceInquiryServices } from "@/data/services";
-import heroVideo from "@/assets/videos/media-audit.webm";
+import heroImage from "@/assets/Media_Auditing.webp";
 
 const auditStages = [
   {
@@ -53,7 +53,7 @@ const MediaAuditing = () => {
 
       <main>
         <PageHero
-          videoSrc={heroVideo}
+          imageSrc={heroImage}
           eyebrow="Our Services"
           title={
             <>

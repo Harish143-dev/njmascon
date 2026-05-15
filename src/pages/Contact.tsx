@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import CustomCursor from "@/components/CustomCursor";
 import { FormField, TextArea, TextInput } from "@/components/marketing/forms";
-import contactHero from "@/assets/videos/contact.webm";
+import contactHero from "@/assets/contact.webp";
 import {
   InlineTextLink,
   PageContainer,
@@ -67,6 +67,17 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
+      const payload = {
+        formType: "contact",
+        source: "website",
+        submittedAt: new Date().toISOString(),
+        fields: {
+          name: result.data.name,
+          email: result.data.email,
+          message: result.data.message ?? "",
+        },
+      };
+
       const response = await fetch(
         "https://automate.eyelevelstudio.in/webhook/njmascon-form",
         {
@@ -74,7 +85,7 @@ const Contact = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(payload),
         },
       );
 
@@ -92,7 +103,8 @@ const Contact = () => {
       setErrors({});
     } catch (error: unknown) {
       console.error("API Error:", error);
-      const message = error instanceof Error ? error.message : "Failed to send message.";
+      const message =
+        error instanceof Error ? error.message : "Failed to send message.";
       toast.error(message);
     } finally {
       setIsSubmitting(false);
@@ -105,8 +117,7 @@ const Contact = () => {
       <Header />
       <main>
         <PageHero
-          videoSrc={contactHero}
-       
+          imageSrc={contactHero}
           title={
             <>
               Begin a <span className="italic text-primary">Conversation</span>
@@ -115,7 +126,7 @@ const Contact = () => {
           description="We'd love to hear from you. Reach out to start your journey with NJ Macson."
           minHeightClassName="min-h-[55vh] sm:min-h-[60vh]"
         />
-        
+
         <section className={sectionSpacing}>
           <PageContainer>
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
@@ -137,18 +148,26 @@ const Contact = () => {
 
                 <div className="space-y-6">
                   <div>
-                    <h3 className="mb-2 text-base text-primary md:text-lg">Address</h3>
+                    <h3 className="mb-2 text-base text-primary md:text-lg">
+                      Address
+                    </h3>
                     <p className="text-sm font-light text-muted-foreground md:text-base">
-                      Door No:43 Navarathna Garden 2nd Cross street, Defence Colony,
-                      Ekkaduthangal, Chennai 600032.
+                      Door No:43 Navarathna Garden 2nd Cross street, Defence
+                      Colony, Ekkaduthangal, Chennai 600032.
                     </p>
                   </div>
                   <div>
-                    <h3 className="mb-2 text-base text-primary md:text-lg">Phone / Mobile</h3>
-                    <p className="text-sm font-light md:text-base">044 43570713 / +91 739 59 11123</p>
+                    <h3 className="mb-2 text-base text-primary md:text-lg">
+                      Phone / Mobile
+                    </h3>
+                    <p className="text-sm font-light md:text-base">
+                      044 43570713 / +91 739 59 11123
+                    </p>
                   </div>
                   <div>
-                    <h3 className="mb-2 text-base text-primary md:text-lg">Email</h3>
+                    <h3 className="mb-2 text-base text-primary md:text-lg">
+                      Email
+                    </h3>
                     <a
                       href="mailto:writetous@njmacson.com"
                       className="break-all text-sm font-light transition-colors hover:text-primary md:text-base"
@@ -157,7 +176,9 @@ const Contact = () => {
                     </a>
                   </div>
                   <div>
-                    <h3 className="mb-2 text-base text-primary md:text-lg">Working Hours</h3>
+                    <h3 className="mb-2 text-base text-primary md:text-lg">
+                      Working Hours
+                    </h3>
                     <p className="text-sm font-light text-muted-foreground md:text-base">
                       Mon - Fri: 9am - 6pm
                       <br />
@@ -179,36 +200,56 @@ const Contact = () => {
                   "With NJ Macson, turn your dreams into reality."
                 </p>
                 <form onSubmit={handleSubmit} noValidate className="space-y-6">
-                  <FormField id="contact-name" label="Your Name" required error={errors.name}>
+                  <FormField
+                    id="contact-name"
+                    label="Your Name"
+                    required
+                    error={errors.name}
+                  >
                     <TextInput
                       id="contact-name"
                       name="name"
                       autoComplete="name"
                       value={formData.name}
-                      onChange={(e) => handleFieldChange("name", e.target.value)}
+                      onChange={(e) =>
+                        handleFieldChange("name", e.target.value)
+                      }
                       error={errors.name}
                     />
                   </FormField>
 
-                  <FormField id="contact-email" label="Your Email" required error={errors.email}>
+                  <FormField
+                    id="contact-email"
+                    label="Your Email"
+                    required
+                    error={errors.email}
+                  >
                     <TextInput
                       id="contact-email"
                       type="email"
                       name="email"
                       autoComplete="email"
                       value={formData.email}
-                      onChange={(e) => handleFieldChange("email", e.target.value)}
+                      onChange={(e) =>
+                        handleFieldChange("email", e.target.value)
+                      }
                       error={errors.email}
                     />
                   </FormField>
 
-                  <FormField id="contact-message" label="Your Message" error={errors.message}>
+                  <FormField
+                    id="contact-message"
+                    label="Your Message"
+                    error={errors.message}
+                  >
                     <TextArea
                       id="contact-message"
                       name="message"
                       rows={5}
                       value={formData.message}
-                      onChange={(e) => handleFieldChange("message", e.target.value)}
+                      onChange={(e) =>
+                        handleFieldChange("message", e.target.value)
+                      }
                       error={errors.message}
                     />
                   </FormField>
@@ -221,7 +262,9 @@ const Contact = () => {
                     >
                       {isSubmitting ? "Sending..." : "Send Message"}
                     </button>
-                    <InlineTextLink to="/about">Learn more about NJ Macson</InlineTextLink>
+                    <InlineTextLink to="/about">
+                      Learn more about NJ Macson
+                    </InlineTextLink>
                   </div>
                 </form>
               </motion.div>

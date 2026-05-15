@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 import { ServiceInquiryForm } from "@/components/marketing/ServiceInquiryForm";
 import { PageContainer, PageHero, SectionHeading, marketingCardClassName, sectionSpacing } from "@/components/marketing/primitives";
 import { serviceInquiryServices } from "@/data/services";
-import heroVideo from "@/assets/videos/audit-legal.webm";
+import heroImage from "@/assets/Auditing&Legal_02.webp";
 
 const taxServices = [
   "Comprehensive Income Tax Returns Filing",
@@ -77,7 +77,7 @@ const AuditingLegal = () => {
 
       <main>
         <PageHero
-          videoSrc={heroVideo}
+          imageSrc={heroImage}
           eyebrow="Our Services"
           title={
             <>

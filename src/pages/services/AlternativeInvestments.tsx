@@ -17,7 +17,7 @@ import {
   inViewOnce,
   staggerContainer,
 } from "@/lib/motion";
-import heroVideo from "@/assets/videos/altranative-investment.webm";
+import heroImage from "@/assets/alternative Investment.webp";
 
 const investments = [
   "Real estate in India and Abroad",
@@ -48,7 +48,7 @@ const AlternativeInvestments = () => {
 
       <main>
         <PageHero
-          videoSrc={heroVideo}
+          imageSrc={heroImage}
           eyebrow="Our Services"
           title={
             <>

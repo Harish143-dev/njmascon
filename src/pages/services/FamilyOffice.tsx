@@ -7,7 +7,7 @@ import { ServiceInquiryForm } from "@/components/marketing/ServiceInquiryForm";
 import { PageContainer, PageHero, SectionHeading, sectionSpacing } from "@/components/marketing/primitives";
 import { serviceInquiryServices } from "@/data/services";
 import { cardItem, fadeUpSoft, inViewOnce, staggerContainer } from "@/lib/motion";
-import heroVideo from "@/assets/videos/our-family-office.webm";
+import heroImage from "@/assets/family_Office.webp";
 
 const highlights = [
   "Integrated solutions for UHNI families to grow, protect, and manage wealth.",
@@ -25,7 +25,7 @@ const FamilyOffice = () => {
       <Header />
       <main>
         <PageHero
-          videoSrc={heroVideo}
+          imageSrc={heroImage}
           eyebrow="Our Services"
           title={
             <>

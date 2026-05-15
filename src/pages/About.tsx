@@ -4,9 +4,10 @@ import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 import { Link } from "react-router-dom";
 import { Globe, Briefcase, TrendingUp, Target } from "lucide-react";
+import { PageHero } from "@/components/marketing/primitives";
 import awardImg from "@/assets/awards and certificate/award-1.jpeg";
 import awardImg1 from "@/assets/awards and certificate/award-2.png";
-import aboutHero from "@/assets/videos/about-herosection.webm";
+import aboutHero from "@/assets/about_page_01.webp";
 
 const highlights = [
   {
@@ -80,148 +81,62 @@ const About = () => {
       <Header />
 
       <main>
-        {/* Hero Section with Video */}
-        <section className="relative min-h-screen flex items-center overflow-hidden">
-          {/* Video Background */}
-          <div className="absolute inset-0 z-0">
-            <video
-              autoPlay
-              loop
-              preload="auto"
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            >
-              <source
-                src={aboutHero}
-                type="video/webm"
-              />
-            </video>
-            <div className="absolute inset-0 bg-background/45 sm:hidden" />
-            <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/72 to-background/92 sm:hidden" />
-            <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/82 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/86 via-transparent to-transparent" />
-          </div>
-
-          <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 pt-28 sm:pt-32 pb-20 sm:pb-24 w-full">
-            <div className="max-w-3xl">
-              <motion.div
-                className="space-y-5 sm:space-y-6"
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1 }}
+        <PageHero
+          align="bottom"
+          imageSrc={aboutHero}
+          title={
+            <>
+              Our Story of <br />
+              <span className="italic text-primary">Excellence</span>
+            </>
+          }
+          description="NJ Macson provides tailored advisory for UHNI families, individuals, and businesses. With expertise in family office management, wealth and alternative investments, auditing, and legal consulting, we deliver strategic, trusted solutions."
+        >
+          <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-10">
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              <Link
+                to="/team"
+                className="inline-flex w-full justify-center sm:w-auto sm:justify-start items-center gap-4 bg-primary text-primary-foreground px-8 sm:px-12 py-4 sm:py-5 text-[11px] font-medium uppercase tracking-[0.25em] hover:bg-primary/90 transition-all group"
               >
-                <div className="space-y-2">
-                  <motion.h1
-                    className="font-serif text-3xl sm:text-5xl md:text-7xl lg:text-[6rem] font-light leading-[0.92] tracking-tight text-foreground"
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8 }}
-                  >
-                    Our Story of
-                  </motion.h1>
-                  <motion.h1
-                    className="font-serif text-3xl sm:text-5xl md:text-7xl lg:text-[6rem] font-light leading-[0.92] tracking-tight italic text-primary"
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8 }}
-                  >
-                    Excellence
-                  </motion.h1>
-                </div>
-
-                <motion.div
-                  className="w-20 sm:w-24 h-[1px] bg-gradient-to-r from-primary to-transparent my-6 sm:my-8"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 1 }}
+                Meet Our Team
+                <svg
+                  className="w-4 h-4 transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
+            </motion.div>
+            <Link
+              to="/contact"
+              className="group flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.2em] text-foreground/80 hover:text-primary transition-all"
+            >
+              <span className="border-b border-foreground/30 pb-1 group-hover:border-primary transition-colors">
+                Get in Touch
+              </span>
+              <svg
+                className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
                 />
-
-                <motion.p
-                  className="max-w-2xl text-base md:text-lg font-light leading-relaxed text-foreground/80"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.8 }}
-                >
-                  NJ Macson provides tailored advisory for UHNI families,
-                  individuals, and businesses. With expertise in family office
-                  management, wealth and alternative investments, auditing, and
-                  legal consulting, we deliver strategic, trusted solutions.
-                </motion.p>
-
-                <motion.div
-                  className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <Link
-                      to="/team"
-                      className="inline-flex w-full justify-center sm:w-auto sm:justify-start items-center gap-3 bg-primary text-primary-foreground px-6 sm:px-10 py-4 sm:py-5 text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] hover:bg-primary/90 transition-all group"
-                    >
-                      Meet Our Team
-                      <svg
-                        className="w-4 h-4 transition-transform group-hover:translate-x-1"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={1.5}
-                          d="M17 8l4 4m0 0l-4 4m4-4H3"
-                        />
-                      </svg>
-                    </Link>
-                  </motion.div>
-                  <Link
-                    to="/contact"
-                    className="group flex items-center gap-2 text-xs uppercase tracking-[0.1em] sm:tracking-[0.15em] text-foreground/80 hover:text-primary transition-all"
-                  >
-                    <span className="border-b border-foreground/30 pb-1 group-hover:border-primary transition-colors">
-                      Get in Touch
-                    </span>
-                    <svg
-                      className="w-3 h-3 transition-transform group-hover:translate-x-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </Link>
-                </motion.div>
-              </motion.div>
-            </div>
+              </svg>
+            </Link>
           </div>
-
-          {/* Scroll indicator */}
-          <motion.div
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-          >
-            <span className="text-xs uppercase tracking-[0.3em] text-foreground/50">
-              Scroll
-            </span>
-            <motion.div
-              className="w-[1px] h-8 bg-gradient-to-b from-primary to-transparent"
-              animate={{ scaleY: [1, 0.5, 1] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </motion.div>
-        </section>
+        </PageHero>
 
         {/* Highlights - Floating Cards */}
         <section className="py-16 sm:py-20 lg:py-24 relative overflow-hidden">
@@ -250,7 +165,7 @@ const About = () => {
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6}}
+                  transition={{ duration: 0.6 }}
                   whileHover={{ y: -8 }}
                 >
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-t-2xl" />
@@ -291,7 +206,7 @@ const About = () => {
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6}}
+                  transition={{ duration: 0.6 }}
                 >
                   <div className="relative">
                     <motion.div
@@ -299,7 +214,7 @@ const About = () => {
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.8}}
+                      transition={{ duration: 0.8 }}
                     >
                       {stat.value}
                     </motion.div>
@@ -344,10 +259,10 @@ const About = () => {
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6}}
+                  transition={{ duration: 0.6 }}
                   whileHover={{ scale: 1.02 }}
                 >
-                 
+
                   <div className="relative z-10">
                     <h3 className="text-xl font-light mb-4 group-hover:text-primary transition-colors">
                       {item.title}
@@ -408,7 +323,7 @@ const About = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8}}
+                transition={{ duration: 0.8 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 <div className="relative p-8 sm:p-10 md:p-16 bg-gradient-to-br from-stone/40 to-stone/20 rounded-3xl border border-stone/30 overflow-hidden">
@@ -499,7 +414,7 @@ const About = () => {
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8}}
+                transition={{ duration: 0.8 }}
               >
                 <div className="overflow-hidden rounded-sm">
                   <img

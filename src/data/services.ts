@@ -1,7 +1,7 @@
 export const serviceInquiryServices = {
   familyOffice: {
     key: "family-office",
-    label: "Our Family Office",
+    label: "Family Office",
     path: "/services/our-family-office",
   },
   privateWealth: {
@@ -16,7 +16,7 @@ export const serviceInquiryServices = {
   },
   auditingLegal: {
     key: "auditing-legal",
-    label: "Auditing & Legal",
+    label: "Auditing and Legal",
     path: "/services/auditing-legal",
   },
   mediaAuditing: {

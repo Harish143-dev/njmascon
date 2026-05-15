@@ -8,7 +8,7 @@ import jameelImg from "@/assets/team/jameel.webp";
 import anandhImg from "@/assets/team/anandh.webp";
 import abdulRafiImg from "@/assets/team/abdul_rafi.webp";
 import ismailImg from "@/assets/team/ismail.webp";
-import teamHero from "@/assets/videos/team.webm";
+import teamHero from "@/assets/Team.webp";
 
 interface TeamMember {
   name: string;
@@ -56,8 +56,8 @@ const Team = () => {
 
       <main>
         <PageHero
-          videoSrc={teamHero}
-          minHeightClassName="min-h-[60vh]"
+          imageSrc={teamHero}
+          minHeightClassName="min-h-[50vh] md:min-h-[60vh]"
           title={
             <>
               Our Core <span className="italic text-primary">Team</span>

@@ -31,7 +31,7 @@ const stats = [
 
 const StatsSection = () => {
   return (
-    <section className="relative py-16 sm:py-20 lg:py-32 bg-foreground text-background overflow-hidden">
+    <section className="relative py-16 sm:py-20 lg:py-32 bg-background text-foreground overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-primary to-transparent" />
@@ -68,7 +68,7 @@ const StatsSection = () => {
             to New Heights
           </h2>
           <div className="w-16 h-px bg-primary/40 mx-auto mb-6" />
-          <p className="text-background/60 font-light italic text-base sm:text-lg max-w-xl mx-auto">
+          <p className="text-foreground/60 font-light italic text-base sm:text-lg max-w-xl mx-auto">
             Where Wealth Meets Opportunity
           </p>
         </motion.div>
@@ -107,12 +107,12 @@ const StatsSection = () => {
                 </div>
 
                 {/* Label */}
-                <h3 className="text-lg sm:text-xl md:text-2xl font-light text-background mb-2 tracking-wide">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-light text-foreground mb-2 tracking-wide">
                   {stat.label}
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm text-background/50 font-light tracking-wider uppercase">
+                <p className="text-sm text-foreground/50 font-light tracking-wider uppercase">
                   {stat.description}
                 </p>
 

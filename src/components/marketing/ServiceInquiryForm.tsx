@@ -6,9 +6,15 @@ import { z } from "zod";
 
 import { FormField, TextArea, TextInput } from "@/components/marketing/forms";
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
   PageContainer,
-  SectionHeading,
-  sectionSpacing,
 } from "@/components/marketing/primitives";
 import type { ServiceInquiryService } from "@/data/services";
 
@@ -34,13 +40,14 @@ interface ServiceInquiryFormProps {
 
 export function ServiceInquiryForm({
   service,
-  title = "Request a Service Consultation",
+  title = "Managing Wealth. Preserving Legacies.",
   description = "Share your details and our team will connect with you about this service.",
 }: ServiceInquiryFormProps) {
   const [formData, setFormData] =
     useState<ServiceInquiryFormData>(initialFormData);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleFieldChange = (
     field: keyof ServiceInquiryFormData,
@@ -77,29 +84,19 @@ export function ServiceInquiryForm({
     setIsSubmitting(true);
 
     try {
-      const submittedAt = new Date().toISOString();
-      const pageUrl =
-        typeof window === "undefined" ? service.path : window.location.href;
       const payload = {
         formType: "service-inquiry",
         source: "service-page",
-        submittedAt,
-        pageUrl,
-        name: result.data.name,
-        email: result.data.email,
-        message: result.data.message ?? "",
-        service: service.label,
-        serviceKey: service.key,
-        servicePath: service.path,
-        lead: {
+        submittedAt: new Date().toISOString(),
+        fields: {
           name: result.data.name,
           email: result.data.email,
           message: result.data.message ?? "",
+          service: service.label,
         },
-        serviceDetails: {
-          key: service.key,
-          label: service.label,
-          path: service.path,
+        meta: {
+          serviceKey: service.key,
+          pageUrl: service.path,
         },
       };
 
@@ -126,6 +123,7 @@ export function ServiceInquiryForm({
       toast.success("Your consultation request has been sent.");
       setFormData(initialFormData);
       setErrors({});
+      setOpen(false);
     } catch (error: unknown) {
       console.error("Service inquiry API Error:", error);
       const message =
@@ -137,105 +135,120 @@ export function ServiceInquiryForm({
   };
 
   return (
-    <section className={sectionSpacing}>
+    <section className="bg-foreground py-16 text-background sm:py-20 lg:py-24">
       <PageContainer>
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
+        <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
           <motion.div
-            className="lg:col-span-5"
+            className="w-full"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <SectionHeading
-              eyebrow="Consultation"
-              title={title}
-              description={description}
-              className="mb-0"
-            />
+            <h2 className="font-serif text-3xl font-light leading-tight tracking-tight sm:text-4xl md:text-5xl">
+              {title}
+            </h2>
           </motion.div>
 
-          <motion.form
-            onSubmit={handleSubmit}
-            noValidate
-            className="space-y-6 lg:col-span-6 lg:col-start-7"
+          <motion.div
+            className="mt-8 flex justify-center sm:mt-10"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <FormField id="service-inquiry-service" label="Service">
-              <TextInput
-                id="service-inquiry-service"
-                name="service"
-                value={service.label}
-                readOnly
-                className="text-foreground"
-              />
-            </FormField>
+            <Dialog open={open} onOpenChange={setOpen}>
+              <DialogTrigger asChild>
+                <button
+                  type="button"
+                  className="inline-flex w-full items-center justify-center rounded-sm bg-primary px-6 py-4 text-[11px] uppercase tracking-[0.16em] text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-foreground sm:w-auto sm:px-10 sm:tracking-[0.24em]"
+                >
+                  Request Consultation
+                </button>
+              </DialogTrigger>
+              <DialogContent className="max-h-[92svh] overflow-y-auto rounded-sm border-stone bg-background p-5 sm:max-w-xl sm:p-8">
+                <DialogHeader>
+                  <DialogTitle className="font-serif text-2xl font-light sm:text-3xl">
+                    {title}
+                  </DialogTitle>
+                  <DialogDescription>{description}</DialogDescription>
+                </DialogHeader>
 
-            <FormField
-              id="service-inquiry-name"
-              label="Your Name"
-              required
-              error={errors.name}
-            >
-              <TextInput
-                id="service-inquiry-name"
-                name="name"
-                autoComplete="name"
-                value={formData.name}
-                onChange={(event) =>
-                  handleFieldChange("name", event.target.value)
-                }
-                error={errors.name}
-              />
-            </FormField>
+                <form onSubmit={handleSubmit} noValidate className="space-y-5">
+                  <FormField id="service-inquiry-service" label="Service">
+                    <div
+                      id="service-inquiry-service"
+                      className="w-full rounded-sm border border-stone bg-stone/20 px-4 py-3 text-base font-light text-foreground"
+                    >
+                      {service.label}
+                    </div>
+                  </FormField>
 
-            <FormField
-              id="service-inquiry-email"
-              label="Your Email"
-              required
-              error={errors.email}
-            >
-              <TextInput
-                id="service-inquiry-email"
-                type="email"
-                name="email"
-                autoComplete="email"
-                value={formData.email}
-                onChange={(event) =>
-                  handleFieldChange("email", event.target.value)
-                }
-                error={errors.email}
-              />
-            </FormField>
+                  <FormField
+                    id="service-inquiry-name"
+                    label="Your Name"
+                    required
+                    error={errors.name}
+                  >
+                    <TextInput
+                      id="service-inquiry-name"
+                      name="name"
+                      autoComplete="name"
+                      value={formData.name}
+                      onChange={(event) =>
+                        handleFieldChange("name", event.target.value)
+                      }
+                      error={errors.name}
+                    />
+                  </FormField>
 
-            <FormField
-              id="service-inquiry-message"
-              label="Your Message"
-              error={errors.message}
-            >
-              <TextArea
-                id="service-inquiry-message"
-                name="message"
-                rows={5}
-                value={formData.message}
-                onChange={(event) =>
-                  handleFieldChange("message", event.target.value)
-                }
-                error={errors.message}
-              />
-            </FormField>
+                  <FormField
+                    id="service-inquiry-email"
+                    label="Your Email"
+                    required
+                    error={errors.email}
+                  >
+                    <TextInput
+                      id="service-inquiry-email"
+                      type="email"
+                      name="email"
+                      autoComplete="email"
+                      value={formData.email}
+                      onChange={(event) =>
+                        handleFieldChange("email", event.target.value)
+                      }
+                      error={errors.email}
+                    />
+                  </FormField>
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="inline-flex h-auto items-center justify-center rounded-sm bg-primary px-6 py-4 text-[11px] uppercase tracking-[0.16em] text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 sm:px-10 sm:tracking-[0.24em]"
-            >
-              {isSubmitting ? "Sending..." : "Send Consultation Request"}
-            </button>
-          </motion.form>
+                  <FormField
+                    id="service-inquiry-message"
+                    label="Your Message"
+                    error={errors.message}
+                  >
+                    <TextArea
+                      id="service-inquiry-message"
+                      name="message"
+                      rows={5}
+                      value={formData.message}
+                      onChange={(event) =>
+                        handleFieldChange("message", event.target.value)
+                      }
+                      error={errors.message}
+                    />
+                  </FormField>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="inline-flex h-auto w-full items-center justify-center rounded-sm bg-primary px-6 py-4 text-[11px] uppercase tracking-[0.16em] text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 sm:w-auto sm:px-10 sm:tracking-[0.24em]"
+                  >
+                    {isSubmitting ? "Sending..." : "Send Consultation Request"}
+                  </button>
+                </form>
+              </DialogContent>
+            </Dialog>
+          </motion.div>
         </div>
       </PageContainer>
     </section>

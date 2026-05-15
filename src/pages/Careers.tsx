@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { PageContainer, PageCta, PageHero, SectionHeading, sectionSpacing, sectionSpacingLg } from "@/components/marketing/primitives";
 import { jobPositions } from "@/data/jobPositions";
-import careerHero from "@/assets/videos/career.webm";
+import careerHero from "@/assets/carrer_page.webp";
 
 const values = [
   {
@@ -37,8 +37,8 @@ const Careers = () => {
 
       <main>
         <PageHero
-          videoSrc={careerHero}
-          minHeightClassName="min-h-[60vh]"
+          imageSrc={careerHero}
+          minHeightClassName="min-h-[50vh] md:min-h-[60vh]"
           title={
             <>
               Join the <br />
