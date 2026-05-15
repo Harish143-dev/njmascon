@@ -4,7 +4,9 @@ import { ChartNoAxesCombined, Landmark, Layers3, WalletCards } from "lucide-reac
 import CustomCursor from "@/components/CustomCursor";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { PageContainer, PageCta, PageHero, SectionHeading, sectionSpacing } from "@/components/marketing/primitives";
+import { ServiceInquiryForm } from "@/components/marketing/ServiceInquiryForm";
+import { PageContainer, PageHero, SectionHeading, sectionSpacing } from "@/components/marketing/primitives";
+import { serviceInquiryServices } from "@/data/services";
 import { cardItem, fadeUpSoft, inViewOnce, staggerContainer } from "@/lib/motion";
 import heroVideo from "@/assets/videos/private-wealth.webm";
 
@@ -122,7 +124,7 @@ const PrivateWealth = () => {
           </PageContainer>
         </section>
 
-        <PageCta title="Ready to Grow Your Wealth?" actionLabel="Request Consultation" actionTo="/contact" />
+        <ServiceInquiryForm service={serviceInquiryServices.privateWealth} />
       </main>
 
       <Footer />

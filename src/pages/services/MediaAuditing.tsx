@@ -3,14 +3,15 @@ import { motion } from "framer-motion";
 import CustomCursor from "@/components/CustomCursor";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { ServiceInquiryForm } from "@/components/marketing/ServiceInquiryForm";
 import {
   PageContainer,
-  PageCta,
   PageHero,
   SectionHeading,
   marketingCardClassName,
   sectionSpacing,
 } from "@/components/marketing/primitives";
+import { serviceInquiryServices } from "@/data/services";
 import heroVideo from "@/assets/videos/media-audit.webm";
 
 const auditStages = [
@@ -105,11 +106,10 @@ const MediaAuditing = () => {
           </PageContainer>
         </section>
 
-        <PageCta
+        <ServiceInquiryForm
+          service={serviceInquiryServices.mediaAuditing}
           title="Make Every Media Rupee Accountable"
           description="Partner with NJ Macson to bring clarity, control, and confidence to your media investments."
-          actionLabel="Get a Media Audit Consultation"
-          actionTo="/contact"
         />
       </main>
 

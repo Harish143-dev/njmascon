@@ -3,7 +3,9 @@ import { motion } from "framer-motion";
 import CustomCursor from "@/components/CustomCursor";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { PageContainer, PageCta, PageHero, SectionHeading, sectionSpacing } from "@/components/marketing/primitives";
+import { ServiceInquiryForm } from "@/components/marketing/ServiceInquiryForm";
+import { PageContainer, PageHero, SectionHeading, sectionSpacing } from "@/components/marketing/primitives";
+import { serviceInquiryServices } from "@/data/services";
 import { cardItem, fadeUpSoft, inViewOnce, staggerContainer } from "@/lib/motion";
 import heroVideo from "@/assets/videos/our-family-office.webm";
 
@@ -93,7 +95,7 @@ const FamilyOffice = () => {
           </PageContainer>
         </section>
 
-        <PageCta title="Managing Wealth. Preserving Legacies." actionLabel="Request Consultation" actionTo="/contact" />
+        <ServiceInquiryForm service={serviceInquiryServices.familyOffice} />
       </main>
 
       <Footer />

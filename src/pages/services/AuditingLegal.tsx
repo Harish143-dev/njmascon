@@ -3,7 +3,9 @@ import { motion } from "framer-motion";
 import CustomCursor from "@/components/CustomCursor";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { PageContainer, PageCta, PageHero, SectionHeading, marketingCardClassName, sectionSpacing } from "@/components/marketing/primitives";
+import { ServiceInquiryForm } from "@/components/marketing/ServiceInquiryForm";
+import { PageContainer, PageHero, SectionHeading, marketingCardClassName, sectionSpacing } from "@/components/marketing/primitives";
+import { serviceInquiryServices } from "@/data/services";
 import heroVideo from "@/assets/videos/audit-legal.webm";
 
 const taxServices = [
@@ -218,7 +220,7 @@ const AuditingLegal = () => {
           </PageContainer>
         </section>
 
-        <PageCta title="Need Professional Assistance?" actionLabel="Get in Touch" actionTo="/contact" />
+        <ServiceInquiryForm service={serviceInquiryServices.auditingLegal} />
       </main>
 
       <Footer />
