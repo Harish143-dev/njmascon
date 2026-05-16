@@ -297,7 +297,7 @@ const Header = () => {
           >
             <div className="mx-auto max-w-2xl">
               <div>
-                {mainNavItems.map((item) => {
+                {mainNavItems.slice(0, 2).map((item) => {
                   const isActive = item.href === "/careers" ? location.pathname.startsWith("/careers") : location.pathname === item.href;
 
                   return (
@@ -313,7 +313,7 @@ const Header = () => {
                 })}
               </div>
 
-              <div className="mt-8">
+              <div className="my-8">
                 <p className="mb-1 text-xs font-bold uppercase tracking-[0.24em] text-muted-foreground">Services</p>
                 <div>
                   {services.map((service) => (
@@ -327,6 +327,23 @@ const Header = () => {
                     </Link>
                   ))}
                 </div>
+              </div>
+
+              <div>
+                {mainNavItems.slice(2).map((item) => {
+                  const isActive = item.href === "/careers" ? location.pathname.startsWith("/careers") : location.pathname === item.href;
+
+                  return (
+                    <Link
+                      key={item.href}
+                      to={item.href}
+                      className={mobileLinkClassName(isActive)}
+                      aria-current={isActive ? "page" : undefined}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
               </div>
 
               <Link

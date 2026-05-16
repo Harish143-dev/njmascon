@@ -134,10 +134,10 @@ export function PageHero({
           <div className="h-full w-full bg-stone" />
         )}
 
-        <div className="absolute inset-0 bg-background/45 sm:hidden" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/72 to-background/92 sm:hidden" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/82 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/86 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-background/10 sm:hidden" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/30 to-background/50 sm:hidden" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/70 via-background/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent" />
       </div>
 
       <PageContainer className="relative z-10 w-full pt-28 pb-20 sm:pt-32 sm:pb-24">
