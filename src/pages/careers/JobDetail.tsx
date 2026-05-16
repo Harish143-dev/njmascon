@@ -11,6 +11,7 @@ import {
   sectionSpacing,
 } from "@/components/marketing/primitives";
 import { getJobById } from "@/data/jobPositions";
+import careerHero from "@/assets/carrer_page.webp";
 
 const JobDetail = () => {
   const { jobId } = useParams<{ jobId: string }>();
@@ -26,19 +27,15 @@ const JobDetail = () => {
       <Header />
 
       <main>
-        <div className="min-h-[50vh] flex items-center bg-gradient-to-t from-background/80 to-background relative">
-          <div className="max-w-3xl mt-10">
-            <h1 className="text-4xl font-serif px-12">{job.title}</h1>
-            <p className="text-md text-muted-foreground px-12">
-              {job.overview}
-            </p>
-          </div>
-        </div>
-
-        <PageContainer className="-mt-12 relative z-10 pb-8">
+        <PageHero
+          imageSrc={careerHero}
+          minHeightClassName="min-h-[45vh] md:min-h-[55vh]"
+          title={job.title}
+          description={job.overview}
+        >
           <Link
             to="/careers"
-            className="inline-flex items-center gap-2 rounded-sm bg-background/90 px-4 py-3 text-sm text-muted-foreground shadow-sm backdrop-blur transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="mt-6 inline-flex w-max items-center gap-2 rounded-sm bg-background/90 px-4 py-3 text-sm text-muted-foreground shadow-sm backdrop-blur transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             <svg
               className="h-4 w-4"
@@ -51,7 +48,7 @@ const JobDetail = () => {
             </svg>
             Back to Careers
           </Link>
-        </PageContainer>
+        </PageHero>
 
         <section className={sectionSpacing}>
           <PageContainer>

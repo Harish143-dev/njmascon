@@ -75,7 +75,7 @@ export function SectionHeading({
 interface PageHeroProps {
   videoSrc?: string;
   imageSrc?: string;
-  eyebrow?: string;
+  eyebrow?: ReactNode;
   title: ReactNode;
   description?: ReactNode;
   secondaryDescription?: ReactNode;
