@@ -7,7 +7,7 @@ import familyOfficeImage from "@/assets/family_Office.webp";
 import privateWealthImage from "@/assets/Privaye wealth mgmt.webp";
 import alternativeInvestmentsImage from "@/assets/alternative Investment.webp";
 import auditingLegalImage from "@/assets/Auditing&Legal_02.webp";
-import mediaAuditingImage from "@/assets/services/media-audit.webp";
+import mediaAuditingImage from "@/assets/Media_Auditing.webp";
 import logo from "/nj_macsonlogo.png";
 
 const services = [
