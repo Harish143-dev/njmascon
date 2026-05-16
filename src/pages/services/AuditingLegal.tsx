@@ -220,7 +220,10 @@ const AuditingLegal = () => {
           </PageContainer>
         </section>
 
-        <ServiceInquiryForm service={serviceInquiryServices.auditingLegal} />
+        <ServiceInquiryForm 
+          service={serviceInquiryServices.auditingLegal} 
+          title="Ensuring compliance and protecting growth"
+        />
       </main>
 
       <Footer />

@@ -124,7 +124,10 @@ const PrivateWealth = () => {
           </PageContainer>
         </section>
 
-        <ServiceInquiryForm service={serviceInquiryServices.privateWealth} />
+        <ServiceInquiryForm
+          service={serviceInquiryServices.privateWealth}
+          title="A private approach to lasting wealth"
+        />
       </main>
 
       <Footer />

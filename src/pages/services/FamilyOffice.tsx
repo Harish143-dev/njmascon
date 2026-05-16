@@ -95,7 +95,10 @@ const FamilyOffice = () => {
           </PageContainer>
         </section>
 
-        <ServiceInquiryForm service={serviceInquiryServices.familyOffice} />
+        <ServiceInquiryForm 
+          service={serviceInquiryServices.familyOffice} 
+          title="Managing Wealth. Preserving Legacies."
+        />
       </main>
 
       <Footer />
