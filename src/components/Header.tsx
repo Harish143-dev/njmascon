@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import familyOfficeImage from "@/assets/services/family_office.webp";
-import privateWealthImage from "@/assets/services/private_wealth.webp";
-import alternativeInvestmentsImage from "@/assets/services/alternative_invesment.webp";
-import auditingLegalImage from "@/assets/services/auditing_legal.webp";
+import familyOfficeImage from "@/assets/family_Office.webp";
+import privateWealthImage from "@/assets/Privaye wealth mgmt.webp";
+import alternativeInvestmentsImage from "@/assets/alternative Investment.webp";
+import auditingLegalImage from "@/assets/Auditing&Legal_02.webp";
 import mediaAuditingImage from "@/assets/services/media-audit.webp";
 import logo from "/nj_macsonlogo.png";
 
